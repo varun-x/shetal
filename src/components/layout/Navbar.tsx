@@ -98,46 +98,46 @@ export default function Navbar() {
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      </header>
 
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[72px] z-40 lg:hidden px-6 pb-8 pt-4 bg-navy-dark/95 backdrop-blur-lg border-b border-slate-800 shadow-lg"
-          >
-            <div className="flex flex-col gap-4">
-              {navItems.map((item) => {
-                const isActive = pathname === item.path;
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-lg font-medium py-2 border-b border-slate-800 ${
-                      isActive ? "text-accent-gold" : "text-slate-350"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                );
-              })}
-              <Link
-                href="/get-quote"
-                onClick={() => setIsOpen(false)}
-                className="mt-4 w-full py-3 bg-accent-gold hover:bg-amber-650 text-slate-950 rounded-lg font-bold flex items-center justify-center gap-2 cursor-pointer"
-              >
-                Get Quote
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        {/* Mobile Drawer (Absolute position inside fixed header to align flush with bottom border) */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="absolute top-full left-0 right-0 z-40 lg:hidden px-6 pb-8 pt-4 bg-navy-dark/98 backdrop-blur-xl border-t border-b border-slate-800/80 shadow-2xl shadow-black/50"
+            >
+              <div className="flex flex-col gap-4">
+                {navItems.map((item) => {
+                  const isActive = pathname === item.path;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-base font-semibold py-2.5 border-b border-slate-800/60 transition-colors ${
+                        isActive ? "text-accent-gold" : "text-slate-350 hover:text-white"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
+                <Link
+                  href="/get-quote"
+                  onClick={() => setIsOpen(false)}
+                  className="mt-4 w-full py-3 bg-accent-gold hover:bg-amber-600 text-slate-950 rounded-lg font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                >
+                  Get Quote
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
     </>
   );
 }

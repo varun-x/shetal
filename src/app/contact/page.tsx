@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, HelpCircle, ShieldAlert } from "lucide-react";
+import { Mail, Phone, MapPin, Send, HelpCircle, ShieldAlert, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import GlassCard from "@/components/ui/GlassCard";
@@ -17,6 +18,15 @@ export default function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isDeskDropdownOpen, setIsDeskDropdownOpen] = useState(false);
+
+  const desks = [
+    "Customs Clearance & Brokerage",
+    "Air Cargo Freight Desk",
+    "Ocean Cargo (FCL/LCL) Desk",
+    "Bonded Warehousing / 3PL",
+    "Trade Compliance Consulting"
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,21 +49,24 @@ export default function Contact() {
       <Navbar />
 
       {/* Header Banner */}
-      <section className="relative pt-36 pb-20 overflow-hidden bg-[#060913] border-b border-slate-850">
+      <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-[#060913] border-b border-slate-850">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.015]" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-amber-500/5 blur-[100px] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10 flex flex-col items-center gap-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-amber-500 font-mono">Get in Touch</span>
-          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-            Connect With Our <br className="hidden sm:inline" />
-            <span className="text-gradient-accent">
-              Operations Desks
-            </span>
-          </h1>
-          <p className="text-slate-450 max-w-xl text-sm sm:text-base leading-relaxed font-light">
-            Contact our licensed brokers or freight managers directly to resolve import hold issues, book space, or set up compliance reviews.
-          </p>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 flex flex-col gap-3 text-left">
+              <span className="text-xs font-bold uppercase tracking-widest text-amber-500 font-mono">Get in Touch</span>
+              <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                Connect With Our <span className="text-gradient-accent">Operations Desks</span>
+              </h1>
+            </div>
+            <div className="lg:col-span-5 text-left lg:border-l lg:border-slate-800 lg:pl-8">
+              <p className="text-slate-400 text-sm leading-relaxed font-light">
+                Contact our licensed brokers or freight managers directly to resolve import hold issues, book space, or set up compliance reviews.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -111,7 +124,7 @@ export default function Contact() {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <GlassCard glowColor="none" className="p-8 bg-slate-900/30 border-slate-850/80 shadow-md">
+            <GlassCard glowColor="gold" className="p-8 bg-slate-900/30 border-slate-850/80 shadow-md">
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name */}
@@ -165,19 +178,48 @@ export default function Contact() {
                   </div>
 
                   {/* Inquiry Desk Route */}
-                  <div className="flex flex-col gap-2 md:col-span-2">
+                  <div className="flex flex-col gap-2 md:col-span-2 relative">
                     <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Routing Desk</label>
-                    <select
-                      value={form.route}
-                      onChange={(e) => setForm({ ...form, route: e.target.value })}
-                      className="bg-slate-950 border border-slate-850 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-amber-500"
+                    
+                    <button
+                      type="button"
+                      onClick={() => setIsDeskDropdownOpen(!isDeskDropdownOpen)}
+                      className="w-full flex items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-950 border border-slate-850 text-white hover:border-amber-500/40 cursor-pointer transition-all shadow-md text-left"
                     >
-                      <option className="bg-[#0B0F19] text-white">Customs Clearance & Brokerage</option>
-                      <option className="bg-[#0B0F19] text-white">Air Cargo Freight Desk</option>
-                      <option className="bg-[#0B0F19] text-white">Ocean Cargo (FCL/LCL) Desk</option>
-                      <option className="bg-[#0B0F19] text-white">Bonded Warehousing / 3PL</option>
-                      <option className="bg-[#0B0F19] text-white">Trade Compliance Consulting</option>
-                    </select>
+                      <span className="text-xs font-semibold">{form.route}</span>
+                      <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${isDeskDropdownOpen ? "rotate-180 text-accent-gold" : ""}`} />
+                    </button>
+
+                    {/* Dropdown options */}
+                    <AnimatePresence>
+                      {isDeskDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 5 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute top-full left-0 right-0 mt-2 p-2 rounded-xl bg-slate-950/98 border border-slate-850 backdrop-blur-2xl shadow-2xl flex flex-col gap-1 z-40 max-h-[220px] overflow-y-auto"
+                        >
+                          {desks.map((desk) => (
+                            <button
+                              key={desk}
+                              type="button"
+                              onClick={() => {
+                                setForm({ ...form, route: desk });
+                                setIsDeskDropdownOpen(false);
+                              }}
+                              className={`w-full p-2.5 rounded-lg text-left text-xs font-semibold cursor-pointer transition-all ${
+                                form.route === desk
+                                  ? "bg-slate-900 border border-slate-800 text-white"
+                                  : "text-slate-400 hover:text-white hover:bg-slate-900/60"
+                              }`}
+                            >
+                              {desk}
+                            </button>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
                   {/* Message */}

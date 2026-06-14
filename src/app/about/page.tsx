@@ -25,12 +25,6 @@ const values = [
   },
 ];
 
-const milestones = [
-  { year: "2016", title: "Customs Broker License Granted & Founding", desc: "Incorporated Sheetla Exim, acquired Custom House Agent (CHA) license, and established customs operations." },
-  { year: "2018", title: "IATA & FIATA Accreditations", desc: "Expanded operations into direct international air and ocean freight cargo forwarding." },
-  { year: "2020", title: "AEO Certification", desc: "Awarded Authorized Economic Operator (AEO) status by customs, granting priority clearances." },
-  { year: "2024", title: "Digital Integration Rollout", desc: "Launched automated customs status updates and digitized file handling for clients." },
-];
 
 export default function About() {
   return (
@@ -38,21 +32,24 @@ export default function About() {
       <Navbar />
 
       {/* Header Banner */}
-      <section className="relative pt-36 pb-20 overflow-hidden bg-[#060913] border-b border-slate-900">
+      <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-[#060913] border-b border-slate-900">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.01]" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-accent-gold/5 blur-[100px] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10 flex flex-col items-center gap-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-gold font-mono">Our Heritage</span>
-          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-            Driving Global Trade with <br className="hidden sm:inline" />
-            <span className="text-gradient-accent">
-              Regulatory Precision
-            </span>
-          </h1>
-          <p className="text-slate-400 max-w-xl text-sm sm:text-base leading-relaxed font-light">
-            Since 2016, Sheetla Exim has served as a trusted trade corridor specialist, managing complex customs brokerage and freight shipments for importers and manufacturers.
-          </p>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 flex flex-col gap-3 text-left">
+              <span className="text-xs font-bold uppercase tracking-widest text-accent-gold font-mono">Our Heritage</span>
+              <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                Driving Global Trade with <span className="text-gradient-accent">Regulatory Precision</span>
+              </h1>
+            </div>
+            <div className="lg:col-span-5 text-left lg:border-l lg:border-slate-800 lg:pl-8">
+              <p className="text-slate-400 text-sm leading-relaxed font-light">
+                Since 2016, Sheetla Exim has served as a trusted trade corridor specialist, managing complex customs brokerage and freight shipments for importers and manufacturers.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -86,39 +83,6 @@ export default function About() {
 
           <div className="relative">
             {/* Visual card represent core achievements */}
-            <GlassCard glowColor="none" hoverEffect={false} className="p-8 flex flex-col gap-6 bg-slate-900/40 border-slate-800 shadow-xl">
-              <h3 className="font-display font-bold text-lg text-white">Compliance & Accreditation</h3>
-              
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-accent-gold/15 border border-accent-gold/30 flex items-center justify-center shrink-0">
-                  <Award className="w-5 h-5 text-accent-gold" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-white">AEO (Authorized Economic Operator)</h4>
-                  <p className="text-xs text-slate-400 mt-1 font-light">Certified AEO status ensures simplified custom procedures, lower examination rates, and prioritized releases.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-accent-gold/15 border border-accent-gold/30 flex items-center justify-center shrink-0">
-                  <Award className="w-5 h-5 text-accent-gold" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-white">IATA Registered Agent</h4>
-                  <p className="text-xs text-slate-400 mt-1 font-light">Certified passenger and cargo handling agent, ensuring direct relationships with leading global airlines.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-accent-gold/15 border border-accent-gold/30 flex items-center justify-center shrink-0">
-                  <Award className="w-5 h-5 text-accent-gold" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-white">Custom House Agent (CHA) License</h4>
-                  <p className="text-xs text-slate-400 mt-1 font-light">Direct Custom House Broker license authorizing operations at all major ports, air terminals, and ICDs.</p>
-                </div>
-              </div>
-            </GlassCard>
           </div>
         </div>
       </section>
@@ -135,7 +99,7 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((v, i) => (
-              <GlassCard key={i} className="flex flex-col gap-4 bg-slate-900/40 border-slate-800 shadow-xl" glowColor="none">
+              <GlassCard key={i} className="flex flex-col gap-4 bg-slate-900/40 border-slate-800 shadow-xl" glowColor="gold">
                 <div className="w-10 h-10 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-center">
                   {v.icon}
                 </div>
@@ -147,31 +111,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* History / Timeline */}
-      <section className="py-24 bg-premium-dark relative border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <h2 className="font-display text-3xl font-bold text-white">Our Operational Milestones</h2>
-            <p className="text-slate-400 mt-4 text-sm font-light">
-              Decades of experience in coordinating complex customs filings and multi-modal logistics.
-            </p>
-          </div>
-
-          <div className="relative pl-6 border-l border-slate-800 max-w-3xl mx-auto flex flex-col gap-12">
-            {milestones.map((m, idx) => (
-              <div key={idx} className="relative">
-                <span className="absolute -left-[35px] top-1.5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-accent-gold text-slate-950 rounded font-mono">
-                  {m.year}
-                </span>
-                <div className="pl-12">
-                  <h4 className="text-base font-bold text-white">{m.title}</h4>
-                  <p className="text-slate-400 text-xs mt-2 leading-relaxed font-light">{m.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Global network Call */}
       <section className="py-20 bg-slate-950 text-center border-t border-slate-900">
@@ -189,7 +128,7 @@ export default function About() {
             <Button href="/contact" variant="primary">
               Contact Our Operations Desk
             </Button>
-            <Button href="/get-quote" variant="outline" className="!text-white !border-slate-805 hover:!bg-slate-900 hover:!border-slate-700">
+            <Button href="/get-quote" variant="outline" className="!text-white !border-slate-800 hover:!bg-slate-900 hover:!border-slate-700">
               Request Customs Quote
             </Button>
           </div>

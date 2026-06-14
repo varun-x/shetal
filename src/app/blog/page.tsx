@@ -68,21 +68,24 @@ export default function Blog() {
       <Navbar />
 
       {/* Header Banner */}
-      <section className="relative pt-36 pb-20 overflow-hidden bg-gradient-to-b from-[#070a13] to-[#05070d] border-b border-slate-800">
+      <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-gradient-to-b from-[#070a13] to-[#05070d] border-b border-slate-800">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.015]" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-amber-500/5 blur-[100px] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10 flex flex-col items-center gap-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-amber-500 font-mono">Resource Center</span>
-          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-            Trade Intelligence & <br className="hidden sm:inline" />
-            <span className="text-gradient-accent">
-              Regulatory Policy Updates
-            </span>
-          </h1>
-          <p className="text-slate-300 max-w-xl text-sm sm:text-base leading-relaxed font-light">
-            Stay informed on customs tariff updates, trade policies, and global freight strategies compiled by our expert custom brokers.
-          </p>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 flex flex-col gap-3 text-left">
+              <span className="text-xs font-bold uppercase tracking-widest text-amber-500 font-mono">Resource Center</span>
+              <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                Trade Intelligence & <span className="text-gradient-accent">Regulatory Policy Updates</span>
+              </h1>
+            </div>
+            <div className="lg:col-span-5 text-left lg:border-l lg:border-slate-800 lg:pl-8">
+              <p className="text-slate-400 text-sm leading-relaxed font-light">
+                Stay informed on customs tariff updates, trade policies, and global freight strategies compiled by our expert custom brokers.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -125,7 +128,7 @@ export default function Blog() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredArticles.map((art, idx) => (
-              <GlassCard key={idx} glowColor="none" className="p-6 flex flex-col justify-between min-h-[350px] bg-slate-900/40 border-slate-800/80 shadow-md">
+              <GlassCard key={idx} glowColor="gold" className="p-6 flex flex-col justify-between min-h-[350px] bg-slate-900/40 border-slate-800/80 shadow-md">
                 <div>
                   {/* Meta */}
                   <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono mb-4 uppercase">

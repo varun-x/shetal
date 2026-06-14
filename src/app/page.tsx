@@ -5,14 +5,14 @@ import Link from "next/link";
 import { 
   ArrowRight, ShieldCheck, ChevronRight, Award, 
   Users, PhoneCall, Ship, 
-  Plane, Anchor, TrendingUp, Star, CheckCircle2
+  Plane, Anchor, TrendingUp, CheckCircle2,
+  ChevronUp, ChevronDown
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
 import GlassCard from "@/components/ui/GlassCard";
-import CargoTracker from "@/components/ui/CargoTracker";
 import { servicesCategories } from "@/data/servicesData";
 
 // Services data is imported from src/data/servicesData.tsx
@@ -98,69 +98,14 @@ const caseStudiesList: CaseStudyData[] = [
 
 
 
-interface TestimonialData {
-  name: string;
-  company: string;
-  industry: string;
-  image: string;
-  rating: number;
-  quote: string;
-}
 
-const testimonialsList: TestimonialData[] = [
-  {
-    name: "Samantha Vance",
-    company: "TechVantage Systems",
-    industry: "Electronics & High-Tech",
-    image: "/images/testimonials/client_1.png",
-    rating: 5,
-    quote: "Sheetla Exim has completely revolutionized our chip supply chain. Their prior Bill of Entry system clears our cargo at airport terminals in under 10 hours, eliminating line stoppages."
-  },
-  {
-    name: "Rajesh Sharma",
-    company: "Bharat Heavy Forge",
-    industry: "Industrial Machinery",
-    image: "/images/testimonials/client_2.png",
-    rating: 5,
-    quote: "Unlocking ₹25 Lakhs in customs duty savings under the EPCG scheme was an outstanding outcome for our turbine import project. Their trade compliance auditing is truly elite."
-  },
-  {
-    name: "Dr. Priya Patel",
-    company: "Vivant Biotech",
-    industry: "Pharmaceuticals",
-    image: "/images/testimonials/client_3.png",
-    rating: 5,
-    quote: "With ADC clearance dependencies and cold-chain compliance, we cannot afford cargo delays. Sheetla Exim's bonded transit delivers pharmaceutical shipments with 98% accuracy."
-  },
-  {
-    name: "Kenji Tanaka",
-    company: "Nexa Motors Corp",
-    industry: "Automotive Manufacturing",
-    image: "/images/testimonials/client_4.png",
-    rating: 5,
-    quote: "Direct Port Delivery coordinates straight from INNSA terminals to our factory flatbeds has cut our logistics demurrage costs by 30%. They are a trusted partner."
-  },
-  {
-    name: "Marcus Aurelius",
-    company: "Aegis Chemical Labs",
-    industry: "Specialty Chemicals",
-    image: "/images/testimonials/client_2.png",
-    rating: 5,
-    quote: "Filing hazardous chemical manifests is exceptionally complex. Sheetla Exim handles our Partner Government Agency (PGA) quarantine clearances with zero compliance gaps."
-  },
-  {
-    name: "Aarav Mehta",
-    company: "Loom & Linen Textiles",
-    industry: "Retail & Apparel",
-    image: "/images/testimonials/client_4.png",
-    rating: 5,
-    quote: "Consolidating our East Asian LCL shipments into FCL container files weekly at Shenzhen Port saved us 30% on ocean freight rates. Their billing transparency is refreshing."
-  }
-];
 
 export default function Home() {
-  // Active Services Category Tab State
-  const [activeCategoryTab, setActiveCategoryTab] = useState("dgft-exim");
+  // Dropdown Service Explorer States
+  const [selectedCategory, setSelectedCategory] = useState("dgft-exim");
+  const [selectedService, setSelectedService] = useState("IEC and IEC Modification");
+  const [isCatDropdownOpen, setIsCatDropdownOpen] = useState(false);
+  const [isServiceDropdownOpen, setIsServiceDropdownOpen] = useState(false);
 
   // Case study state
   const [activeCaseIdx, setActiveCaseIdx] = useState(0);
@@ -170,8 +115,8 @@ export default function Home() {
     <>
       <Navbar />
 
-      {/* Extraordinary Hero Section - Full Viewport Height */}
-      <section className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-navy-dark">
+      {/* Extraordinary Hero Section - Responsive height for mobile to prevent clipping */}
+      <section className="relative min-h-screen lg:h-screen w-full flex flex-col justify-between overflow-hidden lg:overflow-hidden bg-navy-dark">
         
         {/* Dynamic Canvas-like Animated SVG Background */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none opacity-30">
@@ -371,7 +316,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="lg:col-span-5 w-full hidden lg:block font-mono"
           >
-            <GlassCard glowColor="none" className="w-full p-8 bg-slate-900/40 border-slate-800 shadow-xl flex flex-col gap-6 items-center text-center relative overflow-hidden group">
+            <GlassCard glowColor="emerald" className="w-full p-8 bg-slate-900/40 border-slate-800 shadow-xl flex flex-col gap-6 items-center text-center relative overflow-hidden group">
               {/* Gold glow in the card */}
               <div className="absolute -top-20 -right-20 w-48 h-48 rounded-full bg-amber-500/10 blur-[80px]" />
               
@@ -415,20 +360,24 @@ export default function Home() {
           className="w-full z-10 bg-gradient-to-t from-premium-dark to-transparent pt-8 pb-8"
         >
           <div className="max-w-7xl mx-auto px-6">
-            <div className="glass-panel rounded-2xl p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
-              <div className="flex flex-col justify-center items-center">
+            <div className="glass-panel rounded-2xl p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-0 text-center">
+              {/* Stat 1 */}
+              <div className="flex flex-col justify-center items-center p-4 border-r border-b border-slate-800/50 md:border-b-0 md:pb-0 md:pr-4">
                 <p className="font-display text-2xl sm:text-3xl font-extrabold text-white text-gradient">5000+</p>
                 <p className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-400 font-mono mt-1.5 font-medium">Shipments Cleared</p>
               </div>
-              <div className="flex flex-col justify-center items-center pt-6 md:pt-0">
+              {/* Stat 2 */}
+              <div className="flex flex-col justify-center items-center p-4 border-b border-slate-800/50 md:border-b-0 md:border-r md:pb-0 md:px-4">
                 <p className="font-display text-2xl sm:text-3xl font-extrabold text-white text-gradient">100+</p>
                 <p className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-400 font-mono mt-1.5 font-medium">Global Trade Partners</p>
               </div>
-              <div className="flex flex-col justify-center items-center pt-6 md:pt-0">
-                <p className="font-display text-2xl sm:text-3xl font-extrabold text-white text-gradient">24-Hour</p>
-                <p className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-400 font-mono mt-1.5 font-medium">Response Time</p>
+              {/* Stat 3 */}
+              <div className="flex flex-col justify-center items-center p-4 border-r border-slate-800/50 md:border-r md:border-b-0 md:pt-0 md:px-4">
+                <p className="font-display text-2xl sm:text-3xl font-extrabold text-white text-gradient">Monday-Saturday</p>
+                <p className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-400 font-mono mt-1.5 font-medium"> 9am - 7pm</p>
               </div>
-              <div className="flex flex-col justify-center items-center pt-6 md:pt-0">
+              {/* Stat 4 */}
+              <div className="flex flex-col justify-center items-center p-4 md:pt-0 md:pl-4">
                 <p className="font-display text-2xl sm:text-3xl font-extrabold text-white text-gradient">98%</p>
                 <p className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-400 font-mono mt-1.5 font-medium">On-Time Clearance</p>
               </div>
@@ -437,132 +386,184 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Dedicated Live Tracking Radar Section */}
-      <section className="py-24 bg-premium-dark relative border-t border-slate-900 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent-gold/5 rounded-full blur-[130px] pointer-events-none" />
+      {/* Interactive Services Section */}
+      <section className="py-24 bg-[#060913] relative border-t border-slate-900 overflow-hidden">
+        <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-accent-gold/5 blur-[120px] pointer-events-none" />
         <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-gold font-mono">Live Tracking Console</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2">
-              Live Customs & Fleet Radar
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-gold font-mono">Service Explorer</span>
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white mt-3">
+              Explore Our Capabilities
             </h2>
             <p className="text-slate-400 mt-4 text-sm font-light">
-              Track active customs entries, ocean cargo container ships (AIS), or air cargo flights (ADS-B) in real-time.
-            </p>
-          </div>
-          <GlassCard glowColor="none" className="p-8 bg-slate-900/40 border-slate-800 shadow-xl">
-            <CargoTracker />
-          </GlassCard>
-        </div>
-      </section>
-
-      {/* Interactive Services Section */}
-      <section className="py-28 bg-[#060913] relative border-t border-slate-900 overflow-hidden">
-        <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-accent-gold/5 blur-[120px] pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-gold font-mono">Expert Trade Capabilities</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white mt-3">
-              Comprehensive Trade & Logistics Services
-            </h2>
-            <p className="text-slate-400 mt-4 text-sm sm:text-base font-light">
-              Explore our wide range of services spanning customs clearance, DGFT liaison, compliance audits, scrip trading, and global freight forwarding.
+              Select a service category and specific service below to view detailed compliance info and request an immediate estimate.
             </p>
           </div>
 
-          {/* Interactive Category Selector Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {servicesCategories.map((cat) => {
-              const isActive = activeCategoryTab === cat.id;
-              return (
+          <div className="flex flex-col gap-8">
+            {/* Dropdowns Console */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-5 rounded-2xl bg-slate-950/40 border border-slate-800/80 backdrop-blur-md relative z-30">
+              
+              {/* Category Select */}
+              <div className="flex flex-col gap-2 relative">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest font-mono">Service Category</label>
+                
                 <button
-                  key={cat.id}
-                  onClick={() => setActiveCategoryTab(cat.id)}
-                  className={`flex items-center gap-2.5 px-5 py-3 rounded-xl border font-medium text-xs sm:text-sm transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? "bg-slate-900 border-accent-gold text-accent-gold shadow-sm"
-                      : "bg-slate-950/40 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-900/50"
-                  }`}
+                  onClick={() => {
+                    setIsCatDropdownOpen(!isCatDropdownOpen);
+                    setIsServiceDropdownOpen(false);
+                  }}
+                  className="w-full flex items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-white hover:border-accent-gold/40 cursor-pointer transition-all shadow-md group text-left"
                 >
-                  <span className={`transition-transform duration-300 ${isActive ? "scale-110" : ""}`}>
-                    {cat.icon}
-                  </span>
-                  <span>{cat.title}</span>
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-6 h-6 rounded-md bg-slate-950 border border-slate-800 flex items-center justify-center text-accent-gold shrink-0">
+                      {servicesCategories.find(c => c.id === selectedCategory)?.icon || servicesCategories[0].icon}
+                    </div>
+                    <span className="text-xs font-bold">{servicesCategories.find(c => c.id === selectedCategory)?.title || servicesCategories[0].title}</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${isCatDropdownOpen ? "rotate-180 text-accent-gold" : ""}`} />
                 </button>
-              );
-            })}
-          </div>
 
-          {/* Category Details & Services Grid */}
-          <AnimatePresence mode="wait">
-            {servicesCategories.map((cat) => {
-              if (cat.id !== activeCategoryTab) return null;
-              return (
-                <motion.div
-                  key={cat.id}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.3 }}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
+                {/* Category Dropdown List */}
+                <AnimatePresence>
+                  {isCatDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 5 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full left-0 right-0 mt-2 p-2 rounded-xl bg-slate-950/95 border border-slate-800/80 backdrop-blur-xl shadow-2xl flex flex-col gap-1 z-40 max-h-[250px] overflow-y-auto"
+                    >
+                      {servicesCategories.map((cat) => (
+                        <button
+                          key={cat.id}
+                          onClick={() => {
+                            setSelectedCategory(cat.id);
+                            setIsCatDropdownOpen(false);
+                            if (cat.services.length > 0) {
+                              setSelectedService(cat.services[0].name);
+                            }
+                          }}
+                          className={`w-full flex items-center gap-3 p-2 rounded-lg text-left cursor-pointer transition-all ${
+                            selectedCategory === cat.id
+                              ? "bg-slate-900 border border-slate-800 text-white"
+                              : "text-slate-400 hover:text-white hover:bg-slate-900/60"
+                          }`}
+                        >
+                          <div className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0 ${
+                            selectedCategory === cat.id ? "bg-slate-950 text-accent-gold" : "bg-slate-900 text-slate-500"
+                          }`}>
+                            {cat.icon}
+                          </div>
+                          <span className="text-xs font-semibold">{cat.title}</span>
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Service Select */}
+              <div className="flex flex-col gap-2 relative">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest font-mono">Specific Service</label>
+                
+                <button
+                  onClick={() => {
+                    setIsServiceDropdownOpen(!isServiceDropdownOpen);
+                    setIsCatDropdownOpen(false);
+                  }}
+                  className="w-full flex items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-white hover:border-accent-gold/40 cursor-pointer transition-all shadow-md group text-left"
                 >
-                  {/* Category Info Panel */}
-                  <div className="lg:col-span-4 flex flex-col justify-between p-8 rounded-2xl glass-panel relative overflow-hidden bg-slate-900/30 border-slate-800">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-accent-gold/5 rounded-full blur-2xl" />
-                    <div className="flex flex-col gap-5 relative z-10">
-                      <div className="w-12 h-12 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center shadow-sm text-accent-gold">
-                        {cat.icon}
-                      </div>
-                      <div>
-                        <span className="text-[10px] text-accent-gold font-mono uppercase tracking-widest">{cat.subtitle}</span>
-                        <h3 className="font-display text-2xl font-bold text-white mt-1">{cat.title}</h3>
-                      </div>
-                      <p className="text-slate-400 text-xs sm:text-sm leading-relaxed font-light">
-                        {cat.description}
-                      </p>
-                    </div>
-                    <div className="mt-8 pt-6 border-t border-slate-800/80 flex items-center justify-between relative z-10">
-                      <Button href="/services" variant="outline" size="sm" className="text-xs">
-                        View Service Guide
-                      </Button>
-                      <Link href="/get-quote" className="text-xs font-semibold text-accent-gold flex items-center gap-1 hover:text-yellow-400 group">
-                        Get Estimate <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  </div>
+                  <span className="text-xs font-bold truncate">{selectedService}</span>
+                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${isServiceDropdownOpen ? "rotate-180 text-accent-gold" : ""}`} />
+                </button>
 
-                  {/* Specific Services Grid */}
-                  <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4 h-full align-start content-start">
-                    {cat.services.map((service, sIdx) => (
-                      <motion.div
-                        key={sIdx}
-                        whileHover={{ y: -2 }}
-                        className="p-5 rounded-xl border border-slate-800/60 bg-slate-900/40 hover:bg-slate-900/70 hover:border-slate-700 transition-all duration-300 flex flex-col justify-between shadow-sm"
-                      >
-                        <div className="flex flex-col gap-2">
-                          <h4 className="font-display font-semibold text-slate-200 text-xs sm:text-sm flex items-start gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent-gold shrink-0 mt-2" />
-                            <span>{service.name}</span>
-                          </h4>
-                          <p className="text-slate-400 text-xs leading-relaxed pl-3.5 font-light">
-                            {service.desc}
-                          </p>
+                {/* Service Dropdown List */}
+                <AnimatePresence>
+                  {isServiceDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 5 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full left-0 right-0 mt-2 p-2 rounded-xl bg-slate-950/95 border border-slate-800/80 backdrop-blur-xl shadow-2xl flex flex-col gap-1 z-40 max-h-[250px] overflow-y-auto"
+                    >
+                      {(servicesCategories.find(c => c.id === selectedCategory)?.services || []).map((s, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => {
+                            setSelectedService(s.name);
+                            setIsServiceDropdownOpen(false);
+                          }}
+                          className={`w-full p-2.5 rounded-lg text-left cursor-pointer transition-all text-xs font-semibold ${
+                            selectedService === s.name
+                              ? "bg-slate-900 border border-slate-800 text-white"
+                              : "text-slate-400 hover:text-white hover:bg-slate-900/60"
+                          }`}
+                        >
+                          {s.name}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Selected Service Detail Card */}
+            <AnimatePresence mode="wait">
+              {(() => {
+                const activeCategoryObj = servicesCategories.find(cat => cat.id === selectedCategory);
+                const activeServiceObj = activeCategoryObj?.services.find(s => s.name === selectedService) || activeCategoryObj?.services[0];
+                if (!activeServiceObj) return null;
+                return (
+                  <motion.div
+                    key={`${selectedCategory}-${selectedService}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <GlassCard glowColor="gold" className="p-8 bg-slate-900/40 border-slate-800 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                      <div className="flex-1 flex flex-col gap-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-accent-gold shadow-sm shrink-0">
+                            {activeCategoryObj?.icon}
+                          </div>
+                          <div>
+                            <span className="text-[10px] text-accent-gold font-mono uppercase tracking-widest">{activeCategoryObj?.subtitle}</span>
+                            <h4 className="font-display text-lg sm:text-xl font-bold text-white mt-0.5">{activeServiceObj.name}</h4>
+                          </div>
                         </div>
-                        <div className="mt-4 pt-3 border-t border-slate-800/60 pl-3.5 flex justify-end">
-                          <Link
-                            href={`/get-quote?service=${encodeURIComponent(service.name)}&category=${cat.id}`}
-                            className="text-[10px] font-bold font-mono text-accent-gold uppercase tracking-wider hover:text-yellow-400 flex items-center gap-1 group"
-                          >
-                            Quote Service <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                          </Link>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+                        <p className="text-slate-300 text-sm leading-relaxed font-light pl-1">
+                          {activeServiceObj.desc}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0 w-full md:w-auto">
+                        <Button
+                          href={`/get-quote?service=${encodeURIComponent(activeServiceObj.name)}&category=${selectedCategory}`}
+                          variant="primary"
+                          className="w-full text-center py-3 px-6 text-sm font-bold tracking-wide"
+                        >
+                          <span className="flex items-center justify-center gap-2">
+                            Get Instant Estimate <ArrowRight className="w-4 h-4" />
+                          </span>
+                        </Button>
+                        <Button
+                          href="/services"
+                          variant="outline"
+                          className="w-full text-center py-3 px-6 text-sm !text-white !border-slate-800 hover:!bg-slate-900 hover:!border-slate-700"
+                        >
+                          View Guide
+                        </Button>
+                      </div>
+                    </GlassCard>
+                  </motion.div>
+                );
+              })()}
+            </AnimatePresence>
+          </div>
         </div>
       </section>
 
@@ -632,7 +633,7 @@ export default function Home() {
                   transition={{ duration: 0.25 }}
                   className="h-full"
                 >
-                  <GlassCard hoverEffect={false} glowColor="none" className="p-8 h-full flex flex-col justify-between bg-slate-900/40 border-slate-800 shadow-xl">
+                  <GlassCard hoverEffect={false} glowColor="gold" className="p-8 h-full flex flex-col justify-between bg-slate-900/40 border-slate-800 shadow-xl">
                     
                     {/* Header */}
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-6 mb-6">
@@ -706,248 +707,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Premium Trust Badges & Auto-Scrolling Testimonials Section */}
-      <section className="py-28 bg-[#060913] relative border-t border-slate-900 overflow-hidden">
-        {/* Glow Effects */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-accent-gold/3 blur-[130px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-accent-blue/3 blur-[130px] pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          
-          {/* Trust Badges Bar */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-            {/* Google Reviews */}
-            <GlassCard hoverEffect={true} glowColor="blue" className="p-6 bg-slate-900/40 border-slate-800 shadow-xl flex items-center justify-between gap-4">
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-1.5 text-amber-500">
-                  <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
-                  <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
-                  <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
-                  <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
-                  <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
-                  <span className="text-xs font-bold text-slate-300 ml-1 font-mono">4.9/5</span>
-                </div>
-                <span className="text-xs font-bold text-white font-display mt-0.5">Google Reviews verified</span>
-                <span className="text-[9px] text-slate-500 font-mono uppercase tracking-wider">120+ Regulatory audits</span>
-              </div>
-              <div className="w-10 h-10 rounded-lg bg-slate-950 flex items-center justify-center shrink-0 border border-slate-800 text-accent-gold">
-                <svg className="w-5 h-5 text-accent-gold" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114-3.555 0-6.445-2.89-6.445-6.445s2.89-6.445 6.445-6.445c1.614 0 3.08.595 4.215 1.573l3.053-3.053C19.222 2.217 15.938 1 12.24 1 5.922 1 12.24 5.922 12.24 12.24s4.922 11.24 11.24 11.24c6.318 0 11.24-4.922 11.24-11.24 0-.795-.085-1.554-.24-2.285l-11 1.03z"/>
-                </svg>
-              </div>
-            </GlassCard>
-
-            {/* Verified Clients */}
-            <GlassCard hoverEffect={true} glowColor="cyan" className="p-6 bg-slate-900/40 border-slate-800 shadow-xl flex items-center justify-between gap-4">
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-1.5 text-accent-gold font-mono text-xs font-bold">
-                  <CheckCircle2 className="w-4 h-4 text-accent-gold" />
-                  <span>98% Client Retention</span>
-                </div>
-                <span className="text-xs font-bold text-white font-display mt-0.5">Verified Corporate Importers</span>
-                <span className="text-[9px] text-slate-500 font-mono uppercase tracking-wider">SMEs & Fortune 500 Partners</span>
-              </div>
-              <div className="w-10 h-10 rounded-lg bg-slate-950 flex items-center justify-center shrink-0 border border-slate-800 text-accent-gold">
-                <Users className="w-5 h-5" />
-              </div>
-            </GlassCard>
-
-            {/* Industry Certifications */}
-            <GlassCard hoverEffect={true} glowColor="blue" className="p-6 bg-slate-900/40 border-slate-800 shadow-xl flex items-center justify-between gap-4">
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-1.5 text-accent-gold font-mono text-xs font-bold">
-                  <Award className="w-4 h-4 text-accent-gold animate-pulse" />
-                  <span>CHA & AEO Licensed</span>
-                </div>
-                <span className="text-xs font-bold text-white font-display mt-0.5">Licensed Customs Broker</span>
-                <span className="text-[9px] text-slate-500 font-mono uppercase tracking-wider">Custom House License R-71/2014</span>
-              </div>
-              <div className="w-10 h-10 rounded-lg bg-slate-950 flex items-center justify-center shrink-0 border border-slate-800 text-accent-gold">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-            </GlassCard>
-          </div>
-
-          {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-gold font-mono">Endorsements</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white mt-3">
-              Trusted by Leading Importers & Manufacturers
-            </h2>
-            <p className="text-slate-400 mt-4 text-sm sm:text-base font-light">
-              See how enterprise teams scale their cross-border shipping with Sheetla Exim's Customs Clearance and Freight operations.
-            </p>
-          </div>
-
-        </div>
-
-        {/* Testimonials Auto-Scrolling Marquee Container */}
-        <div className="marquee-container flex flex-col gap-8 w-full relative">
-          
-          {/* Edge Fades */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#060913] to-transparent z-20 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#060913] to-transparent z-20 pointer-events-none" />
-
-          {/* Row 1: Left Scrolling marquee */}
-          <div className="flex overflow-hidden w-full">
-            <div className="animate-marquee-left flex gap-6 py-2">
-              {/* Main row items */}
-              {testimonialsList.slice(0, 3).map((t, idx) => (
-                <div key={idx} className="w-[360px] sm:w-[420px] shrink-0">
-                  <GlassCard hoverEffect={true} glowColor="blue" className="p-6 bg-slate-900/40 border-slate-800 h-full flex flex-col justify-between gap-6 transition-all duration-300 hover:border-accent-gold/30">
-                    <div className="flex flex-col gap-4">
-                      {/* Star rating & verified check */}
-                      <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-1">
-                          {[...Array(t.rating)].map((_, i) => (
-                            <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-                          ))}
-                        </div>
-                        <div className="flex items-center gap-1 text-[9px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded-full font-bold">
-                          <CheckCircle2 className="w-3 h-3" /> VERIFIED CLIENT
-                        </div>
-                      </div>
-                      <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal italic">
-                        "{t.quote}"
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-4 border-t border-slate-800 pt-4 mt-2">
-                      <img 
-                        src={t.image} 
-                        alt={t.name}
-                        className="w-10 h-10 rounded-full object-cover border border-slate-800 shrink-0" 
-                      />
-                      <div className="flex flex-col overflow-hidden">
-                        <span className="text-xs font-bold text-white font-display truncate">{t.name}</span>
-                        <span className="text-[9px] text-slate-400 font-mono truncate">{t.company}</span>
-                        <span className="text-[8px] font-bold font-mono text-accent-gold uppercase tracking-wider mt-0.5">{t.industry}</span>
-                      </div>
-                    </div>
-                  </GlassCard>
-                </div>
-              ))}
-
-              {/* Repeat row items for infinite looping */}
-              {testimonialsList.slice(0, 3).map((t, idx) => (
-                <div key={`repeat-${idx}`} className="w-[360px] sm:w-[420px] shrink-0">
-                  <GlassCard hoverEffect={true} glowColor="blue" className="p-6 bg-slate-900/40 border-slate-800 h-full flex flex-col justify-between gap-6 transition-all duration-300 hover:border-accent-gold/30">
-                    <div className="flex flex-col gap-4">
-                      {/* Star rating & verified check */}
-                      <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-1">
-                          {[...Array(t.rating)].map((_, i) => (
-                            <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-                          ))}
-                        </div>
-                        <div className="flex items-center gap-1 text-[9px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded-full font-bold">
-                          <CheckCircle2 className="w-3 h-3" /> VERIFIED CLIENT
-                        </div>
-                      </div>
-                      <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal italic">
-                        "{t.quote}"
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-4 border-t border-slate-800 pt-4 mt-2">
-                      <img 
-                        src={t.image} 
-                        alt={t.name}
-                        className="w-10 h-10 rounded-full object-cover border border-slate-800 shrink-0" 
-                      />
-                      <div className="flex flex-col overflow-hidden">
-                        <span className="text-xs font-bold text-white font-display truncate">{t.name}</span>
-                        <span className="text-[9px] text-slate-400 font-mono truncate">{t.company}</span>
-                        <span className="text-[8px] font-bold font-mono text-accent-gold uppercase tracking-wider mt-0.5">{t.industry}</span>
-                      </div>
-                    </div>
-                  </GlassCard>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Row 2: Right Scrolling marquee */}
-          <div className="flex overflow-hidden w-full">
-            <div className="animate-marquee-right flex gap-6 py-2">
-              {/* Main row items */}
-              {testimonialsList.slice(3, 6).map((t, idx) => (
-                <div key={idx} className="w-[360px] sm:w-[420px] shrink-0">
-                  <GlassCard hoverEffect={true} glowColor="cyan" className="p-6 bg-slate-900/40 border-slate-800 h-full flex flex-col justify-between gap-6 transition-all duration-300 hover:border-accent-gold/30">
-                    <div className="flex flex-col gap-4">
-                      {/* Star rating & verified check */}
-                      <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-1">
-                          {[...Array(t.rating)].map((_, i) => (
-                            <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-                          ))}
-                        </div>
-                        <div className="flex items-center gap-1 text-[9px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded-full font-bold">
-                          <CheckCircle2 className="w-3 h-3" /> VERIFIED CLIENT
-                        </div>
-                      </div>
-                      <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal italic">
-                        "{t.quote}"
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-4 border-t border-slate-800 pt-4 mt-2">
-                      <img 
-                        src={t.image} 
-                        alt={t.name}
-                        className="w-10 h-10 rounded-full object-cover border border-slate-850 shrink-0" 
-                      />
-                      <div className="flex flex-col overflow-hidden">
-                        <span className="text-xs font-bold text-white font-display truncate">{t.name}</span>
-                        <span className="text-[9px] text-slate-400 font-mono truncate">{t.company}</span>
-                        <span className="text-[8px] font-bold font-mono text-accent-gold uppercase tracking-wider mt-0.5">{t.industry}</span>
-                      </div>
-                    </div>
-                  </GlassCard>
-                </div>
-              ))}
-
-              {/* Repeat row items for infinite looping */}
-              {testimonialsList.slice(3, 6).map((t, idx) => (
-                <div key={`repeat-${idx}`} className="w-[360px] sm:w-[420px] shrink-0">
-                  <GlassCard hoverEffect={true} glowColor="cyan" className="p-6 bg-slate-900/40 border-slate-800 h-full flex flex-col justify-between gap-6 transition-all duration-300 hover:border-accent-gold/30">
-                    <div className="flex flex-col gap-4">
-                      {/* Star rating & verified check */}
-                      <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-1">
-                          {[...Array(t.rating)].map((_, i) => (
-                            <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-                          ))}
-                        </div>
-                        <div className="flex items-center gap-1 text-[9px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded-full font-bold">
-                          <CheckCircle2 className="w-3 h-3" /> VERIFIED CLIENT
-                        </div>
-                      </div>
-                      <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal italic">
-                        "{t.quote}"
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-4 border-t border-slate-800 pt-4 mt-2">
-                      <img 
-                        src={t.image} 
-                        alt={t.name}
-                        className="w-10 h-10 rounded-full object-cover border border-slate-850 shrink-0" 
-                      />
-                      <div className="flex flex-col overflow-hidden">
-                        <span className="text-xs font-bold text-white font-display truncate">{t.name}</span>
-                        <span className="text-[9px] text-slate-400 font-mono truncate">{t.company}</span>
-                        <span className="text-[8px] font-bold font-mono text-accent-gold uppercase tracking-wider mt-0.5">{t.industry}</span>
-                      </div>
-                    </div>
-                  </GlassCard>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </section>
 
       {/* CTA section */}
       <section className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">

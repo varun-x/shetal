@@ -78,21 +78,24 @@ export default function CaseStudies() {
       <Navbar />
 
       {/* Header Banner */}
-      <section className="relative pt-36 pb-20 overflow-hidden bg-[#060913]">
+      <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-[#060913] border-b border-slate-900">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.01]" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-accent-gold/5 blur-[100px] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10 flex flex-col items-center gap-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-gold font-mono">Case Studies</span>
-          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-            Proven Customs & <br className="hidden sm:inline" />
-            <span className="text-gradient-accent">
-              Logistics Results
-            </span>
-          </h1>
-          <p className="text-slate-400 max-w-xl text-sm sm:text-base leading-relaxed font-light">
-            Real shipping scenarios where our custom appraising brokers and freight operations saved money and accelerated clearances.
-          </p>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 flex flex-col gap-3 text-left">
+              <span className="text-xs font-bold uppercase tracking-widest text-accent-gold font-mono">Case Studies</span>
+              <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                Proven Customs & <span className="text-gradient-accent">Logistics Results</span>
+              </h1>
+            </div>
+            <div className="lg:col-span-5 text-left lg:border-l lg:border-slate-800 lg:pl-8">
+              <p className="text-slate-400 text-sm leading-relaxed font-light">
+                Real shipping scenarios where our custom appraising brokers and freight operations saved money and accelerated clearances.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -120,7 +123,7 @@ export default function CaseStudies() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {filteredCases.map((study, idx) => (
-              <GlassCard key={idx} glowColor="none" className="p-8 flex flex-col justify-between gap-8 bg-slate-900/40 border-slate-800 shadow-xl hover:border-accent-gold/20">
+              <GlassCard key={idx} glowColor="gold" className="p-8 flex flex-col justify-between gap-8 bg-slate-900/40 border-slate-800 shadow-xl">
                 <div>
                   {/* Category & Date */}
                   <div className="flex items-center gap-4 text-xs text-slate-400 mb-4 font-mono">
