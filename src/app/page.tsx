@@ -374,26 +374,52 @@ export default function Home() {
               {caseStudiesList.map((cs, idx) => {
                 const isActive = activeCaseIdx === idx;
                 return (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveCaseIdx(idx)}
-                    className={`w-full text-left p-5 border transition-colors flex items-center justify-between ${
-                      isActive ? "bg-yellow-400 border-yellow-400 text-black" : "bg-black border-zinc-800 text-zinc-400 hover:border-zinc-600"
-                    }`}
-                  >
-                    <div>
-                      <span className={`text-[10px] font-mono uppercase tracking-widest ${isActive ? 'text-black/60' : 'text-zinc-600'}`}>
-                        {cs.industry}
-                      </span>
-                      <p className={`font-bold mt-1 ${isActive ? 'text-black' : 'text-white'}`}>{cs.clientName}</p>
+                  <div key={idx} className="flex flex-col">
+                    <button
+                      onClick={() => setActiveCaseIdx(idx)}
+                      className={`w-full text-left p-5 border transition-colors flex items-center justify-between ${
+                        isActive ? "bg-yellow-400 border-yellow-400 text-black" : "bg-black border-zinc-800 text-zinc-400 hover:border-zinc-600"
+                      }`}
+                    >
+                      <div>
+                        <span className={`text-[10px] font-mono uppercase tracking-widest ${isActive ? 'text-black/60' : 'text-zinc-600'}`}>
+                          {cs.industry}
+                        </span>
+                        <p className={`font-bold mt-1 ${isActive ? 'text-black' : 'text-white'}`}>{cs.clientName}</p>
+                      </div>
+                      <ChevronRight className={`w-5 h-5 ${isActive ? 'text-black rotate-90 lg:rotate-0' : 'text-zinc-600'} transition-transform`} />
+                    </button>
+                    
+                    {/* Mobile Details Panel (Accordion) */}
+                    <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isActive ? 'max-h-[1000px] border border-t-0 border-yellow-400 opacity-100' : 'max-h-0 opacity-0 border-x-0 border-b-0 border-transparent'}`}>
+                      <div className="p-6 bg-zinc-950">
+                        <div className="flex flex-col gap-6 mb-6">
+                          <div>
+                            <h4 className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest mb-2">Challenge</h4>
+                            <p className="text-zinc-300 font-light text-sm">{cs.challenge}</p>
+                          </div>
+                          <div>
+                            <h4 className="text-yellow-400 font-mono text-[10px] uppercase tracking-widest mb-2">Solution</h4>
+                            <p className="text-zinc-300 font-light text-sm">{cs.solution}</p>
+                          </div>
+                        </div>
+                        <div className="border-t border-zinc-800 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+                          <div>
+                            <p className="text-3xl font-display font-extrabold text-white mb-1">{cs.metric}</p>
+                            <p className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">{cs.metricLabel}</p>
+                          </div>
+                          <Link href="/get-quote" className="w-full sm:w-auto px-6 py-3 border border-white text-white hover:bg-white hover:text-black font-bold text-center transition-colors text-sm">
+                            Simulate Customs Plan
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                    <ChevronRight className={`w-5 h-5 ${isActive ? 'text-black' : 'text-zinc-600'}`} />
-                  </button>
+                  </div>
                 );
               })}
             </div>
 
-            <div className="lg:col-span-8">
+            <div className="hidden lg:block lg:col-span-8">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCaseIdx}

@@ -36,7 +36,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-zinc-400 text-sm leading-relaxed max-w-sm font-light">
-              Empowering global trade through high-precision customs clearance, frictionless freight forwarding, and next-generation supply chain consulting. Licensed Custom House Agent (CHA) and international logistics provider.
+              Empowering global trade through high-precision customs clearance, frictionless freight forwarding, and next-generation supply chain consulting. 
             </p>
           
            
