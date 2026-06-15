@@ -34,15 +34,15 @@ export default function Button({
 
   const variantClasses = {
     primary:
-      "relative overflow-hidden text-slate-950 bg-accent-gold font-bold border border-amber-600 shadow-md shadow-amber-500/10 hover:bg-amber-600 hover:shadow-lg hover:shadow-amber-500/20",
+      "relative overflow-hidden text-black bg-yellow-400 font-bold border border-yellow-500 shadow-md shadow-yellow-400/10 hover:bg-yellow-300 hover:shadow-lg hover:shadow-yellow-400/20",
     cyan:
       "relative overflow-hidden text-white bg-blue-600 font-bold border border-blue-500 shadow-md shadow-blue-600/15 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30",
     secondary:
-      "bg-slate-900/80 border border-slate-800 text-slate-200 hover:bg-slate-800 hover:border-slate-700 shadow-sm",
+      "bg-zinc-900/80 border border-zinc-800 text-zinc-200 hover:bg-zinc-800 hover:border-zinc-700 shadow-sm",
     outline:
-      "bg-transparent border border-slate-850 text-slate-400 hover:text-white hover:border-slate-700 hover:bg-slate-900/40",
+      "bg-transparent border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 hover:bg-zinc-900/40",
     ghost:
-      "bg-transparent text-slate-400 hover:text-white hover:bg-slate-900/30",
+      "bg-transparent text-zinc-400 hover:text-white hover:bg-zinc-900/30",
   };
 
   const combinedClasses = `font-semibold inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 active:scale-[0.98] ${

@@ -7,7 +7,7 @@ interface GlassCardProps {
   children: ReactNode;
   className?: string;
   hoverEffect?: boolean;
-  glowColor?: "blue" | "cyan" | "gold" | "emerald" | "none";
+  glowColor?: "blue" | "cyan" | "gold" | "yellow" | "none";
 }
 
 export default function GlassCard({
@@ -19,8 +19,8 @@ export default function GlassCard({
   const glowClasses = {
     blue: "hover:shadow-3xl hover:shadow-accent-blue/15 hover:border-accent-blue/30",
     cyan: "hover:shadow-3xl hover:shadow-accent-cyan/15 hover:border-accent-cyan/30",
-    gold: "hover:shadow-3xl hover:shadow-accent-gold/15 hover:border-accent-gold/30",
-    emerald: "hover:shadow-3xl hover:shadow-accent-emerald/15 hover:border-accent-emerald/30",
+    gold: "hover:shadow-3xl hover:shadow-yellow-400/15 hover:border-yellow-400/30",
+    yellow: "hover:shadow-3xl hover:shadow-yellow-400/15 hover:border-yellow-400/30",
     none: "",
   };
 

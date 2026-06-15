@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import FloatingEnquiry from "@/components/ui/FloatingEnquiry";
 import "./globals.css";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -32,9 +32,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${outfit.variable} antialiased dark`}
+      className={`${inter.variable} ${spaceGrotesk.variable} antialiased dark`}
     >
-      <body className="min-h-screen flex flex-col bg-navy-dark text-slate-100 font-sans relative">
+      <body className="min-h-screen flex flex-col bg-black text-white font-sans relative">
         {/* Fine grain noise overlay for premium feel */}
         <div className="bg-noise-overlay" />
         

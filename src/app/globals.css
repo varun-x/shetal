@@ -1,18 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy-light: #1e293b;
-  --color-navy-medium: #0f172a;
-  --color-navy-dark: #070a13;
-  --color-accent-blue: #3b82f6;
-  --color-accent-cyan: #06b6d4;
-  --color-accent-emerald: #10b981;
-  --color-accent-gold: #f59e0b;
-  --color-premium-dark: #05070d;
-  --color-premium-card: rgba(15, 23, 42, 0.6);
+  --color-accent-gold: #FFD700;
+  --color-accent-yellow: #facc15;
+  --color-premium-dark: #000000;
+  --color-premium-card: rgba(20, 20, 20, 0.8);
   
-  --font-sans: var(--font-plus-jakarta-sans), system-ui, sans-serif;
-  --font-display: var(--font-outfit), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
   
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-float: float 8s ease-in-out infinite;
@@ -26,8 +21,8 @@
 }
 
 @keyframes glow {
-  0%, 100% { opacity: 0.1; filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.05)); }
-  50% { opacity: 0.3; filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.15)); }
+  0%, 100% { opacity: 0.1; filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.05)); }
+  50% { opacity: 0.3; filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.2)); }
 }
 
 @keyframes dash {
@@ -37,31 +32,26 @@
 }
 
 :root {
-  --background: #05070d;
-  --foreground: #f8fafc;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 body {
-  background-color: #05070d;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.05) 0px, transparent 50%),
-    radial-gradient(at 50% 0%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.04) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
+  background-color: #000000;
   color: var(--foreground);
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
 }
 
-/* Custom noise overlay to make it look premium & custom (not generic AI) */
+/* Custom noise overlay to make it look premium & custom */
 .bg-noise-overlay {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   content: "";
-  opacity: 0.012;
+  opacity: 0.03;
   pointer-events: none;
   z-index: 99;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
@@ -72,70 +62,62 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #05070d;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #333333;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b;
+  background: #FFD700;
 }
 
 /* Glassmorphism helpers */
 .glass-panel {
-  background: rgba(10, 15, 30, 0.7);
+  background: rgba(15, 15, 15, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .text-gradient {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 50%, #94a3b8 100%);
+  background-image: linear-gradient(135deg, #ffffff 0%, #d4d4d8 50%, #71717a 100%);
 }
 
 .text-gradient-accent {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, #fbbf24, #f59e0b);
+  background-image: linear-gradient(to right, #fde047, #facc15);
 }
 
 .text-gradient-gold {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, #fbbf24, #f59e0b);
+  background-image: linear-gradient(to right, #fde047, #facc15);
 }
 
 /* Infinite Marquee Scroll Animations */
 @keyframes marquee-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @keyframes marquee-right {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 .animate-marquee-left {
@@ -177,14 +159,9 @@ html.lenis body {
   pointer-events: none;
 }
 
-
 @keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .animate-spin-slow {
@@ -198,10 +175,6 @@ html.lenis body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-none {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-
-
-

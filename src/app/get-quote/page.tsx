@@ -361,24 +361,26 @@ export default function GetQuote() {
         <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-accent-gold/5 blur-[120px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
+          
+          {/* Unified Page Heading on Top */}
+          <div className="flex flex-col gap-3 mb-10 text-left max-w-3xl">
+            <span className="text-xs font-bold uppercase tracking-widest text-accent-gold font-mono">
+              Customs & EXIM Wizard
+            </span>
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+              Request an Operational Quote
+            </h1>
+            <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-light mt-1">
+              Fill in your trade details to generate a landed customs clearance, licensing, or transit freight estimate.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
-            {/* Left Column: Heading & Value Prop Info */}
-            <div className="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-28">
-              <div className="flex flex-col gap-3">
-                <span className="text-xs font-bold uppercase tracking-widest text-accent-gold font-mono">
-                  Customs & EXIM Wizard
-                </span>
-                <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                  Request an Operational Quote
-                </h1>
-                <p className="text-slate-400 text-sm leading-relaxed font-light mt-1">
-                  Fill in your trade details to generate a landed customs clearance, licensing, or transit freight estimate.
-                </p>
-              </div>
-
+            {/* Left Column: Value Prop Info (Order 2 on Mobile, Order 1 on Desktop) */}
+            <div className="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-28 order-2 lg:order-1">
               {/* Value Cards/Badges inside left column */}
-              <div className="flex flex-col gap-3 mt-4">
+              <div className="flex flex-col gap-3">
                 <div className="p-4 rounded-xl border border-slate-800/80 bg-slate-950/45 flex items-center gap-3.5">
                   <Clock className="w-5 h-5 text-accent-gold shrink-0 animate-pulse" />
                   <div>
@@ -397,8 +399,8 @@ export default function GetQuote() {
               </div>
             </div>
 
-            {/* Right Column: The Quote Form Component */}
-            <div className="lg:col-span-7 w-full">
+            {/* Right Column: The Quote Form Component (Order 1 on Mobile, Order 2 on Desktop) */}
+            <div className="lg:col-span-7 w-full order-1 lg:order-2">
               <Suspense fallback={<div className="text-center py-20 text-slate-400">Loading wizard form...</div>}>
                 <GetQuoteForm />
               </Suspense>

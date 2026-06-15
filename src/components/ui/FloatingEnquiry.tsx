@@ -70,15 +70,15 @@ export default function FloatingEnquiry() {
             transition={{ type: "spring", duration: 0.4 }}
             className="w-[320px] sm:w-[360px] max-w-full"
           >
-            <GlassCard glowColor="none" className="p-6 bg-slate-950/95 border-slate-800 shadow-2xl flex flex-col gap-4">
-              <div className="flex justify-between items-center border-b border-slate-800 pb-3">
+            <GlassCard glowColor="none" className="p-6 bg-black/95 border-zinc-800 shadow-2xl flex flex-col gap-4">
+              <div className="flex justify-between items-center border-b border-zinc-800 pb-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse" />
                   <span className="font-display font-extrabold text-sm text-white uppercase tracking-wider">Quick Trade Enquiry</span>
                 </div>
                 <button 
                   onClick={() => setIsOpen(false)}
-                  className="text-slate-400 hover:text-white p-1 rounded-md transition-colors cursor-pointer"
+                  className="text-zinc-400 hover:text-white p-1 rounded-md transition-colors cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -87,8 +87,8 @@ export default function FloatingEnquiry() {
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 {/* Name */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
-                    <User className="w-3.5 h-3.5 text-amber-500" /> Full Name *
+                  <label className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest flex items-center gap-1">
+                    <User className="w-3.5 h-3.5 text-yellow-400" /> Full Name *
                   </label>
                   <input
                     type="text"
@@ -96,14 +96,14 @@ export default function FloatingEnquiry() {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Enter your name"
-                    className="bg-slate-900 border border-slate-800 rounded-lg py-2 px-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                    className="bg-zinc-900 border border-zinc-800 rounded-lg py-2 px-3 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-yellow-400"
                   />
                 </div>
 
                 {/* Phone */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
-                    <Phone className="w-3.5 h-3.5 text-amber-500" /> Phone Number *
+                  <label className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest flex items-center gap-1">
+                    <Phone className="w-3.5 h-3.5 text-yellow-400" /> Phone Number *
                   </label>
                   <input
                     type="tel"
@@ -111,19 +111,19 @@ export default function FloatingEnquiry() {
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     placeholder="e.g. +91 99999 88888"
-                    className="bg-slate-900 border border-slate-800 rounded-lg py-2 px-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                    className="bg-zinc-900 border border-zinc-800 rounded-lg py-2 px-3 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-yellow-400"
                   />
                 </div>
 
                 {/* Service Dropdown */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
-                    <HelpCircle className="w-3.5 h-3.5 text-amber-500" /> Inquiry Area
+                  <label className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest flex items-center gap-1">
+                    <HelpCircle className="w-3.5 h-3.5 text-yellow-400" /> Inquiry Area
                   </label>
                   <select
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
-                    className="bg-slate-900 border border-slate-800 rounded-lg py-2 px-3 text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="bg-zinc-900 border border-zinc-800 rounded-lg py-2 px-3 text-xs text-white focus:outline-none focus:border-yellow-400"
                   >
                     <option>DGFT & Export-Import Services</option>
                     <option>Customs Clearance / CHA Brokerage</option>
@@ -134,7 +134,7 @@ export default function FloatingEnquiry() {
 
                 {/* Message */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                  <label className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
                     Brief Requirements (Optional)
                   </label>
                   <textarea
@@ -142,7 +142,7 @@ export default function FloatingEnquiry() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="Enter goods type, origin port, or custom issue..."
-                    className="bg-slate-900 border border-slate-800 rounded-lg py-2 px-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 resize-none font-sans"
+                    className="bg-zinc-900 border border-zinc-800 rounded-lg py-2 px-3 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-yellow-400 resize-none font-sans"
                   />
                 </div>
 
@@ -171,8 +171,8 @@ export default function FloatingEnquiry() {
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
-          className={`glass-panel border-amber-600/30 text-amber-500 px-4 py-2.5 rounded-full text-xs font-bold font-display shadow-lg shadow-amber-500/5 hover:border-amber-500 hover:text-white transition-all cursor-pointer flex items-center gap-2 ${
-            isOpen ? "bg-slate-900" : "bg-slate-950/80"
+          className={`glass-panel border-yellow-500/30 text-yellow-400 px-4 py-2.5 rounded-full text-xs font-bold font-display shadow-lg shadow-yellow-500/5 hover:border-yellow-400 hover:text-white transition-all cursor-pointer flex items-center gap-2 ${
+            isOpen ? "bg-zinc-900" : "bg-black/80"
           }`}
         >
           <MessageSquare className="w-4 h-4" />
@@ -195,7 +195,7 @@ export default function FloatingEnquiry() {
           <WhatsAppIcon className="w-6 h-6" />
 
           {/* Hover Tooltip */}
-          <span className="absolute right-14 top-1/2 -translate-y-1/2 bg-slate-950 border border-slate-800 text-slate-300 font-mono text-[9px] uppercase tracking-widest px-2.5 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md">
+          <span className="absolute right-14 top-1/2 -translate-y-1/2 bg-black border border-zinc-800 text-zinc-300 font-mono text-[9px] uppercase tracking-widest px-2.5 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md">
             Direct WhatsApp
           </span>
         </motion.a>
