@@ -21,7 +21,7 @@ export default function Contact() {
   const [isDeskDropdownOpen, setIsDeskDropdownOpen] = useState(false);
 
   const desks = [
-    "Customs Clearance & Brokerage",
+    "Customs Clearance & clearanceage",
     "Air Cargo Freight Desk",
     "Ocean Cargo (FCL/LCL) Desk",
     "Bonded Warehousing / 3PL",
@@ -51,7 +51,7 @@ export default function Contact() {
       {/* Header Banner */}
       <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-black border-b border-zinc-900">
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-yellow-500/5 blur-[100px] pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 flex flex-col gap-3 text-left">
@@ -62,7 +62,7 @@ export default function Contact() {
             </div>
             <div className="lg:col-span-5 text-left lg:border-l lg:border-zinc-800 lg:pl-8">
               <p className="text-zinc-400 text-sm leading-relaxed font-light">
-                Contact our licensed brokers or freight managers directly to resolve import hold issues, book space, or set up compliance reviews.
+                Contact our licensed clearances or freight managers directly to resolve import hold issues, book space, or set up compliance reviews.
               </p>
             </div>
           </div>
@@ -72,7 +72,7 @@ export default function Contact() {
       {/* Contact Form & Info */}
       <section className="py-24 bg-black relative">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
-          
+
           {/* Left Column: Office details */}
           <div className="lg:col-span-5 flex flex-col gap-8">
             <div>
@@ -94,7 +94,7 @@ export default function Contact() {
               <div className="flex gap-4 p-4 rounded-xl bg-zinc-900/40 border border-zinc-800 shadow-sm">
                 <Phone className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
                 <div>
-                  <h5 className="font-semibold text-white">Brokerage Support Hotline</h5>
+                  <h5 className="font-semibold text-white">clearanceage Support Hotline</h5>
                   <p className="text-xs text-zinc-400 mt-1 font-light font-mono">0129-4073633 / 9810573633</p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function Contact() {
                   {/* Inquiry Desk Route */}
                   <div className="flex flex-col gap-2 md:col-span-2 relative">
                     <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Routing Desk</label>
-                    
+
                     <button
                       type="button"
                       onClick={() => setIsDeskDropdownOpen(!isDeskDropdownOpen)}
@@ -207,11 +207,10 @@ export default function Contact() {
                                 setForm({ ...form, route: desk });
                                 setIsDeskDropdownOpen(false);
                               }}
-                              className={`w-full p-2.5 rounded-lg text-left text-xs font-semibold cursor-pointer transition-all ${
-                                form.route === desk
+                              className={`w-full p-2.5 rounded-lg text-left text-xs font-semibold cursor-pointer transition-all ${form.route === desk
                                   ? "bg-zinc-900 border border-zinc-800 text-white"
                                   : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-                              }`}
+                                }`}
                             >
                               {desk}
                             </button>

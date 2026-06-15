@@ -1,8 +1,8 @@
 import React from "react";
-import { 
-  FileSpreadsheet, ShieldCheck, Building, Award, 
-  Ship, TrendingUp, Users, FileCheck, CheckCircle2, 
-  HelpCircle, Scale, ClipboardCheck, Anchor, Compass 
+import {
+  FileSpreadsheet, ShieldCheck, Building, Award,
+  Ship, TrendingUp, Users, FileCheck, CheckCircle2,
+  HelpCircle, Scale, ClipboardCheck, Anchor, Compass
 } from "lucide-react";
 
 export interface ServiceItem {
@@ -52,7 +52,7 @@ export const servicesCategories: ServiceCategory[] = [
   {
     id: "customs-compliance",
     title: "Customs & Trade Compliance",
-    subtitle: "Custom House Brokerage & Dispute Resolution",
+    subtitle: "Custom House clearanceage & Dispute Resolution",
     shortDesc: "Registration, bond cancellations, refunds, SVB/SIIB audits, and representation.",
     description: "Mitigate trade compliance risks and recover custom duty refunds. Our experienced customs specialists handle notices, appeals, customs audits, and registrations across major Indian ports.",
     iconName: "ShieldCheck",
@@ -105,7 +105,7 @@ export const servicesCategories: ServiceCategory[] = [
       { name: "Sea Cargo Consolidation & Forwarding", desc: "Global shipping networks for full container loads (FCL) and consolidated less-than-container loads (LCL)." },
       { name: "Air Freight Forwarding", desc: "Securing priority cargo space and direct airline contracts across major trade lanes." },
       { name: "Land Freight & Bonded Trucking", desc: "Custom-bonded transits from port terminals (CFS) to domestic distribution hubs." },
-      { name: "Customs Clearance (CHA)", desc: "Licensed Custom House Agent clearance for air, ocean, and ICD cargo." },
+      { name: "Customs Clearance (CHA)", desc: " Custom House Agent clearance for air, ocean, and ICD cargo." },
       { name: "Transit & Cargo Insurance", desc: "Securing comprehensive cargo insurance against transport damage or shipping losses." },
       { name: "International Shipping Coordination", desc: "End-to-end multimodal logistics linking origin factory pick-ups with final destination ports." },
       { name: "Warehousing & 3PL Solutions", desc: "Custom-bonded storage, inventory tracking, picking, packing, and distribution." },
@@ -159,7 +159,7 @@ export const servicesCategories: ServiceCategory[] = [
   }
 ];
 
-export const allServicesList = servicesCategories.flatMap(category => 
+export const allServicesList = servicesCategories.flatMap(category =>
   category.services.map(service => ({
     ...service,
     categoryId: category.id,

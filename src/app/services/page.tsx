@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { 
-  ShieldCheck, Ship, Plane, Warehouse, FileSpreadsheet, 
+import {
+  ShieldCheck, Ship, Plane, Warehouse, FileSpreadsheet,
   ArrowRight, Check, Compass, HelpCircle, Award,
   Truck, Globe2, Calculator, BarChart3, ChevronDown
 } from "lucide-react";
@@ -30,7 +30,7 @@ export default function Services() {
         <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-yellow-500/5 blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col gap-12">
-          
+
           {/* Header Row */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-zinc-800/50 pb-10">
             <div className="lg:col-span-7 flex flex-col gap-3">
@@ -39,17 +39,17 @@ export default function Services() {
                 End-To-End Customs & Logistics Infrastructure
               </h1>
               <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-light">
-                From customs brokerage to intermodal routes, we coordinate border entries and freight schedules with absolute precision.
+                From customs clearanceage to intermodal routes, we coordinate border entries and freight schedules with absolute precision.
               </p>
             </div>
-            
+
             <div className="lg:col-span-5 w-full flex justify-end relative z-30">
               {/* Custom Category Dropdown Console */}
               <div className="w-full max-w-md relative">
                 <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest font-mono mb-2 block">
                   Select Service Category
                 </label>
-                
+
                 {/* Dropdown Button */}
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -84,15 +84,13 @@ export default function Services() {
                             setActiveCategoryId(cat.id);
                             setIsDropdownOpen(false);
                           }}
-                          className={`w-full flex items-center gap-3 p-2.5 rounded-lg text-left cursor-pointer transition-all ${
-                            activeCategoryId === cat.id
+                          className={`w-full flex items-center gap-3 p-2.5 rounded-lg text-left cursor-pointer transition-all ${activeCategoryId === cat.id
                               ? "bg-zinc-900 border border-zinc-800 text-yellow-400"
                               : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-                          }`}
+                            }`}
                         >
-                          <div className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 ${
-                            activeCategoryId === cat.id ? "bg-black text-yellow-400" : "bg-zinc-900 text-zinc-500"
-                          }`}>
+                          <div className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 ${activeCategoryId === cat.id ? "bg-black text-yellow-400" : "bg-zinc-900 text-zinc-500"
+                            }`}>
                             {cat.icon}
                           </div>
                           <div>
@@ -133,7 +131,7 @@ export default function Services() {
                         <h3 className="font-display text-2xl font-bold text-white mt-0.5">{cat.title}</h3>
                       </div>
                     </div>
-                    
+
                     <p className="text-zinc-400 text-sm leading-relaxed font-light">
                       {cat.description}
                     </p>
@@ -151,10 +149,10 @@ export default function Services() {
                   {/* Specific Services Grid Column */}
                   <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
                     {cat.services.map((s, sIdx) => (
-                      <GlassCard 
-                        key={sIdx} 
-                        hoverEffect={true} 
-                        glowColor="yellow" 
+                      <GlassCard
+                        key={sIdx}
+                        hoverEffect={true}
+                        glowColor="yellow"
                         className="p-6 bg-zinc-900/40 border-zinc-800 shadow-xl flex flex-col justify-between h-full"
                       >
                         <div className="flex flex-col gap-3">
@@ -167,8 +165,8 @@ export default function Services() {
                           </p>
                         </div>
                         <div className="mt-6 pt-3 border-t border-zinc-800 pl-6 flex justify-end">
-                          <Link 
-                            href={`/get-quote?service=${encodeURIComponent(s.name)}&category=${cat.id}`} 
+                          <Link
+                            href={`/get-quote?service=${encodeURIComponent(s.name)}&category=${cat.id}`}
                             className="text-[10px] font-bold font-mono text-yellow-400 uppercase tracking-wider flex items-center gap-1 hover:text-yellow-300 group"
                           >
                             Request Estimate <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -222,7 +220,7 @@ export default function Services() {
                 Can you handle allied government agency (PGA) clearances?
               </h4>
               <p className="text-zinc-400 text-xs mt-3 leading-relaxed pl-7 font-light">
-                Yes, as a licensed customs broker, we coordinate clearances with Partner Government Agencies (PGAs) including FSSAI (food safety), AQ/PQ (animal/plant quarantine), ADC (drug control), and BIS (standards compliance). We ensure sample drawings and lab test scheduling are done quickly to prevent demurrage charges.
+                Yes, as a  customs clearance, we coordinate clearances with Partner Government Agencies (PGAs) including FSSAI (food safety), AQ/PQ (animal/plant quarantine), ADC (drug control), and BIS (standards compliance). We ensure sample drawings and lab test scheduling are done quickly to prevent demurrage charges.
               </p>
             </GlassCard>
           </div>

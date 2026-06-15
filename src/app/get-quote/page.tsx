@@ -2,8 +2,8 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { 
-  ArrowLeft, ArrowRight, ShieldCheck, Check, Plane, 
+import {
+  ArrowLeft, ArrowRight, ShieldCheck, Check, Plane,
   Ship, Package, Globe, Calculator, Download, CheckCircle2,
   Building, TrendingUp, Users, FileText, Settings, Award, Clock, ChevronDown
 } from "lucide-react";
@@ -109,7 +109,7 @@ function GetQuoteForm() {
                 {/* Service Category */}
                 <div className="flex flex-col gap-2 relative">
                   <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Required Service Category</label>
-                  
+
                   <button
                     type="button"
                     onClick={() => setIsCatDropdownOpen(!isCatDropdownOpen)}
@@ -142,15 +142,13 @@ function GetQuoteForm() {
                               handleInputChange("category", cat.id);
                               setIsCatDropdownOpen(false);
                             }}
-                            className={`w-full flex items-center gap-3 p-2 rounded-lg text-left cursor-pointer transition-all ${
-                              formData.category === cat.id
+                            className={`w-full flex items-center gap-3 p-2 rounded-lg text-left cursor-pointer transition-all ${formData.category === cat.id
                                 ? "bg-slate-900 border border-slate-800 text-white"
                                 : "text-slate-400 hover:text-white hover:bg-slate-900/60"
-                            }`}
+                              }`}
                           >
-                            <div className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0 ${
-                              formData.category === cat.id ? "bg-slate-950 text-accent-gold" : "bg-slate-900 text-slate-500"
-                            }`}>
+                            <div className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0 ${formData.category === cat.id ? "bg-slate-950 text-accent-gold" : "bg-slate-900 text-slate-500"
+                              }`}>
                               {cat.icon}
                             </div>
                             <span className="text-xs font-semibold">{cat.title}</span>
@@ -295,7 +293,7 @@ function GetQuoteForm() {
                     <Award className="w-8 h-8 text-accent-gold shrink-0" />
                     <div>
                       <span className="text-[9px] uppercase tracking-wider text-slate-400 font-mono">Assigned Partner</span>
-                      <p className="text-xs font-bold text-white mt-0.5">Licensed Customs Broker / CHA</p>
+                      <p className="text-xs font-bold text-white mt-0.5"> Customs clearance / CHA</p>
                     </div>
                   </div>
                 </div>
@@ -326,7 +324,7 @@ function GetQuoteForm() {
                 <div>
                   <h5 className="font-bold text-white mb-1">What Happens Next?</h5>
                   <p className="leading-relaxed font-light">
-                    A licensed Custom Broker and Senior EXIM Consultant from our Delhi/Port desk has been allocated to review your file. We will call your phone number ({formData.phone}) within 15 minutes to run through your operational guidelines.
+                    A Custom clearance and Senior EXIM Consultant from our Delhi/Port desk has been allocated to review your file. We will call your phone number ({formData.phone}) within 15 minutes to run through your operational guidelines.
                   </p>
                 </div>
               </div>
@@ -359,9 +357,9 @@ export default function GetQuote() {
         {/* Background Grid Pattern & Ambient Glows */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.01]" />
         <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-accent-gold/5 blur-[120px] pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          
+
           {/* Unified Page Heading on Top */}
           <div className="flex flex-col gap-3 mb-10 text-left max-w-3xl">
             <span className="text-xs font-bold uppercase tracking-widest text-accent-gold font-mono">
@@ -376,7 +374,7 @@ export default function GetQuote() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
+
             {/* Left Column: Value Prop Info (Order 2 on Mobile, Order 1 on Desktop) */}
             <div className="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-28 order-2 lg:order-1">
               {/* Value Cards/Badges inside left column */}
@@ -392,8 +390,8 @@ export default function GetQuote() {
                 <div className="p-4 rounded-xl border border-slate-800/80 bg-slate-950/45 flex items-center gap-3.5">
                   <ShieldCheck className="w-5 h-5 text-accent-gold shrink-0" />
                   <div>
-                    <h5 className="text-xs font-semibold text-white font-mono uppercase tracking-wider">Licensed Customs Desk</h5>
-                    <p className="text-[11px] text-slate-400 font-light mt-0.5">Direct Custom House Broker license filings.</p>
+                    <h5 className="text-xs font-semibold text-white font-mono uppercase tracking-wider">Customs Desk</h5>
+                    <p className="text-[11px] text-slate-400 font-light mt-0.5">Direct Custom House clearance license filings.</p>
                   </div>
                 </div>
               </div>

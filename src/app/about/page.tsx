@@ -16,7 +16,7 @@ const values = [
   {
     icon: <Sparkles className="w-5 h-5 text-yellow-400" />,
     title: "Operational Innovation",
-    desc: "We combine traditional broker expertise with modern client portals. Track ICEGATE statuses, custom bills, and gate passes with high efficiency and absolute transparency.",
+    desc: "We combine traditional clearance expertise with modern client portals. Track ICEGATE statuses, custom bills, and gate passes with high efficiency and absolute transparency.",
   },
   {
     icon: <Globe2 className="w-5 h-5 text-yellow-400" />,
@@ -34,7 +34,7 @@ export default function About() {
       {/* Header Banner */}
       <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-black border-b border-zinc-900">
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-yellow-500/5 blur-[100px] pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 flex flex-col gap-3 text-left">
@@ -45,7 +45,7 @@ export default function About() {
             </div>
             <div className="lg:col-span-5 text-left lg:border-l lg:border-zinc-800 lg:pl-8">
               <p className="text-zinc-400 text-sm leading-relaxed font-light">
-                Since 2016, Sheetla Exim has served as a trusted trade corridor specialist, managing complex customs brokerage and freight shipments for importers and manufacturers.
+                Since 2016, Sheetla Exim has served as a trusted trade corridor specialist, managing complex customs clearanceage and freight shipments for importers and manufacturers.
               </p>
             </div>
           </div>
@@ -57,10 +57,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="flex flex-col gap-6">
             <h2 className="font-display text-3xl font-bold text-white">
-              Trusted Customs Brokerage Meets Modern Supply Chain Tech
+              Trusted Customs clearanceage Meets Modern Supply Chain Tech
             </h2>
             <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-light">
-              Global supply chains require split-second timing. Yet customs policies, duty schedules, and border compliance rules grow more detailed by the day. 
+              Global supply chains require split-second timing. Yet customs policies, duty schedules, and border compliance rules grow more detailed by the day.
             </p>
             <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-light">
               At Sheetla Exim, we close this gap. We operate not just as an external forwarder, but as a strategic compliance partner. By pre-assessing tariffs, verifying classifications, and preparing early files, we keep your cargo moving without customs delays.

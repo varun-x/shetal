@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { 
-  Cpu, Truck, Activity, ShoppingBag, HardHat, 
-  ArrowRight, ShieldCheck, Zap 
+import {
+  Cpu, Truck, Activity, ShoppingBag, HardHat,
+  ArrowRight, ShieldCheck, Zap
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -25,7 +25,7 @@ const industries = [
     subtitle: "Cold-Chain Logistics & Life Science Assets",
     challenge: "Temperature deviations during inspections, drug controller permissions (ADC), and strict expiry-date regulations.",
     solution: "Temperature-controlled customs-bonded zones and fast-track clearance protocols ensuring sample drawing and approvals under 8 hours.",
-    benefits: ["Active cold-chain logistics monitoring", "Licensed ADC custom brokers", "Priority CFS unloading and clearance"],
+    benefits: ["Active cold-chain logistics monitoring", "Licensed ADC custom clearances", "Priority CFS unloading and clearance"],
   },
   {
     icon: <Truck className="w-8 h-8 text-yellow-400" />,
@@ -49,7 +49,7 @@ const industries = [
     subtitle: "Over-Dimensional Cargo (ODC) & Project Logistics",
     challenge: "Moving oversized turbines or machinery requires specialized flat-rack containers, escorts, and customized heavy-lift clearances.",
     solution: "Complete Project Cargo management, overseeing structural customs appraisal, heavy-axle haulage, and structural site placements.",
-    benefits: ["Specialized ODC custom broker assessments", "Flat-rack and open-top space allocations", "End-to-end multi-modal routing"],
+    benefits: ["Specialized ODC custom clearance assessments", "Flat-rack and open-top space allocations", "End-to-end multi-modal routing"],
   },
 ];
 
@@ -61,7 +61,7 @@ export default function Industries() {
       {/* Header Banner */}
       <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-black border-b border-zinc-900">
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-yellow-500/5 blur-[100px] pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 flex flex-col gap-3 text-left">
@@ -83,7 +83,7 @@ export default function Industries() {
       <section className="py-24 bg-transparent relative">
         <div className="max-w-7xl mx-auto px-6 flex flex-col gap-16">
           {industries.map((ind, idx) => (
-            <div 
+            <div
               key={idx}
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start border-b border-zinc-900 pb-16 last:border-b-0 last:pb-0"
             >

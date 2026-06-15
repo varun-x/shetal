@@ -69,8 +69,8 @@ const caseStudies = [
 export default function CaseStudies() {
   const [activeTab, setActiveTab] = useState("All");
 
-  const filteredCases = activeTab === "All" 
-    ? caseStudies 
+  const filteredCases = activeTab === "All"
+    ? caseStudies
     : caseStudies.filter((c) => c.category === activeTab);
 
   return (
@@ -80,7 +80,7 @@ export default function CaseStudies() {
       {/* Header Banner */}
       <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-black border-b border-zinc-900">
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-yellow-500/5 blur-[100px] pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 flex flex-col gap-3 text-left">
@@ -91,7 +91,7 @@ export default function CaseStudies() {
             </div>
             <div className="lg:col-span-5 text-left lg:border-l lg:border-zinc-800 lg:pl-8">
               <p className="text-zinc-400 text-sm leading-relaxed font-light">
-                Real shipping scenarios where our custom appraising brokers and freight operations saved money and accelerated clearances.
+                Real shipping scenarios where our custom appraising clearances and freight operations saved money and accelerated clearances.
               </p>
             </div>
           </div>
@@ -105,11 +105,10 @@ export default function CaseStudies() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-                activeTab === tab
+              className={`px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${activeTab === tab
                   ? "bg-zinc-900 text-white shadow-sm border border-yellow-400"
                   : "bg-zinc-950/40 border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-900/60"
-              }`}
+                }`}
             >
               {tab}
             </button>
@@ -148,7 +147,7 @@ export default function CaseStudies() {
                       <p className="text-zinc-400 mt-1.5 leading-relaxed font-light">{study.challenge}</p>
                     </div>
                     <div>
-                      <h5 className="text-[10px] font-bold uppercase tracking-wider text-yellow-400 font-mono">Custom Broker Solution</h5>
+                      <h5 className="text-[10px] font-bold uppercase tracking-wider text-yellow-400 font-mono">Custom clearance Solution</h5>
                       <p className="text-zinc-400 mt-1.5 leading-relaxed font-light">{study.strategy}</p>
                     </div>
                     <div>
@@ -195,7 +194,7 @@ export default function CaseStudies() {
             Have a custom clearance challenge of your own?
           </h2>
           <p className="text-zinc-400 text-sm max-w-md">
-            Our appraising brokers will review your supply routes and document structures for compliance gaps.
+            Our appraising clearances will review your supply routes and document structures for compliance gaps.
           </p>
           <Button href="/contact" variant="primary">
             Book Custom Operations Consultation

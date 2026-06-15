@@ -39,7 +39,7 @@ export default function FloatingEnquiry() {
         (form.message ? `*Inquiry Details:* ${form.message}` : `Please share more details.`);
 
       const formWhatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(compiledMessage)}`;
-      
+
       // Open WhatsApp with compiled form message
       window.open(formWhatsappUrl, "_blank");
 
@@ -59,7 +59,7 @@ export default function FloatingEnquiry() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 font-sans">
-      
+
       {/* Quick Enquiry Modal Popover */}
       <AnimatePresence>
         {isOpen && (
@@ -76,7 +76,7 @@ export default function FloatingEnquiry() {
                   <div className="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse" />
                   <span className="font-display font-extrabold text-sm text-white uppercase tracking-wider">Quick Trade Enquiry</span>
                 </div>
-                <button 
+                <button
                   onClick={() => setIsOpen(false)}
                   className="text-zinc-400 hover:text-white p-1 rounded-md transition-colors cursor-pointer"
                 >
@@ -126,7 +126,7 @@ export default function FloatingEnquiry() {
                     className="bg-zinc-900 border border-zinc-800 rounded-lg py-2 px-3 text-xs text-white focus:outline-none focus:border-yellow-400"
                   >
                     <option>DGFT & Export-Import Services</option>
-                    <option>Customs Clearance / CHA Brokerage</option>
+                    <option>Customs Clearance / CHA clearanceage</option>
                     <option>Ocean/Air Freight Bookings</option>
                     <option>Trade Compliance Consulting</option>
                   </select>
@@ -165,15 +165,14 @@ export default function FloatingEnquiry() {
 
       {/* Floating Buttons Row */}
       <div className="flex items-center gap-3 relative">
-        
+
         {/* Enquiry form Toggle Pill */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
-          className={`glass-panel border-yellow-500/30 text-yellow-400 px-4 py-2.5 rounded-full text-xs font-bold font-display shadow-lg shadow-yellow-500/5 hover:border-yellow-400 hover:text-white transition-all cursor-pointer flex items-center gap-2 ${
-            isOpen ? "bg-zinc-900" : "bg-black/80"
-          }`}
+          className={`glass-panel border-yellow-500/30 text-yellow-400 px-4 py-2.5 rounded-full text-xs font-bold font-display shadow-lg shadow-yellow-500/5 hover:border-yellow-400 hover:text-white transition-all cursor-pointer flex items-center gap-2 ${isOpen ? "bg-zinc-900" : "bg-black/80"
+            }`}
         >
           <MessageSquare className="w-4 h-4" />
           <span>Quick Enquiry</span>

@@ -20,7 +20,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Sheetla Global Logistics | Customs Clearance & Freight Forwarding",
-  description: "Sheetla Global Logistics is a premium licensed customs broker and international freight forwarder. Enterprise customs clearance, air/ocean freight, trade compliance, and warehousing.",
+  description: "Sheetla Global Logistics is a premium customs clearance and international freight forwarder. Enterprise customs clearance, air/ocean freight, trade compliance, and warehousing.",
   keywords: "Customs Clearance, Freight Forwarding, Custom House Agent, CHA, Air Cargo, Ocean Freight, Import Export Compliance, Logistics Supply Chain",
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-black text-white font-sans relative">
         {/* Fine grain noise overlay for premium feel */}
         <div className="bg-noise-overlay" />
-        
+
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>

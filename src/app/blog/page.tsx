@@ -57,8 +57,8 @@ export default function Blog() {
   const categories = ["All", "Customs Compliance", "Tariff Consulting", "Trade Advisory", "Logistics Insights"];
 
   const filteredArticles = initialArticles.filter((art) => {
-    const matchesSearch = art.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          art.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = art.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      art.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCat = selectedCat === "All" || art.category === selectedCat;
     return matchesSearch && matchesCat;
   });
@@ -70,7 +70,7 @@ export default function Blog() {
       {/* Header Banner */}
       <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-black border-b border-zinc-900">
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-yellow-500/5 blur-[100px] pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 flex flex-col gap-3 text-left">
@@ -81,7 +81,7 @@ export default function Blog() {
             </div>
             <div className="lg:col-span-5 text-left lg:border-l lg:border-zinc-800 lg:pl-8">
               <p className="text-zinc-400 text-sm leading-relaxed font-light">
-                Stay informed on customs tariff updates, trade policies, and global freight strategies compiled by our expert custom brokers.
+                Stay informed on customs tariff updates, trade policies, and global freight strategies compiled by our expert custom clearances.
               </p>
             </div>
           </div>
@@ -109,11 +109,10 @@ export default function Blog() {
               <button
                 key={cat}
                 onClick={() => setSelectedCat(cat)}
-                className={`whitespace-nowrap px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                  selectedCat === cat
+                className={`whitespace-nowrap px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${selectedCat === cat
                     ? "bg-yellow-400 text-black"
                     : "bg-zinc-950 border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-900"
-                }`}
+                  }`}
               >
                 {cat}
               </button>

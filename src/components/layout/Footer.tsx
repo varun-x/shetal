@@ -36,10 +36,10 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-zinc-400 text-sm leading-relaxed max-w-sm font-light">
-              Empowering global trade through high-precision customs clearance, frictionless freight forwarding, and next-generation supply chain consulting. 
+              Empowering global trade through high-precision customs clearance, frictionless freight forwarding, and next-generation supply chain consulting.
             </p>
-          
-           
+
+
           </div>
 
           {/* Quick Links Column */}
@@ -130,7 +130,7 @@ export default function Footer() {
           <div className="flex items-start gap-3">
             <Phone className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
             <div>
-              <p className="text-white font-medium font-mono">Brokerage Helpline</p>
+              <p className="text-white font-medium font-mono">clearanceage Helpline</p>
               <p className="text-xs mt-1 font-mono">0129-4073633 / 9810573633</p>
             </div>
           </div>

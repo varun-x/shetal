@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { 
-  ArrowRight, ShieldCheck, ChevronRight, Award, 
-  Users, PhoneCall, Ship, 
+import {
+  ArrowRight, ShieldCheck, ChevronRight, Award,
+  Users, PhoneCall, Ship,
   Plane, Anchor, TrendingUp, CheckCircle2,
   ChevronUp, ChevronDown, Check
 } from "lucide-react";
@@ -104,7 +104,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen lg:h-screen w-full flex flex-col justify-center overflow-hidden bg-black pt-20">
-        
+
         {/* Minimal Grid Background */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -118,9 +118,9 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-          
+
           {/* Left Content */}
-          <motion.div 
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={{
@@ -129,17 +129,17 @@ export default function Home() {
             }}
             className="flex flex-col gap-8 text-left"
           >
-            <motion.div 
+            <motion.div
               variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
               className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-yellow-500/30 bg-yellow-500/5 w-fit"
             >
               <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
               <span className="text-xs font-bold uppercase tracking-widest text-yellow-500">
-                Licensed Customs Broker
+                Customs clearance
               </span>
             </motion.div>
 
-            <motion.h1 
+            <motion.h1
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
               className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight"
             >
@@ -147,14 +147,14 @@ export default function Home() {
               <span className="text-yellow-400">Without Delays.</span>
             </motion.h1>
 
-            <motion.p 
+            <motion.p
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
               className="text-zinc-400 text-lg sm:text-xl leading-relaxed max-w-xl font-light"
             >
               We simplify international trade. Expert customs clearance, freight forwarding, and trade compliance for enterprise supply chains.
             </motion.p>
 
-            <motion.div 
+            <motion.div
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
               className="flex flex-col sm:flex-row items-center gap-4 pt-4"
             >
@@ -168,7 +168,7 @@ export default function Home() {
           </motion.div>
 
           {/* Right Content - Abstract Tech Visual */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -176,7 +176,7 @@ export default function Home() {
           >
             <div className="relative w-full max-w-md aspect-square border border-zinc-800 bg-black p-8 flex flex-col justify-between">
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-500/20 blur-[100px] pointer-events-none rounded-full" />
-              
+
               <div className="flex justify-between items-start">
                 <h3 className="font-display font-extrabold text-2xl text-white tracking-widest uppercase">Sheetla</h3>
                 <span className="text-yellow-400 font-mono text-sm border border-yellow-400/30 px-2 py-1">ONLINE</span>
@@ -237,7 +237,7 @@ export default function Home() {
 
           <div className="flex flex-col gap-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 border border-zinc-800 bg-[#0a0a0a]">
-              
+
               {/* Category Select */}
               <div className="flex flex-col gap-3 relative">
                 <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest font-mono">Category</label>
@@ -267,9 +267,8 @@ export default function Home() {
                             setIsCatDropdownOpen(false);
                             if (cat.services.length > 0) setSelectedService(cat.services[0].name);
                           }}
-                          className={`w-full p-4 text-left font-bold transition-colors border-b border-zinc-900 last:border-none ${
-                            selectedCategory === cat.id ? "bg-zinc-900 text-yellow-400" : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-                          }`}
+                          className={`w-full p-4 text-left font-bold transition-colors border-b border-zinc-900 last:border-none ${selectedCategory === cat.id ? "bg-zinc-900 text-yellow-400" : "text-zinc-400 hover:text-white hover:bg-zinc-900"
+                            }`}
                         >
                           {cat.title}
                         </button>
@@ -307,9 +306,8 @@ export default function Home() {
                             setSelectedService(s.name);
                             setIsServiceDropdownOpen(false);
                           }}
-                          className={`w-full p-4 text-left font-bold transition-colors border-b border-zinc-900 last:border-none ${
-                            selectedService === s.name ? "bg-zinc-900 text-yellow-400" : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-                          }`}
+                          className={`w-full p-4 text-left font-bold transition-colors border-b border-zinc-900 last:border-none ${selectedService === s.name ? "bg-zinc-900 text-yellow-400" : "text-zinc-400 hover:text-white hover:bg-zinc-900"
+                            }`}
                         >
                           {s.name}
                         </button>
@@ -377,9 +375,8 @@ export default function Home() {
                   <div key={idx} className="flex flex-col">
                     <button
                       onClick={() => setActiveCaseIdx(idx)}
-                      className={`w-full text-left p-5 border transition-colors flex items-center justify-between ${
-                        isActive ? "bg-yellow-400 border-yellow-400 text-black" : "bg-black border-zinc-800 text-zinc-400 hover:border-zinc-600"
-                      }`}
+                      className={`w-full text-left p-5 border transition-colors flex items-center justify-between ${isActive ? "bg-yellow-400 border-yellow-400 text-black" : "bg-black border-zinc-800 text-zinc-400 hover:border-zinc-600"
+                        }`}
                     >
                       <div>
                         <span className={`text-[10px] font-mono uppercase tracking-widest ${isActive ? 'text-black/60' : 'text-zinc-600'}`}>
@@ -389,7 +386,7 @@ export default function Home() {
                       </div>
                       <ChevronRight className={`w-5 h-5 ${isActive ? 'text-black rotate-90 lg:rotate-0' : 'text-zinc-600'} transition-transform`} />
                     </button>
-                    
+
                     {/* Mobile Details Panel (Accordion) */}
                     <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isActive ? 'max-h-[1000px] border border-t-0 border-yellow-400 opacity-100' : 'max-h-0 opacity-0 border-x-0 border-b-0 border-transparent'}`}>
                       <div className="p-6 bg-zinc-950">
@@ -435,7 +432,7 @@ export default function Home() {
                       </span>
                       <h3 className="text-2xl font-bold text-white">{activeCase.clientName}</h3>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                       <div>
                         <h4 className="text-zinc-500 font-mono text-sm uppercase tracking-widest mb-3">Challenge</h4>
@@ -471,7 +468,7 @@ export default function Home() {
             Optimize Your Global Custom Operations
           </h2>
           <p className="text-xl font-light max-w-2xl mb-10">
-            Get in touch with a licensed customs broker to set up pre-filings, coordinate rates, or run a duty compliance assessment.
+            Get in touch with a customs clearance to set up pre-filings, coordinate rates, or run a duty compliance assessment.
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <Link href="/get-quote" className="w-full sm:w-auto px-10 py-5 bg-black hover:bg-zinc-900 text-white font-bold text-lg transition-colors flex items-center justify-center gap-2">
