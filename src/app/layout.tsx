@@ -1,27 +1,45 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
-import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
-import FloatingEnquiry from "@/components/ui/FloatingEnquiry";
+import { Caveat, Fragment_Mono, Funnel_Display, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
+const funnelDisplay = Funnel_Display({
+  variable: "--font-funnel",
+  subsets: ["latin"],
+  weight: "variable",
+  display: "swap",
+});
+
+// Used only for the handwritten margin notes.
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+const fragmentMono = Fragment_Mono({
+  variable: "--font-fragment",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Sheetla Global Logistics | Customs Clearance & Freight Forwarding",
-  description: "Sheetla Global Logistics is a premium customs clearance and international freight forwarder. Enterprise customs clearance, air/ocean freight, trade compliance, and warehousing.",
-  keywords: "Customs Clearance, Freight Forwarding, Custom House Agent, CHA, Air Cargo, Ocean Freight, Import Export Compliance, Logistics Supply Chain",
+  title: {
+    default: "Trifreight Trade Solutions | Freight Forwarding",
+    template: "%s | Trifreight Trade Solutions",
+  },
+  description:
+    "Trifreight Trade Solutions coordinates air freight, ocean freight, road transport, and customs clearance — one connected operation from origin to destination.",
+  keywords:
+    "freight forwarding, air freight, ocean freight, road transport, customs clearance, logistics, consolidation",
 };
 
 export default function RootLayout({
@@ -32,19 +50,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} antialiased dark`}
+      className={`${inter.variable} ${funnelDisplay.variable} ${fragmentMono.variable} ${caveat.variable} antialiased`}
+      data-scroll-behavior="smooth"
     >
-      <body className="min-h-screen flex flex-col bg-black text-white font-sans relative">
-        {/* Fine grain noise overlay for premium feel */}
-        <div className="bg-noise-overlay" />
-
-        <SmoothScrollProvider>
-          {children}
-        </SmoothScrollProvider>
-
-        {/* Floating WhatsApp and Quick Enquiry widget */}
-        <FloatingEnquiry />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,140 +1,212 @@
-"use client";
-
-import Link from "next/link";
-import { Award, ShieldCheck, Globe2, Sparkles, Building, Landmark, Users } from "lucide-react";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import GlassCard from "@/components/ui/GlassCard";
+import Image from "next/image";
+import { Check, Globe2, FileCheck2, Network } from "lucide-react";
+import type { Metadata } from "next";
+import SiteHeader from "@/components/layout/SiteHeader";
+import SiteFooter from "@/components/layout/SiteFooter";
+import PageHero from "@/components/ui/PageHero";
+import SectionTag from "@/components/ui/SectionTag";
+import Reveal from "@/components/ui/Reveal";
+import Stat from "@/components/ui/Stat";
 import Button from "@/components/ui/Button";
+import ArrowLink from "@/components/ui/ArrowLink";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Trifreight Trade Solutions runs air, ocean, road, and customs as one connected freight operation — built on a decade of border-clearance expertise.",
+};
 
 const values = [
   {
-    icon: <ShieldCheck className="w-5 h-5 text-yellow-400" />,
-    title: "Uncompromising Compliance",
-    desc: "In an industry where a single documentation error can hold cargo for weeks, we operate with a zero-tolerance compliance policy. Our filings align exactly with customs guidelines and local tariff rules.",
+    Icon: Globe2,
+    title: "Clarity of handoffs",
+    description:
+      "You always know what is moving, what is next, and who owns it. No black-box freight, no calls that end in 'we will check'.",
   },
   {
-    icon: <Sparkles className="w-5 h-5 text-yellow-400" />,
-    title: "Operational Innovation",
-    desc: "We combine traditional clearance expertise with modern client portals. Track ICEGATE statuses, custom bills, and gate passes with high efficiency and absolute transparency.",
+    Icon: FileCheck2,
+    title: "Compliance you can trust",
+    description:
+      "A single documentation slip can hold cargo for weeks. Our filings are built on real customs experience — checked, classified, and filed before they borrow trouble.",
   },
   {
-    icon: <Globe2 className="w-5 h-5 text-yellow-400" />,
-    title: "Global Intermodal Solutions",
-    desc: "Through sea lanes, airways, and inland routes, we provide door-to-door transit services, managing border customs entries across continents seamlessly.",
+    Icon: Network,
+    title: "A network that shows up",
+    description:
+      "Lanes, agents, and terminals we actually work with — not a logo wall. The network exists to move your cargo, not to decorate the website.",
   },
 ];
 
+const heritage = [
+  "Border clearance you can set a watch to",
+  "Documentation filed right the first time",
+  "One operator accountable from booking to delivery",
+];
 
-export default function About() {
+export default function AboutPage() {
   return (
-    <>
-      <Navbar />
+    <main className="mx-auto max-w-[1280px] bg-[#fbfdff] text-[#212121] shadow-[0_0_80px_rgba(8,34,58,0.08)]">
+      <SiteHeader />
 
-      {/* Header Banner */}
-      <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-black border-b border-zinc-900">
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-yellow-500/5 blur-[100px] pointer-events-none" />
+      <PageHero
+        eyebrow="About Trifreight"
+        title={
+          <>
+            Cargo first.{" "}
+            <span className="inline-block rounded-lg bg-[#bfe8ff] px-[0.12em] pb-[0.06em] pt-[0.02em]">
+              Paperwork follows.
+            </span>
+          </>
+        }
+        lead="Trifreight Trade Solutions is a freight-forwarding company built on a decade of customs and border expertise — now running air, ocean, and road as one movement."
+      />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 flex flex-col gap-3 text-left">
-              <span className="text-xs font-bold uppercase tracking-widest text-yellow-400 font-mono">Our Heritage</span>
-              <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                Driving Global Trade with <span className="text-yellow-400">Regulatory Precision</span>
-              </h1>
+      <section className="px-4 pb-24 sm:px-6 sm:pb-32">
+        <div className="mx-auto max-w-[1140px]">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <div>
+                <SectionTag className="text-[#6095c2]">What we are</SectionTag>
+                <h2 className="font-display mt-5 max-w-xl text-[clamp(2.1rem,3.8vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
+                  One plan from pickup to delivery — no matter how many borders are in between.
+                </h2>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="flex flex-col gap-6 text-base leading-relaxed text-black/66 sm:text-lg">
+                <p>
+                  Most supply chains are stitched together from separate vendors: one booking for air, another for a truck, a customs broker somewhere in the middle. When something changes — and it always changes — the thread is lost.
+                </p>
+                <p>
+                  Trifreight holds that thread. Air, ocean, road, and customs are planned as one connected operation, with one operator accountable from the first quote to the final proof of delivery.
+                </p>
+                <ul className="mt-4 flex flex-col gap-3">
+                  {heritage.map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-sm font-medium">
+                      <span className="grid size-7 shrink-0 place-items-center rounded-full bg-[#bfe8ff] text-[#212121]">
+                        <Check className="size-3.5" strokeWidth={3} />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-[#222222] px-4 py-24 text-white sm:px-6 sm:py-32">
+        <div className="grid-fade absolute inset-0 opacity-50" />
+        <div className="relative mx-auto max-w-[1140px]">
+          <SectionTag className="text-[#bfe8ff]">By the numbers</SectionTag>
+          <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            <Stat value={5000} suffix="+" label="Shipments coordinated" />
+            <Stat value={100} suffix="+" label="Global partners" />
+            <Stat value={98} suffix="%" label="On-time clearances" />
+            <Stat value={4} label="Freight modes, one plan" />
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-24 sm:px-6 sm:py-32">
+        <div className="mx-auto max-w-[1140px]">
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+            <div className="relative min-h-[360px] overflow-hidden rounded-xl sm:min-h-[520px]">
+              <Image
+                src="/images/trifreight/container-terminal.jpg"
+                alt="Containers lined up at a freight terminal"
+                fill
+                sizes="(max-width: 1024px) 92vw, 470px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#132b3e]/70 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 rounded-lg border border-white/20 bg-white/12 p-4 text-white backdrop-blur-md">
+                <p className="font-mono-ui text-[9px] tracking-[0.12em] text-[#bfe8ff]">THE WALLOF ORIGIN</p>
+                <p className="font-display mt-3 text-2xl font-semibold leading-[0.93] tracking-[-0.055em]">
+                  Every shipment is somebody&apos;s product, deadline, and livelihood.
+                </p>
+              </div>
             </div>
-            <div className="lg:col-span-5 text-left lg:border-l lg:border-zinc-800 lg:pl-8">
-              <p className="text-zinc-400 text-sm leading-relaxed font-light">
-                Since 2016, Sheetla Exim has served as a trusted trade corridor specialist, managing complex customs clearanceage and freight shipments for importers and manufacturers.
+
+            <div className="flex flex-col justify-center">
+              <SectionTag className="text-[#6095c2]">Where we come from</SectionTag>
+              <h2 className="font-display mt-5 max-w-2xl text-[clamp(2.1rem,3.8vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
+                Built on controls work, reframed for a forwarder.
+              </h2>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-black/64 sm:text-lg">
+                Our founding team spent years inside customs and trade-compliance operations — IEC and EPCG licences, duty drawback, IGST refunds, notices, appeals, and the day-to-day of keeping cargo unstuck at the border.
               </p>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-black/64 sm:text-lg">
+                Trifreight Trade Solutions Private Limited turns that control-room experience into a full freight-forwarding operation. The mode can be air, ocean, or road. The standard is the same: the border is part of the plan, not apart from it.
+              </p>
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                {[
+                  ["01", "Customs", "Filing & duty strength"],
+                  ["02", "Freight", "Air / ocean / road"],
+                  ["03", "Clarity", "One accountable plan"],
+                ].map(([number, title, detail]) => (
+                  <div key={number} className="rounded-lg border border-black/8 bg-white p-4">
+                    <p className="font-mono-ui text-[9px] tracking-[0.12em] text-[#6095c2]">{number}</p>
+                    <p className="font-display mt-5 text-xl font-semibold tracking-[-0.05em]">{title}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-black/52">{detail}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Overview / Mission */}
-      <section className="py-24 bg-black relative">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="flex flex-col gap-6">
-            <h2 className="font-display text-3xl font-bold text-white">
-              Trusted Customs clearanceage Meets Modern Supply Chain Tech
+      <section className="px-4 pb-24 sm:px-6 sm:pb-32">
+        <div className="mx-auto max-w-[1140px]">
+          <div className="text-center">
+            <SectionTag className="justify-center text-[#6095c2]">Our core commitments</SectionTag>
+          </div>
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {values.map((value, index) => {
+              const Icon = value.Icon;
+              return (
+                <Reveal key={value.title} delay={index * 0.08}>
+                  <article className="flex h-full flex-col gap-5 rounded-xl border border-black/8 bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(27,54,77,0.1)]">
+                    <span className="grid size-11 place-items-center rounded-lg bg-[#edf6fb] text-[#6095c2]">
+                      <Icon className="size-5" />
+                    </span>
+                    <h3 className="font-display text-2xl font-semibold tracking-[-0.055em]">
+                      {value.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-black/60">
+                      {value.description}
+                    </p>
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-[#bfe8ff] px-4 py-24 sm:px-6 sm:py-28">
+        <div className="absolute -right-40 top-0 size-[30rem] rounded-full border-[44px] border-white/20" />
+        <div className="relative mx-auto flex max-w-[1140px] flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+          <div>
+            <SectionTag className="text-black/50">The next shipment</SectionTag>
+            <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[#212121]">
+              Bring us a route. We will bring the plan.
             </h2>
-            <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-light">
-              Global supply chains require split-second timing. Yet customs policies, duty schedules, and border compliance rules grow more detailed by the day.
-            </p>
-            <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-light">
-              At Sheetla Exim, we close this gap. We operate not just as an external forwarder, but as a strategic compliance partner. By pre-assessing tariffs, verifying classifications, and preparing early files, we keep your cargo moving without customs delays.
-            </p>
-
-            <div className="grid grid-cols-2 gap-4 mt-2">
-              <div className="p-4 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-300">
-                <Landmark className="w-6 h-6 text-yellow-400 mb-2" />
-                <p className="font-semibold text-white text-sm">Govt. Certified CHA</p>
-                <p className="text-xs text-zinc-400 mt-1">Direct filing authorizations across major sea & air customs ports.</p>
-              </div>
-              <div className="p-4 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-300">
-                <Building className="w-6 h-6 text-yellow-400 mb-2" />
-                <p className="font-semibold text-white text-sm">Bonded Terminals</p>
-                <p className="text-xs text-zinc-400 mt-1">In-house warehousing and custom-bonded cargo storage.</p>
-              </div>
-            </div>
           </div>
-
-          <div className="relative">
-            {/* Visual card represent core achievements */}
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-24 bg-black relative border-t border-zinc-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="font-display text-3xl font-bold text-white">Our Core Commitments</h2>
-            <p className="text-zinc-400 mt-4 text-sm font-light">
-              We govern our operations around key principles to ensure your shipping runs smoothly.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((v, i) => (
-              <GlassCard key={i} className="flex flex-col gap-4 bg-zinc-900/40 border-zinc-800 shadow-xl" glowColor="yellow">
-                <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                  {v.icon}
-                </div>
-                <h4 className="font-display font-bold text-white text-base">{v.title}</h4>
-                <p className="text-zinc-400 text-xs leading-relaxed font-light">{v.desc}</p>
-              </GlassCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
-      {/* Global network Call */}
-      <section className="py-20 bg-[#0a0a0a] text-center border-t border-zinc-900">
-        <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6">
-          <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-yellow-400">
-            <Globe2 className="w-6 h-6 text-yellow-400" />
-          </div>
-          <h2 className="font-display text-3xl font-bold text-white">
-            Need customs clearance at a specific port?
-          </h2>
-          <p className="text-zinc-400 text-sm max-w-lg leading-relaxed font-light">
-            We operate in all major Sea Customs Ports, Air Cargo complexes, and Inland Container Depots (ICDs) across the subcontinent.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
-            <Button href="/contact" variant="primary">
-              Contact Our Operations Desk
+          <div className="flex items-center gap-4">
+            <Button href="/contact" variant="ink">
+              Get a freight plan
             </Button>
-            <Button href="/get-quote" variant="outline" className="!text-white !border-zinc-800 hover:!bg-zinc-900 hover:!border-zinc-700">
-              Request Customs Quote
-            </Button>
+            <ArrowLink href="/contact" className="text-[#212121]">
+              Talk to operations
+            </ArrowLink>
           </div>
         </div>
       </section>
 
-      <Footer />
-    </>
+      <SiteFooter />
+    </main>
   );
 }

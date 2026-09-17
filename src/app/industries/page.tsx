@@ -1,162 +1,219 @@
-"use client";
-
-import Link from "next/link";
-import {
-  Cpu, Truck, Activity, ShoppingBag, HardHat,
-  ArrowRight, ShieldCheck, Zap
-} from "lucide-react";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import GlassCard from "@/components/ui/GlassCard";
+import Image from "next/image";
+import { Cog, Cpu, Factory, Activity, ShoppingBag, ArrowUpRight } from "lucide-react";
+import type { Metadata } from "next";
+import SiteHeader from "@/components/layout/SiteHeader";
+import SiteFooter from "@/components/layout/SiteFooter";
+import PageHero from "@/components/ui/PageHero";
+import SectionTag from "@/components/ui/SectionTag";
+import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 
-const industries = [
+export const metadata: Metadata = {
+  title: "Industries We Serve",
+  description:
+    "Freight operations tuned for electronics, pharma, automotive, e-commerce, and project cargo — built around how each sector actually ships.",
+};
+
+const sectors = [
   {
-    icon: <Cpu className="w-8 h-8 text-yellow-400" />,
+    number: "01",
     title: "Technology & Electronics",
-    subtitle: "High-Value Components & Finished Goods",
-    challenge: "Complex regulatory compliance including BIS registration, WPC license verification, and strict customs valuations.",
-    solution: "Dedicated electronics custom clearance desk. Pre-filing Bill of Entry allows rapid delivery for parts to keep production lines active.",
-    benefits: ["99.8% classification audit pass rate", "Coordination of BIS and WPC clearance filings", "High-security handling for components"],
+    subtitle: "High-value components & finished goods",
+    image: "/images/trifreight/air-freight.jpg",
+    alt: "Freight aircraft on the tarmac",
+    Icon: Cpu,
+    challenge:
+      "Tight classification audits, high declared values, and production lines that cannot survive a two-week customs hold.",
+    solution:
+      "Pre-filed Bills of Entry and priority air uplift keep components moving from gate to production floor in hours, not weeks.",
+    benefits: [
+      "99.8% classification audit pass rate",
+      "High-security handling for components",
+      "Gate-to-port priority clearances",
+    ],
   },
   {
-    icon: <Activity className="w-8 h-8 text-yellow-400" />,
+    number: "02",
     title: "Pharmaceuticals & Healthcare",
-    subtitle: "Cold-Chain Logistics & Life Science Assets",
-    challenge: "Temperature deviations during inspections, drug controller permissions (ADC), and strict expiry-date regulations.",
-    solution: "Temperature-controlled customs-bonded zones and fast-track clearance protocols ensuring sample drawing and approvals under 8 hours.",
-    benefits: ["Active cold-chain logistics monitoring", "Licensed ADC custom clearances", "Priority CFS unloading and clearance"],
+    subtitle: "Cold-chain logistics & life science assets",
+    image: "/images/trifreight/container-terminal.jpg",
+    alt: "Shipping containers at a terminal",
+    Icon: Activity,
+    challenge:
+      "Temperature deviations, health-authority approvals, and expiry-date windows that make a day of delay feel like a loss.",
+    solution:
+      "Temperature-controlled bonded zones and fast-track approvals so samples, inspections, and releases stay inside the cold chain.",
+    benefits: [
+      "Active cold-chain logistics monitoring",
+      "Priority CFS unloading and clearance",
+      "Authorisation coordination kept in the plan",
+    ],
   },
   {
-    icon: <Truck className="w-8 h-8 text-yellow-400" />,
+    number: "03",
     title: "Automotive & Engineering",
-    subtitle: "Just-In-Time (JIT) Part Shipments",
-    challenge: "Supply chain stoppages from port CFS delays, managing thousands of micro HS-codes, and duty assessment rules.",
-    solution: "Automated custom manifest monitoring and bonded warehousing allowing manufacturers to coordinate releases in exact sync with JIT lines.",
-    benefits: ["Dedicated multi-item tariff assessment", "24/7 customs clearance operations", "Just-In-Time intermodal logistics"],
+    subtitle: "Just-in-time part shipments",
+    image: "/images/trifreight/road-freight.jpg",
+    alt: "Freight truck moving along a road",
+    Icon: Factory,
+    challenge:
+      "JIT assembly lines that stop the moment a container misses its slot, plus thousands of micro HS codes to keep straight.",
+    solution:
+      "Bonded warehousing and manifest monitoring so releases sync exactly with line-side delivery — not a day after.",
+    benefits: [
+      "Multi-item tariff assessment",
+      "Bonded, line-side delivery timing",
+      "24/7 operations coordination",
+    ],
   },
   {
-    icon: <ShoppingBag className="w-8 h-8 text-yellow-400" />,
+    number: "04",
     title: "E-commerce & Retail",
-    subtitle: "High-Volume B2C & B2B Inventory Dispatch",
-    challenge: "Peak season freight rates volatility, complex returns handling, and managing split customs entries across multiple ports.",
-    solution: "Consolidated freight shipping options (LCL/Air) paired with integrated bonded distribution centers to dispatch cargo dynamically.",
-    benefits: ["Multi-destination clearance structures", "Automated cargo status updates", "Bonded de-consolidation hubs"],
+    subtitle: "High-volume B2C & B2B dispatch",
+    image: "/images/trifreight/ocean-freight.jpg",
+    alt: "Container vessel crossing open water",
+    Icon: ShoppingBag,
+    challenge:
+      "Peak-season rate swings, split entries across multiple ports, and returns that consume the margin of every good sale.",
+    solution:
+      "Weekly LCL consolidation and bonded deconsolidation hubs turn fragmented orders into one predictable plan.",
+    benefits: [
+      "Consolidated LCL/FCL structures",
+      "Multi-destination clearances",
+      "Bonded de-consolidation hubs",
+    ],
   },
   {
-    icon: <HardHat className="w-8 h-8 text-yellow-400" />,
+    number: "05",
     title: "Industrial Machinery & Metals",
-    subtitle: "Over-Dimensional Cargo (ODC) & Project Logistics",
-    challenge: "Moving oversized turbines or machinery requires specialized flat-rack containers, escorts, and customized heavy-lift clearances.",
-    solution: "Complete Project Cargo management, overseeing structural customs appraisal, heavy-axle haulage, and structural site placements.",
-    benefits: ["Specialized ODC custom clearance assessments", "Flat-rack and open-top space allocations", "End-to-end multi-modal routing"],
+    subtitle: "Over-dimensional cargo & project logistics",
+    image: "/images/trifreight/ocean-freight.jpg",
+    alt: "Heavy cargo vessel on the water",
+    Icon: Cog,
+    challenge:
+      "Oversized turbines and machinery need special containers, escorts, and heavy-lift appraisals nobody quotes up front.",
+    solution:
+      "End-to-end project planning: flat-rack and open-top allocations, heavy-axle haulage, and multi-modal routing as one job.",
+    benefits: [
+      "ODC & flat-rack / open-top space",
+      "Heavy-lift appraisal coordination",
+      "End-to-end multi-modal routing",
+    ],
   },
 ];
 
-export default function Industries() {
+export default function IndustriesPage() {
   return (
-    <>
-      <Navbar />
+    <main className="mx-auto max-w-[1280px] bg-[#fbfdff] text-[#212121] shadow-[0_0_80px_rgba(8,34,58,0.08)]">
+      <SiteHeader />
 
-      {/* Header Banner */}
-      <section className="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden bg-black border-b border-zinc-900">
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-yellow-500/5 blur-[100px] pointer-events-none" />
+      <PageHero
+        eyebrow="Industries"
+        title={
+          <>
+            Built for how{" "}
+            <span className="inline-block rounded-lg bg-[#bfe8ff] px-[0.12em] pb-[0.06em] pt-[0.02em]">
+              your sector moves.
+            </span>
+          </>
+        }
+        lead="Every sector has its own tariff schedules, regulators, and rhythms. We build the freight plan around those — not the other way around."
+      />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 flex flex-col gap-3 text-left">
-              <span className="text-xs font-bold uppercase tracking-widest text-yellow-400 font-mono">Specialized Sector Focus</span>
-              <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                Tailored Industry Customs & <span className="text-yellow-400">Freight Infrastructure</span>
-              </h1>
-            </div>
-            <div className="lg:col-span-5 text-left lg:border-l lg:border-zinc-800 lg:pl-8">
-              <p className="text-zinc-400 text-sm leading-relaxed font-light">
-                Every sector has unique tariff schedules, regulatory agencies, and supply chains. We build customized clearance operations for each.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industry Cards Section */}
-      <section className="py-24 bg-transparent relative">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col gap-16">
-          {industries.map((ind, idx) => (
-            <div
-              key={idx}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start border-b border-zinc-900 pb-16 last:border-b-0 last:pb-0"
-            >
-              {/* Left Title Column */}
-              <div className="lg:col-span-4 flex flex-col gap-4">
-                <div className="w-12 h-12 rounded-xl bg-black border border-zinc-800 flex items-center justify-center">
-                  {ind.icon}
-                </div>
-                <div>
-                  <span className="text-xs text-yellow-400 uppercase tracking-widest font-mono">{ind.subtitle}</span>
-                  <h3 className="font-display text-2xl font-bold text-white mt-1">{ind.title}</h3>
-                </div>
-                <p className="text-zinc-400 text-xs mt-2 leading-relaxed font-light font-mono">
-                  We maintain dedicated custom specialists who handle only your sector classifications, ensuring deep knowledge of BIS, FDA, or JIT logistics.
-                </p>
-              </div>
-
-              {/* Right Detail Column */}
-              <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <h5 className="text-xs font-bold uppercase tracking-wider text-yellow-400 font-mono">Industry Challenge</h5>
-                    <p className="text-sm text-zinc-400 mt-2 leading-relaxed font-light font-mono">{ind.challenge}</p>
+      <section className="px-4 pb-24 sm:px-6 sm:pb-32">
+        <div className="mx-auto flex max-w-[1140px] flex-col gap-20 lg:gap-28">
+          {sectors.map((sector, index) => {
+            const Icon = sector.Icon;
+            const reversed = index % 2 === 1;
+            return (
+              <Reveal key={sector.number}>
+                <div className="grid gap-8 lg:grid-cols-[0.55fr_0.45fr] lg:items-center lg:gap-16">
+                  <div
+                    className={`relative min-h-[300px] overflow-hidden rounded-xl sm:min-h-[480px] ${
+                      reversed ? "lg:order-2" : ""
+                    }`}
+                  >
+                    <Image
+                      src={sector.image}
+                      alt={sector.alt}
+                      fill
+                      sizes="(max-width: 1024px) 92vw, 620px"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#132b3e]/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-white">
+                      <div>
+                        <p className="font-mono-ui text-[9px] tracking-[0.12em] text-[#bfe8ff]">
+                          SECTOR / {sector.number}
+                        </p>
+                        <p className="font-display mt-2 max-w-xs text-2xl font-semibold leading-[0.95] tracking-[-0.055em] sm:text-3xl">
+                          {sector.title}
+                        </p>
+                      </div>
+                      <span className="grid size-12 shrink-0 place-items-center rounded-lg border border-white/20 bg-white/12 text-[#bfe8ff] backdrop-blur">
+                        <Icon className="size-5" />
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <h5 className="text-xs font-bold uppercase tracking-wider text-yellow-400 font-mono">Sheetla Exim Solution</h5>
-                    <p className="text-sm text-zinc-400 mt-2 leading-relaxed font-light font-mono">{ind.solution}</p>
-                  </div>
-                </div>
 
-                <div className="p-6 bg-zinc-900/30 border border-zinc-800 rounded-xl flex flex-col justify-between shadow-sm">
-                  <div>
-                    <h5 className="text-xs font-bold uppercase tracking-wider text-white font-mono mb-4">Key Operational Benefits</h5>
-                    <ul className="flex flex-col gap-3">
-                      {ind.benefits.map((benefit, bIdx) => (
-                        <li key={bIdx} className="flex items-center gap-2 text-xs text-zinc-400 font-light">
-                          <ShieldCheck className="w-4.5 h-4.5 text-yellow-400 shrink-0" />
-                          <span>{benefit}</span>
+                  <div className={reversed ? "lg:order-1" : ""}>
+                    <p className="font-mono-ui text-[10px] tracking-[0.12em] text-[#6095c2]">
+                      {sector.subtitle}
+                    </p>
+                    <h2 className="font-display mt-3 text-[clamp(2.1rem,3.8vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
+                      {sector.title}
+                    </h2>
+
+                    <div className="mt-7 grid gap-6 sm:grid-cols-2">
+                      <div>
+                        <p className="font-mono-ui text-[9px] tracking-[0.12em] text-black/42">CHALLENGE</p>
+                        <p className="mt-3 text-sm leading-relaxed text-black/62">
+                          {sector.challenge}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-mono-ui text-[9px] tracking-[0.12em] text-black/42">TRIFREIGHT PLAN</p>
+                        <p className="mt-3 text-sm leading-relaxed text-black/62">
+                          {sector.solution}
+                        </p>
+                      </div>
+                    </div>
+
+                    <ul className="mt-7 flex flex-col gap-2.5 border-t border-black/8 pt-6">
+                      {sector.benefits.map((benefit) => (
+                        <li
+                          key={benefit}
+                          className="flex items-center gap-3 text-sm font-medium"
+                        >
+                          <ArrowUpRight className="size-4 shrink-0 text-[#6095c2]" />
+                          {benefit}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <Link href="/get-quote" className="text-xs font-semibold text-yellow-400 hover:text-yellow-300 mt-6 inline-flex items-center gap-1 group transition-colors">
-                    Request Sector Customs Plan <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
                 </div>
-              </div>
-            </div>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
-      {/* CTA Box */}
-      <section className="py-20 bg-black text-center border-t border-zinc-900">
-        <div className="max-w-3xl mx-auto px-6 flex flex-col items-center gap-6">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-white">
-            Need to clear high-risk customs entries?
-          </h2>
-          <p className="text-zinc-400 text-sm max-w-md font-light">
-            Consult our sector specialists to check your HS classifications and duty assessment structures.
-          </p>
-          <div className="flex items-center gap-4">
-            <Button href="/contact" variant="primary">
-              Talk to a Sector Specialist
-            </Button>
-            <Button href="/get-quote" variant="outline" className="!border-zinc-800 !text-white hover:!bg-zinc-900 hover:!border-zinc-700">
-              Calculate Freight Estimate
-            </Button>
+      <section className="relative overflow-hidden bg-[#bfe8ff] px-4 py-24 sm:px-6 sm:py-28">
+        <div className="absolute -right-40 top-0 size-[30rem] rounded-full border-[44px] border-white/20" />
+        <div className="relative mx-auto flex max-w-[1140px] flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+          <div>
+            <SectionTag className="text-black/50">Not on the list?</SectionTag>
+            <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[#212121]">
+              Strange cargo is our favourite kind.
+            </h2>
           </div>
+          <Button href="/contact" variant="ink" className="shrink-0">
+            Plan an unusual shipment <ArrowUpRight className="size-4" />
+          </Button>
         </div>
       </section>
 
-      <Footer />
-    </>
+      <SiteFooter />
+    </main>
   );
 }

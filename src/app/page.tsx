@@ -1,487 +1,452 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight, ShieldCheck, ChevronRight, Award,
-  Users, PhoneCall, Ship,
-  Plane, Anchor, TrendingUp, CheckCircle2,
-  ChevronUp, ChevronDown, Check
-} from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import Button from "@/components/ui/Button";
-import GlassCard from "@/components/ui/GlassCard";
-import { servicesCategories } from "@/data/servicesData";
+import { ArrowUpRight, Check } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import SiteHeader from "@/components/layout/SiteHeader";
+import SiteFooter from "@/components/layout/SiteFooter";
+import Ticker from "@/components/ui/Ticker";
+import WorldMap from "@/components/ui/WorldMap";
+import SlideToWhatsApp from "@/components/ui/SlideToWhatsApp";
+import CloudBlend from "@/components/ui/CloudBlend";
+import Sticker, { type StickerName } from "@/components/ui/Sticker";
+import HandNote from "@/components/ui/HandNote";
 
-// 6 Case Studies Data
-interface CaseStudyData {
-  clientName: string;
-  industry: string;
-  route: string;
-  challenge: string;
-  solution: string;
-  results: string;
-  metric: string;
-  metricLabel: string;
-}
+const services: {
+  number: string;
+  title: string;
+  eyebrow: string;
+  sticker: StickerName;
+  meta: string;
+}[] = [
+  {
+    number: "01",
+    title: "Air freight",
+    eyebrow: "Urgent, high-value cargo, with the paperwork flown ahead of it.",
+    sticker: "plane",
+    meta: "1–4 days",
+  },
+  {
+    number: "02",
+    title: "Ocean freight",
+    eyebrow: "FCL and LCL planned around the right sailing and the right port.",
+    sticker: "ship",
+    meta: "18–35 days",
+  },
+  {
+    number: "03",
+    title: "Road transport",
+    eyebrow: "First mile, last mile, and the cross-border haul in between.",
+    sticker: "truck",
+    meta: "1–6 days",
+  },
+  {
+    number: "04",
+    title: "Customs clearance",
+    eyebrow: "Filing, classification, and refunds handled inside the plan.",
+    sticker: "customs",
+    meta: "Same-day filing",
+  },
+];
 
-const caseStudiesList: CaseStudyData[] = [
+const approachSteps = [
   {
-    clientName: "TechVantage Systems",
-    industry: "Electronics",
-    route: "Shanghai (CNSHA) to Chennai Air Cargo (MAA)",
-    challenge: "Severe microprocessor component cargo delays at airport customs threatened to shut down active manufacturing assembly lines.",
-    solution: "Transitioned workflow to a Prior Bill of Entry system, pre-classifying classifications and pre-assessing duty rates with customs appraisers.",
-    results: "Cargo dwell clearances reduced from 4 days to under 10 hours. Client met delivery timelines and saved demurrage costs.",
-    metric: "40% Faster",
-    metricLabel: "Customs Port Clearance",
+    number: "01",
+    title: "Read the shipment",
+    description:
+      "Cargo, origin, destination, timing, and the details that quietly change a route.",
   },
   {
-    clientName: "Bharat Heavy Forge",
-    industry: "Machinery",
-    route: "Frankfurt (FRA) to Mumbai Sea Port (JNPT)",
-    challenge: "Incorrect tariff classifications and custom valuation disputes on heavy steam turbine imports created holds and cargo penalties.",
-    solution: "Optimized duty structures under the EPCG (Export Promotion Capital Goods) scheme and filed CEPA FTA benefit certificates.",
-    results: "Customs accepted filings cleanly, granting release with zero penalties and substantial direct capital savings.",
-    metric: "₹25 Lakhs",
-    metricLabel: "Customs Duties Saved",
+    number: "02",
+    title: "Build the movement",
+    description:
+      "Mode, handoffs, customs prep, and delivery planned as one connected operation.",
   },
   {
-    clientName: "Vivant Biotech",
-    industry: "Pharmaceuticals",
-    route: "Rotterdam (NLRTM) to Delhi IGI Airport (DEL)",
-    challenge: "Assistant Drug Controller (ADC) clearance delays and documentation audits threatened cold-chain biological cargo integrity.",
-    solution: "Coordinated pre-arrival sample approvals with laboratories and prioritizing transits in custom-bonded cold storage facilities.",
-    results: "Clearance approved in under 8 hours with zero temperature log deviations.",
-    metric: "98% Accuracy",
-    metricLabel: "Compliance Check Pass Rate",
-  },
-  {
-    clientName: "Nexa Motors Corp",
-    industry: "Automotive",
-    route: "Nagoya (NGO) to Nhava Sheva (INNSA)",
-    challenge: "Disrupted JIT (Just-In-Time) assembly supply lines due to port congestion, terminal holds, and inland transport coordinates errors.",
-    solution: "Submited prior manifest logs and pre-cleared bills to organize direct port delivery transits straight onto factory flatbeds.",
-    results: "Eliminated container terminal waiting times, dispatching parts directly to JIT lines.",
-    metric: "30% Reduced",
-    metricLabel: "Logistics Overhead Cost",
-  },
-  {
-    clientName: "Aegis Chemical Labs",
-    industry: "Chemicals",
-    route: "Antwerp (ANR) to Mundra Sea Port (INMUN)",
-    challenge: "Complex dangerous goods (HAZMAT) manifest filings, environmental approvals, and quarantine (AQ/PQ) terminal clearance delays.",
-    solution: "Pre-filed hazardous declarations, checked HS codes, and secured prior clearances with Partner Government Agencies (PGAs).",
-    results: "Customs released the raw materials manifest cleanly with zero audit inquiries or port CFS delays.",
-    metric: "98% Accuracy",
-    metricLabel: "PGA Inspection Pass Rate",
-  },
-  {
-    clientName: "Loom & Linen Textiles",
-    industry: "Textiles",
-    route: "Shenzhen Port (CNSZX) to Delhi ICD (TKD)",
-    challenge: "High air-ocean freight costs and documentation errors from importing split LCL orders from individual East Asian exporters.",
-    solution: "Established a weekly FCL cargo consolidation hub at Shenzhen Port, filing a single consolidated Bill of Entry.",
-    results: "Lowered ocean freight cargo rates by 30% and unified tracking under a single customs declaration file.",
-    metric: "30% Reduced",
-    metricLabel: "Inbound Freight Logistics Cost",
+    number: "03",
+    title: "Keep it clear",
+    description:
+      "A straight view of what is moving, what is next, and who owns each handoff.",
   },
 ];
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState("dgft-exim");
-  const [selectedService, setSelectedService] = useState("IEC and IEC Modification");
-  const [isCatDropdownOpen, setIsCatDropdownOpen] = useState(false);
-  const [isServiceDropdownOpen, setIsServiceDropdownOpen] = useState(false);
-  const [activeCaseIdx, setActiveCaseIdx] = useState(0);
-  const activeCase = caseStudiesList[activeCaseIdx];
+  // Beam glints travel on a slow, irregular rhythm so the hero never loops in
+  // sync. The three positions stagger across the width; the delays are random
+  // per load (lazily in state, so the randomness is stable across renders).
+  const beamPositions = [0, 116, 232];
+  const [beamDelays] = useState(() =>
+    beamPositions.map(() => +(Math.random() * 9).toFixed(2))
+  );
 
   return (
-    <>
-      <Navbar />
+    <main id="top" className="mx-auto max-w-[1280px] bg-[#fbfdff] text-[#212121] shadow-[0_0_80px_rgba(8,34,58,0.08)]">
+      <SiteHeader />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen lg:h-screen w-full flex flex-col justify-center overflow-hidden bg-black pt-20">
+      <section className="hero-canvas relative isolate overflow-hidden px-4 pb-44 pt-32 sm:px-6 sm:pb-60 sm:pt-40">
+        {/* Vertical beams, with sharp glints travelling down them. */}
+        <div className="hero-beams pointer-events-none absolute inset-0" />
+        {beamPositions.map((pos, i) => (
+          <div
+            key={i}
+            className="beam-pulse pointer-events-none absolute inset-0"
+            style={{ backgroundPositionX: `${pos}px`, animationDelay: `${beamDelays[i]}s` }}
+          />
+        ))}
 
-        {/* Minimal Grid Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.3" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-
-          {/* Left Content */}
+        <div className="relative z-10 mx-auto max-w-[1140px]">
           <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
-            }}
-            className="flex flex-col gap-8 text-left"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+            className="mx-auto flex max-w-2xl flex-col items-center text-center"
           >
-            <motion.div
-              variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-yellow-500/30 bg-yellow-500/5 w-fit"
-            >
-              <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest text-yellow-500">
-                Customs clearance
+            <span className="font-mono-ui inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-2 text-[9px] tracking-[0.11em] text-white sm:text-[10px]">
+              <span className="size-1.5 rounded-full bg-[#bfe8ff] shadow-[0_0_0_4px_rgba(191,232,255,0.17)]" />
+              FREIGHT FORWARDING / INDIA TO THE WORLD
+            </span>
+            <h1 className="font-display mt-7 text-[clamp(2.6rem,5.6vw,5.1rem)] font-bold leading-[1.02] tracking-[-0.03em] text-white [text-shadow:0_2px_18px_rgba(8,32,56,0.35)] sm:mt-8">
+              Move freight across borders
+              <span className="mt-2 block">
+                with <span className="text-[#bfe8ff]">clarity,</span>{" "}
+                <span className="inline-block rounded-lg bg-[#141414] px-[0.22em] pb-[0.1em] pt-[0.04em]">
+                  not detours.
+                </span>
               </span>
-            </motion.div>
-
-            <motion.h1
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-              className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight"
-            >
-              Clear Customs <br />
-              <span className="text-yellow-400">Without Delays.</span>
-            </motion.h1>
-
-            <motion.p
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-              className="text-zinc-400 text-lg sm:text-xl leading-relaxed max-w-xl font-light"
-            >
-              We simplify international trade. Expert customs clearance, freight forwarding, and trade compliance for enterprise supply chains.
-            </motion.p>
-
-            <motion.div
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              className="flex flex-col sm:flex-row items-center gap-4 pt-4"
-            >
-              <Link href="/get-quote" className="w-full sm:w-auto px-8 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-bold rounded-none text-center transition-colors flex items-center justify-center gap-2">
-                Get Instant Quote <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link href="/contact" className="w-full sm:w-auto px-8 py-4 bg-transparent border border-white hover:bg-white hover:text-black text-white font-bold rounded-none text-center transition-colors flex items-center justify-center gap-2">
-                Talk to an Expert
-              </Link>
-            </motion.div>
+            </h1>
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 text-xs font-medium text-white sm:text-[13px]">
+              {["Air freight", "Ocean freight", "Road transport", "Customs clearance"].map(
+                (item) => (
+                  <span key={item} className="flex items-center gap-1.5">
+                    <Check className="size-3.5 text-[#bfe8ff]" strokeWidth={3} />
+                    {item}
+                  </span>
+                )
+              )}
+            </div>
+            <div className="mt-8">
+              <SlideToWhatsApp variant="paper">Slide to plan a shipment</SlideToWhatsApp>
+            </div>
           </motion.div>
 
-          {/* Right Content - Abstract Tech Visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="w-full hidden lg:flex justify-end"
+            initial={{ opacity: 0, y: 36, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="relative mx-auto mt-14 max-w-[820px] sm:mt-16"
           >
-            <div className="relative w-full max-w-md aspect-square border border-zinc-800 bg-black p-8 flex flex-col justify-between">
-              <div className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-500/20 blur-[100px] pointer-events-none rounded-full" />
-
-              <div className="flex justify-between items-start">
-                <h3 className="font-display font-extrabold text-2xl text-white tracking-widest uppercase">Sheetla</h3>
-                <span className="text-yellow-400 font-mono text-sm border border-yellow-400/30 px-2 py-1">ONLINE</span>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 text-zinc-400 font-mono text-sm border-b border-zinc-800 pb-4">
-                  <CheckCircle2 className="text-yellow-400 w-5 h-5" /> Air Cargo Clearance
+            <div className="card-shine relative aspect-[1.55] overflow-hidden rounded-2xl border border-white/40 bg-[#202020] p-2 shadow-[0_30px_60px_rgba(8,34,58,0.38)] sm:p-2.5">
+              <div className="relative h-full overflow-hidden rounded-lg">
+                <Image
+                  src="/images/trifreight/container-terminal.jpg"
+                  alt="Containers and a freight truck at a logistics terminal"
+                  fill
+                  preload
+                  sizes="(max-width: 768px) 92vw, 820px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1c2c]/80 via-transparent to-transparent" />
+                <div className="absolute inset-x-4 bottom-4 text-white sm:inset-x-5 sm:bottom-5">
+                  <p className="font-mono-ui text-[9px] tracking-[0.12em] text-[#bfe8ff]">
+                    FREIGHT LANE VIEW
+                  </p>
+                  <p className="font-display mt-1.5 text-lg font-semibold tracking-[-0.04em] sm:text-xl">
+                    Every handoff, in view.
+                  </p>
                 </div>
-                <div className="flex items-center gap-4 text-zinc-400 font-mono text-sm border-b border-zinc-800 pb-4">
-                  <CheckCircle2 className="text-yellow-400 w-5 h-5" /> Ocean Freight Transit
-                </div>
-                <div className="flex items-center gap-4 text-zinc-400 font-mono text-sm">
-                  <CheckCircle2 className="text-yellow-400 w-5 h-5" /> DGFT Trade Compliance
-                </div>
-              </div>
-
-              <div className="mt-8 p-4 bg-zinc-900 border border-zinc-800">
-                <p className="text-xs text-zinc-500 font-mono uppercase mb-1">Clearance Rate</p>
-                <p className="text-3xl text-white font-display font-bold">98.4% <span className="text-yellow-400 text-lg">↑</span></p>
               </div>
             </div>
+
+            {/* Cut-out stickers instead of floating info boxes. */}
+<Sticker
+          name="globe"
+          size={104}
+          tilt={-9}
+          bob
+          bobDuration={8}
+          decorative
+          className="absolute -left-14 top-[34%] hidden lg:block xl:-left-24"
+        />
+        <Sticker
+          name="mapPins"
+          size={96}
+          tilt={8}
+          bob
+          bobDuration={10}
+          delay={1.3}
+          decorative
+          className="absolute -right-12 top-[14%] hidden lg:block xl:-right-20"
+        />
+        <Sticker
+          name="boxes"
+          size={84}
+          tilt={-6}
+          bob
+          bobDuration={9}
+          delay={2.2}
+          decorative
+          className="absolute -left-10 bottom-[8%] hidden xl:block xl:-left-20"
+        />
+        <Sticker
+          name="routePin"
+          size={78}
+          tilt={10}
+          bob
+          bobDuration={11}
+          delay={0.7}
+          decorative
+          className="absolute -right-8 bottom-[14%] hidden xl:block xl:-right-16"
+        />
           </motion.div>
         </div>
+
+        {/* Real clouds carrying the sky into the section below. */}
+        <CloudBlend className="bottom-0 z-0 h-[13rem] sm:h-[20rem]" />
       </section>
 
-      {/* Trust Indicators */}
-      <section className="bg-black border-y border-zinc-900 py-12">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-zinc-900">
-          <div>
-            <p className="font-display text-4xl font-extrabold text-white">5000+</p>
-            <p className="text-xs uppercase tracking-widest text-zinc-500 font-mono mt-2">Shipments Cleared</p>
+      <Ticker
+        items={[
+          "AIR FREIGHT",
+          "OCEAN FREIGHT",
+          "ROAD TRANSPORT",
+          "CUSTOMS CLEARANCE",
+          "FCL & LCL",
+          "CONSOLIDATION",
+          "DOOR-TO-DOOR",
+          "MUMBAI → DUBAI → ROTTERDAM → LONDON",
+        ]}
+      />
+
+      <section className="bg-[#fbfdff] px-4 pb-20 pt-14 sm:px-6 sm:pb-28 sm:pt-20" id="services">
+        <div className="mx-auto max-w-[1140px]">
+          <div className="flex flex-col gap-5 border-b border-black/8 pb-8 md:flex-row md:items-end md:justify-between">
+            <div>
+              <span className="font-mono-ui text-[10px] tracking-[0.12em] text-black/45">
+                WHAT WE MOVE
+              </span>
+              <h2 className="font-display mt-4 max-w-xl text-[clamp(2.1rem,3.8vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-[#222222]">
+                Freight is never one-size-fits-all.
+              </h2>
+            </div>
+            <HandNote className="shrink-0 pb-1">pick your mode</HandNote>
           </div>
-          <div>
-            <p className="font-display text-4xl font-extrabold text-white">100+</p>
-            <p className="text-xs uppercase tracking-widest text-zinc-500 font-mono mt-2">Global Partners</p>
-          </div>
-          <div>
-            <p className="font-display text-4xl font-extrabold text-white">6 Days</p>
-            <p className="text-xs uppercase tracking-widest text-zinc-500 font-mono mt-2">Operations Weekly</p>
-          </div>
-          <div>
-            <p className="font-display text-4xl font-extrabold text-white">98%</p>
-            <p className="text-xs uppercase tracking-widest text-zinc-500 font-mono mt-2">On-Time Clearance</p>
+
+          <div className="mt-8 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
+            {services.map((service) => (
+              <Link
+                key={service.number}
+                href="/services"
+                className="group relative flex flex-col rounded-xl border border-black/8 bg-white p-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-black/20 hover:shadow-[0_22px_40px_rgba(27,54,77,0.13)]"
+              >
+                <div className="flex items-start justify-between">
+                  <span className="flex h-[68px] items-center">
+                    <Sticker
+                      name={service.sticker}
+                      size={68}
+                      tilt={-4}
+                      decorative
+                      className="transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110"
+                    />
+                  </span>
+                  <span className="font-mono-ui text-[10px] tracking-[0.1em] text-black/32">
+                    {service.number}
+                  </span>
+                </div>
+                <h3 className="font-display mt-5 text-xl font-semibold tracking-[-0.04em] text-[#222222]">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-black/55">
+                  {service.eyebrow}
+                </p>
+                <div className="mt-auto flex items-center justify-between border-t border-black/8 pt-5">
+                  <span className="font-mono-ui text-[9px] tracking-[0.1em] text-[#6095c2]">
+                    {service.meta}
+                  </span>
+                  <ArrowUpRight className="size-4 text-black/28 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#212121]" />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Interactive Services Section */}
-      <section className="py-24 bg-black relative">
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-yellow-400 font-mono">Capabilities</span>
-            <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white mt-4">
-              Service Explorer
-            </h2>
-          </div>
-
-          <div className="flex flex-col gap-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 border border-zinc-800 bg-[#0a0a0a]">
-
-              {/* Category Select */}
-              <div className="flex flex-col gap-3 relative">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest font-mono">Category</label>
-                <button
-                  onClick={() => {
-                    setIsCatDropdownOpen(!isCatDropdownOpen);
-                    setIsServiceDropdownOpen(false);
-                  }}
-                  className="w-full flex items-center justify-between p-4 bg-black border border-zinc-800 text-white hover:border-yellow-400 transition-colors"
-                >
-                  <span className="font-bold">{servicesCategories.find(c => c.id === selectedCategory)?.title || servicesCategories[0].title}</span>
-                  <ChevronDown className={`w-5 h-5 text-zinc-500 ${isCatDropdownOpen ? "rotate-180 text-yellow-400" : ""}`} />
-                </button>
-                <AnimatePresence>
-                  {isCatDropdownOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 5 }}
-                      className="absolute top-full left-0 right-0 mt-2 bg-black border border-zinc-800 z-40 max-h-[250px] overflow-y-auto"
-                    >
-                      {servicesCategories.map((cat) => (
-                        <button
-                          key={cat.id}
-                          onClick={() => {
-                            setSelectedCategory(cat.id);
-                            setIsCatDropdownOpen(false);
-                            if (cat.services.length > 0) setSelectedService(cat.services[0].name);
-                          }}
-                          className={`w-full p-4 text-left font-bold transition-colors border-b border-zinc-900 last:border-none ${selectedCategory === cat.id ? "bg-zinc-900 text-yellow-400" : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-                            }`}
-                        >
-                          {cat.title}
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Service Select */}
-              <div className="flex flex-col gap-3 relative">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest font-mono">Service</label>
-                <button
-                  onClick={() => {
-                    setIsServiceDropdownOpen(!isServiceDropdownOpen);
-                    setIsCatDropdownOpen(false);
-                  }}
-                  className="w-full flex items-center justify-between p-4 bg-black border border-zinc-800 text-white hover:border-yellow-400 transition-colors"
-                >
-                  <span className="font-bold truncate">{selectedService}</span>
-                  <ChevronDown className={`w-5 h-5 text-zinc-500 ${isServiceDropdownOpen ? "rotate-180 text-yellow-400" : ""}`} />
-                </button>
-                <AnimatePresence>
-                  {isServiceDropdownOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 5 }}
-                      className="absolute top-full left-0 right-0 mt-2 bg-black border border-zinc-800 z-40 max-h-[250px] overflow-y-auto"
-                    >
-                      {(servicesCategories.find(c => c.id === selectedCategory)?.services || []).map((s, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => {
-                            setSelectedService(s.name);
-                            setIsServiceDropdownOpen(false);
-                          }}
-                          className={`w-full p-4 text-left font-bold transition-colors border-b border-zinc-900 last:border-none ${selectedService === s.name ? "bg-zinc-900 text-yellow-400" : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-                            }`}
-                        >
-                          {s.name}
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
-
-            {/* Selected Service Detail */}
-            <AnimatePresence mode="wait">
-              {(() => {
-                const activeCategoryObj = servicesCategories.find(cat => cat.id === selectedCategory);
-                const activeServiceObj = activeCategoryObj?.services.find(s => s.name === selectedService) || activeCategoryObj?.services[0];
-                if (!activeServiceObj) return null;
-                return (
-                  <motion.div
-                    key={`${selectedCategory}-${selectedService}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="border border-zinc-800 p-8 md:p-12 bg-black"
-                  >
-                    <div className="flex flex-col md:flex-row justify-between gap-8">
-                      <div className="flex-1 max-w-2xl">
-                        <span className="text-yellow-400 font-mono text-sm uppercase tracking-widest">{activeCategoryObj?.subtitle}</span>
-                        <h4 className="font-display text-2xl md:text-3xl font-bold text-white mt-2 mb-4">{activeServiceObj.name}</h4>
-                        <p className="text-zinc-400 text-lg font-light leading-relaxed">
-                          {activeServiceObj.desc}
-                        </p>
-                      </div>
-                      <div className="flex flex-col gap-4 shrink-0">
-                        <Link href={`/get-quote?service=${encodeURIComponent(activeServiceObj.name)}&category=${selectedCategory}`} className="w-full text-center py-4 px-8 bg-yellow-400 hover:bg-yellow-300 text-black font-bold transition-colors">
-                          Get Estimate
-                        </Link>
-                        <Link href="/services" className="w-full text-center py-4 px-8 border border-white text-white hover:bg-white hover:text-black font-bold transition-colors">
-                          View Guide
-                        </Link>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })()}
-            </AnimatePresence>
-          </div>
+      {/* Network — white, atmospheric, with the map itself as the background. */}
+      <section
+        id="network"
+        className="relative isolate overflow-hidden bg-[#fbfdff] px-4 pb-32 pt-20 sm:px-6 sm:pb-44 sm:pt-28"
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[70%] bg-[radial-gradient(ellipse_60%_70%_at_50%_30%,rgba(191,232,255,0.4),transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <WorldMap
+            theme="light"
+            showLabels={false}
+            className="w-[150%] max-w-none opacity-70 sm:w-full sm:max-w-[1400px]"
+          />
         </div>
-      </section>
 
-      {/* Case Studies */}
-      <section className="py-24 bg-[#0a0a0a] border-t border-zinc-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-yellow-400 font-mono">Performance Audits</span>
-            <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white mt-4">
-              Operations Console
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-4 flex flex-col gap-2">
-              {caseStudiesList.map((cs, idx) => {
-                const isActive = activeCaseIdx === idx;
-                return (
-                  <div key={idx} className="flex flex-col">
-                    <button
-                      onClick={() => setActiveCaseIdx(idx)}
-                      className={`w-full text-left p-5 border transition-colors flex items-center justify-between ${isActive ? "bg-yellow-400 border-yellow-400 text-black" : "bg-black border-zinc-800 text-zinc-400 hover:border-zinc-600"
-                        }`}
-                    >
-                      <div>
-                        <span className={`text-[10px] font-mono uppercase tracking-widest ${isActive ? 'text-black/60' : 'text-zinc-600'}`}>
-                          {cs.industry}
-                        </span>
-                        <p className={`font-bold mt-1 ${isActive ? 'text-black' : 'text-white'}`}>{cs.clientName}</p>
-                      </div>
-                      <ChevronRight className={`w-5 h-5 ${isActive ? 'text-black rotate-90 lg:rotate-0' : 'text-zinc-600'} transition-transform`} />
-                    </button>
-
-                    {/* Mobile Details Panel (Accordion) */}
-                    <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isActive ? 'max-h-[1000px] border border-t-0 border-yellow-400 opacity-100' : 'max-h-0 opacity-0 border-x-0 border-b-0 border-transparent'}`}>
-                      <div className="p-6 bg-zinc-950">
-                        <div className="flex flex-col gap-6 mb-6">
-                          <div>
-                            <h4 className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest mb-2">Challenge</h4>
-                            <p className="text-zinc-300 font-light text-sm">{cs.challenge}</p>
-                          </div>
-                          <div>
-                            <h4 className="text-yellow-400 font-mono text-[10px] uppercase tracking-widest mb-2">Solution</h4>
-                            <p className="text-zinc-300 font-light text-sm">{cs.solution}</p>
-                          </div>
-                        </div>
-                        <div className="border-t border-zinc-800 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
-                          <div>
-                            <p className="text-3xl font-display font-extrabold text-white mb-1">{cs.metric}</p>
-                            <p className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">{cs.metricLabel}</p>
-                          </div>
-                          <Link href="/get-quote" className="w-full sm:w-auto px-6 py-3 border border-white text-white hover:bg-white hover:text-black font-bold text-center transition-colors text-sm">
-                            Simulate Customs Plan
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="hidden lg:block lg:col-span-8">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeCaseIdx}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="h-full border border-zinc-800 bg-black p-8 md:p-12 flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex flex-wrap items-center gap-4 mb-8">
-                      <span className="px-3 py-1 border border-yellow-400 text-yellow-400 font-mono text-xs uppercase tracking-widest">
-                        {activeCase.industry}
-                      </span>
-                      <h3 className="text-2xl font-bold text-white">{activeCase.clientName}</h3>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                      <div>
-                        <h4 className="text-zinc-500 font-mono text-sm uppercase tracking-widest mb-3">Challenge</h4>
-                        <p className="text-zinc-300 font-light leading-relaxed">{activeCase.challenge}</p>
-                      </div>
-                      <div>
-                        <h4 className="text-yellow-400 font-mono text-sm uppercase tracking-widest mb-3">Solution</h4>
-                        <p className="text-zinc-300 font-light leading-relaxed">{activeCase.solution}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="border-t border-zinc-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-6">
-                    <div>
-                      <p className="text-4xl font-display font-extrabold text-white mb-2">{activeCase.metric}</p>
-                      <p className="text-zinc-500 font-mono text-xs uppercase tracking-widest">{activeCase.metricLabel}</p>
-                    </div>
-                    <Link href="/get-quote" className="px-6 py-3 border border-white text-white hover:bg-white hover:text-black font-bold transition-colors">
-                      Simulate Customs Plan
-                    </Link>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA section */}
-      <section className="py-32 bg-yellow-400 text-black text-center">
-        <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
-          <h2 className="font-display text-4xl sm:text-6xl font-extrabold leading-tight tracking-tight mb-6">
-            Optimize Your Global Custom Operations
+        <div className="relative mx-auto max-w-[760px] text-center">
+          <span className="font-mono-ui text-[10px] tracking-[0.12em] text-[#4d7fa8]">
+            ONE CONNECTED OPERATION
+          </span>
+          <h2 className="font-display mt-4 text-[clamp(2.1rem,3.8vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-[#222222]">
+            A freight plan is more than a booking.
           </h2>
-          <p className="text-xl font-light max-w-2xl mb-10">
-            Get in touch with a customs clearance to set up pre-filings, coordinate rates, or run a duty compliance assessment.
+          <p className="mx-auto mt-5 max-w-lg text-[15px] leading-relaxed text-black/60">
+            It is the route, the paperwork, the port, the timing, and the person
+            accountable when the plan needs to change.
           </p>
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <Link href="/get-quote" className="w-full sm:w-auto px-10 py-5 bg-black hover:bg-zinc-900 text-white font-bold text-lg transition-colors flex items-center justify-center gap-2">
-              Calculate Official Quote <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link href="/contact" className="w-full sm:w-auto px-10 py-5 bg-transparent border-2 border-black hover:bg-black hover:text-white font-bold text-lg transition-colors flex items-center justify-center">
-              Talk to a Specialist
-            </Link>
+
+          <div className="mt-8 flex justify-center">
+            <SlideToWhatsApp variant="ink">Slide to map your lane</SlideToWhatsApp>
+          </div>
+
+          {/* Was three big boxes — now a quiet line under the CTA. */}
+          <div className="mt-10 inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-2 rounded-full border border-black/8 bg-white/75 px-6 py-3 backdrop-blur-sm">
+            {[
+              ["Mode", "air, ocean, road"],
+              ["Border", "customs in the plan"],
+              ["Handoff", "a named next move"],
+            ].map(([term, detail], i) => (
+              <span key={term} className="flex items-center gap-5">
+                {i > 0 && <span className="hidden h-3 w-px bg-black/12 sm:block" />}
+                <span className="whitespace-nowrap text-[11px] text-black/55">
+                  <span className="font-mono-ui text-[9px] tracking-[0.12em] text-[#4d7fa8]">
+                    {term}
+                  </span>
+                  <span className="ml-1.5">{detail}</span>
+                </span>
+              </span>
+            ))}
+          </div>
+        </div>
+
+      </section>
+
+      <section id="approach" className="bg-[#ebeff3] px-4 py-20 sm:px-6 sm:py-28">
+        <div className="mx-auto max-w-[1140px]">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+            <div className="relative min-h-[340px] overflow-hidden rounded-xl bg-[#6095c2] lg:min-h-[480px]">
+              <Image
+                src="/images/trifreight/road-freight.jpg"
+                alt="Freight truck travelling along a road"
+                fill
+                sizes="(max-width: 1024px) 92vw, 430px"
+                className="object-cover object-[32%_center]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d2233]/80 via-transparent to-transparent" />
+              <div className="absolute inset-x-5 bottom-5">
+                <p className="font-display max-w-[15ch] text-xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-2xl">
+                  The movement matters more than the mode.
+                </p>
+              </div>
+              <Sticker
+                name="crane"
+                size={92}
+                tilt={-7}
+                decorative
+                className="absolute -right-4 -top-4 hidden sm:block"
+              />
+            </div>
+
+            <div className="flex flex-col justify-center">
+              <span className="font-mono-ui text-[10px] tracking-[0.12em] text-black/45">
+                HOW WE THINK
+              </span>
+              <h2 className="font-display mt-4 max-w-xl text-[clamp(2.1rem,3.8vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-[#222222]">
+                Less noise. More forward motion.
+              </h2>
+              <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-black/60">
+                Freight is full of moving parts. Our job is to turn those parts into a
+                clear plan your team can follow.
+              </p>
+
+              <div className="mt-8 divide-y divide-black/8 border-y border-black/8">
+                {approachSteps.map((step) => (
+                  <article
+                    key={step.number}
+                    className="grid gap-2 py-5 sm:grid-cols-[44px_1fr] sm:gap-5"
+                  >
+                    <span className="font-mono-ui pt-1 text-[10px] tracking-[0.1em] text-[#6095c2]">
+                      {step.number}
+                    </span>
+                    <div>
+                      <h3 className="font-display text-lg font-semibold tracking-[-0.04em] text-[#222222]">
+                        {step.title}
+                      </h3>
+                      <p className="mt-1.5 max-w-md text-[13px] leading-relaxed text-black/55">
+                        {step.description}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <Footer />
-    </>
+      <section id="contact" className="relative overflow-hidden bg-[#bfe8ff] px-4 py-20 sm:px-6 sm:py-28">
+        <div className="absolute -right-40 top-0 size-[30rem] rounded-full border-[44px] border-white/20" />
+        <div className="relative mx-auto grid max-w-[1140px] gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-14">
+          <div>
+            <span className="font-mono-ui text-[10px] tracking-[0.12em] text-black/50">
+              TRIFREIGHT TRADE SOLUTIONS PRIVATE LIMITED
+            </span>
+            <h2 className="font-display mt-4 text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[#222222]">
+              Move the next one{" "}
+              <span className="inline-block rounded-lg bg-white px-[0.2em] pb-[0.08em] pt-[0.03em]">
+                with us.
+              </span>
+            </h2>
+            <div className="mt-6 flex items-center gap-4">
+              <Sticker name="handshake" size={86} tilt={-5} decorative />
+              <HandNote color="#1f5f93" flip className="pb-2">
+                one desk, start to finish
+              </HandNote>
+            </div>
+          </div>
+          <div className="rounded-xl border border-black/8 bg-white/75 p-6 backdrop-blur-sm sm:p-7">
+            <p className="font-display text-xl font-semibold leading-tight tracking-[-0.04em]">
+              Your route starts with a conversation.
+            </p>
+            <p className="mt-3 text-[13px] leading-relaxed text-black/60">
+              Tell us the lane, the cargo, and the deadline. We come back with a plan —
+              not a quote-shaped question mark.
+            </p>
+            <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-black/8 pt-5">
+              {[
+                ["Reply window", "Same working day"],
+                ["Covers", "Air, ocean, road, customs"],
+              ].map(([label, value]) => (
+                <div key={label}>
+                  <dt className="font-mono-ui text-[9px] tracking-[0.12em] text-black/45">
+                    {label}
+                  </dt>
+                  <dd className="mt-1.5 text-[13px] font-semibold leading-snug text-[#222222]">
+                    {value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <SlideToWhatsApp variant="ink">Slide to chat now</SlideToWhatsApp>
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-1.5 text-xs font-semibold text-[#1f5f93]"
+              >
+                <span className="underline decoration-[#1f5f93]/30 underline-offset-4 transition-colors group-hover:decoration-[#1f5f93]">
+                  or send the details
+                </span>
+                <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SiteFooter />
+    </main>
   );
 }
