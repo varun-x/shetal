@@ -61,8 +61,8 @@ export default function AboutPage() {
         lead="Trifreight Trade Solutions is a freight-forwarding company built on a decade of customs and border expertise — now running air, ocean, and road as one movement."
       />
 
-      <section className="px-4 pb-24 sm:px-6 sm:pb-32">
-        <div className="mx-auto max-w-[1140px]">
+      <section className="px-5 pb-24 sm:px-8 lg:px-12 xl:px-16 sm:pb-32">
+        <div className="mx-auto max-w-[1600px]">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-20">
             <Reveal>
               <div>
@@ -96,9 +96,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#222222] px-4 py-24 text-white sm:px-6 sm:py-32">
+      <section className="relative overflow-hidden bg-[#222222] px-5 py-24 text-white sm:px-8 lg:px-12 xl:px-16 sm:py-32">
         <div className="grid-fade absolute inset-0 opacity-50" />
-        <div className="relative mx-auto max-w-[1140px]">
+        <div className="relative mx-auto max-w-[1600px]">
           <SectionTag className="text-[#bfe8ff]">By the numbers</SectionTag>
           <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <Stat value={5000} suffix="+" label="Shipments coordinated" />
@@ -109,8 +109,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="px-4 py-24 sm:px-6 sm:py-32">
-        <div className="mx-auto max-w-[1140px]">
+      <section className="px-5 py-24 sm:px-8 lg:px-12 xl:px-16 sm:py-32">
+        <div className="mx-auto max-w-[1600px]">
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
             <div className="relative min-h-[360px] overflow-hidden rounded-xl sm:min-h-[520px]">
               <Image
@@ -158,8 +158,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="px-4 pb-24 sm:px-6 sm:pb-32">
-        <div className="mx-auto max-w-[1140px]">
+      <section className="px-5 pb-24 sm:px-8 lg:px-12 xl:px-16 sm:pb-32">
+        <div className="mx-auto max-w-[1600px]">
           <div className="text-center">
             <SectionTag className="justify-center text-[#6095c2]">Our core commitments</SectionTag>
           </div>
@@ -186,9 +186,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#bfe8ff] px-4 py-24 sm:px-6 sm:py-28">
+      <section className="relative overflow-hidden bg-[#bfe8ff] px-5 py-24 sm:px-8 lg:px-12 xl:px-16 sm:py-28">
         <div className="absolute -right-40 top-0 size-[30rem] rounded-full border-[44px] border-white/20" />
-        <div className="relative mx-auto flex max-w-[1140px] flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+        <div className="relative mx-auto flex max-w-[1600px] flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div>
             <SectionTag className="text-black/50">The next shipment</SectionTag>
             <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[#212121]">

@@ -120,8 +120,8 @@ export default function IndustriesPage() {
         lead="Every sector has its own tariff schedules, regulators, and rhythms. We build the freight plan around those — not the other way around."
       />
 
-      <section className="px-4 pb-24 sm:px-6 sm:pb-32">
-        <div className="mx-auto flex max-w-[1140px] flex-col gap-20 lg:gap-28">
+      <section className="px-5 pb-24 sm:px-8 lg:px-12 xl:px-16 sm:pb-32">
+        <div className="mx-auto flex max-w-[1600px] flex-col gap-20 lg:gap-28">
           {sectors.map((sector, index) => {
             const Icon = sector.Icon;
             const reversed = index % 2 === 1;
@@ -198,9 +198,9 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#bfe8ff] px-4 py-24 sm:px-6 sm:py-28">
+      <section className="relative overflow-hidden bg-[#bfe8ff] px-5 py-24 sm:px-8 lg:px-12 xl:px-16 sm:py-28">
         <div className="absolute -right-40 top-0 size-[30rem] rounded-full border-[44px] border-white/20" />
-        <div className="relative mx-auto flex max-w-[1140px] flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+        <div className="relative mx-auto flex max-w-[1600px] flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div>
             <SectionTag className="text-black/50">Not on the list?</SectionTag>
             <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[#212121]">

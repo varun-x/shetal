@@ -18,14 +18,14 @@ export default function PageHero({
 }) {
   return (
     <section
-      className={`relative overflow-hidden px-4 pb-16 pt-32 sm:px-6 sm:pb-24 sm:pt-44 ${className} ${
+      className={`relative overflow-hidden px-5 pb-16 pt-32 sm:px-8 lg:px-12 xl:px-16 sm:pb-24 sm:pt-44 ${className} ${
         dark ? "text-white" : "text-[#212121]"
       }`}
     >
       <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-[#bfe8ff]/20 to-transparent" />
       <div className="absolute left-1/2 top-20 h-72 w-[54rem] -translate-x-1/2 rounded-full bg-[#bfe8ff]/20 blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1140px]">
+      <div className="relative mx-auto max-w-[1600px]">
         <SectionTag className={dark ? "text-[#bfe8ff]" : "text-[#6095c2]"}>
           {eyebrow}
         </SectionTag>

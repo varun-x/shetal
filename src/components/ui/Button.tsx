@@ -31,7 +31,7 @@ export default function Button({
   children: ReactNode;
   ariaLabel?: string;
 }) {
-  const cls = `inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3.5 text-[11px] font-semibold uppercase tracking-[0.02em] transition-all ${variants[variant]} ${className}`;
+  const cls = `inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3.5 text-[11px] leading-none text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6095c2] font-semibold uppercase tracking-[0.02em] transition-all ${variants[variant]} ${className}`;
 
   if (href) {
     return (

@@ -25,7 +25,7 @@ export default function SiteFooter() {
       {/* Static clouds crown the dark footer the way they carry the hero sky —
           the shared band on the one component every page renders. */}
       <CloudBlend className="top-0 h-[8rem] sm:h-[12rem]" />
-      <div className="relative mx-auto max-w-[1140px] px-4 pb-10 pt-16 sm:px-6 sm:pt-20">
+      <div className="relative mx-auto max-w-[1600px] px-5 pb-10 pt-16 sm:px-8 lg:px-12 xl:px-16 sm:pt-20">
         {/* Closing card — the wordmark sits behind the line, clipped by the card. */}
         <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#1d1d1d] px-6 pt-9 sm:px-10 sm:pt-12">
           <div className="grid-fade absolute inset-0 opacity-40" />
@@ -73,7 +73,7 @@ export default function SiteFooter() {
               and the customs coordination that keeps borders from slowing you down.
             </p>
             <div className="mt-1">
-              <SlideToWhatsApp variant="paper">Slide to chat with us</SlideToWhatsApp>
+              <SlideToWhatsApp>Slide to chat with us</SlideToWhatsApp>
             </div>
           </div>
 
@@ -117,29 +117,61 @@ export default function SiteFooter() {
             <p className="font-mono-ui text-[10px] tracking-[0.14em] text-[#bfe8ff]">
               Operations desk
             </p>
-            <div className="flex flex-col gap-3 text-sm text-white/62">
-              <p className="flex items-start gap-2.5">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-[#bfe8ff]" />
-                <span>
-                  B-459, 1st Floor, Nehru Ground N.I.T.
-                  <br />
-                  Faridabad-121001, Haryana, India
-                </span>
-              </p>
-              <a
-                href="tel:+919810573633"
-                className="flex items-center gap-2.5 transition-colors hover:text-white"
-              >
-                <Phone className="size-4 shrink-0 text-[#bfe8ff]" />
-                <span className="font-mono text-[12px]">+91 98105 73633</span>
-              </a>
-              <a
-                href="mailto:ops@trifreight.in"
-                className="flex items-center gap-2.5 transition-colors hover:text-white"
-              >
-                <Mail className="size-4 shrink-0 text-[#bfe8ff]" />
-                <span className="font-mono text-[12px]">ops@trifreight.in</span>
-              </a>
+            <div className="flex flex-col gap-5 text-sm text-white/62">
+              <div>
+                <p className="font-mono text-[10px] tracking-[0.1em] text-[#bfe8ff] mb-2">
+                  FARIDABAD
+                </p>
+                <p className="flex items-start gap-2.5">
+                  <MapPin className="mt-0.5 size-4 shrink-0 text-[#bfe8ff]" />
+                  <span>
+                    B-459, 1st Floor, Nehru Ground N.I.T.
+                    <br />
+                    Faridabad-121001, Haryana, India
+                  </span>
+                </p>
+                <a
+                  href="tel:+919810573633"
+                  className="mt-2.5 flex items-center gap-2.5 transition-colors hover:text-white"
+                >
+                  <Phone className="size-4 shrink-0 text-[#bfe8ff]" />
+                  <span className="font-mono text-[12px]">+91 98105 73633</span>
+                </a>
+                <a
+                  href="mailto:ops@trifreight.in"
+                  className="mt-2.5 flex items-center gap-2.5 transition-colors hover:text-white"
+                >
+                  <Mail className="size-4 shrink-0 text-[#bfe8ff]" />
+                  <span className="font-mono text-[12px]">ops@trifreight.in</span>
+                </a>
+              </div>
+              <div className="border-t border-white/10 pt-3">
+                <p className="font-mono text-[10px] tracking-[0.1em] text-[#bfe8ff] mb-2">
+                  LUDHIANA BRANCH
+                </p>
+                <p className="flex items-start gap-2.5">
+                  <MapPin className="mt-0.5 size-4 shrink-0 text-[#bfe8ff]" />
+                  <span>
+                    Cabin 6, First Floor, Deepak Complex,
+                    <br />
+                    New Grain Market, Ludhiana, Punjab
+                  </span>
+                </p>
+                <a
+                  href="tel:+919667108950"
+                  className="mt-2.5 flex items-center gap-2.5 transition-colors hover:text-white"
+                >
+                  <Phone className="size-4 shrink-0 text-[#bfe8ff]" />
+                  <span className="font-mono text-[12px]">+91 96671 08950</span>
+                </a>
+                <a
+                  href="tel:+917889108950"
+                  className="mt-2.5 flex items-center gap-2.5 transition-colors hover:text-white"
+                >
+                  <Phone className="size-4 shrink-0 text-[#bfe8ff]" />
+                  <span className="font-mono text-[12px]">+91 78891 08950</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

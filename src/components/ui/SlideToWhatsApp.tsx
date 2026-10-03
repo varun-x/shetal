@@ -1,63 +1,27 @@
 "use client";
 
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { Check, Container, MapPin } from "lucide-react";
 
-const WHATSAPP_NUMBER = "919457737292";
-const PREFILL =
+export const WHATSAPP_NUMBER = "919457737292";
+export const PREFILL =
   "Hi Trifreight — I'd like a freight plan. Lane: ___ , cargo: ___ , ready by: ___";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(PREFILL)}`;
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(PREFILL)}`;
 
-const KNOB = 40; // px — matches size-10
+const KNOB = 44; // px — matches size-11
 const PAD = 6; // px — matches p-1.5
 const COMPLETE_AT = 0.9;
 
-type Variant = "ink" | "paper";
-
-const styles: Record<
-  Variant,
-  { track: string; fill: string; knob: string; label: string; hint: string }
-> = {
-  ink: {
-    track: "bg-[#1a1a1a] shadow-[0_14px_30px_rgba(16,16,16,0.22)]",
-    fill: "bg-[#bfe8ff]",
-    knob: "bg-[#bfe8ff] text-[#1a1a1a]",
-    label: "text-white",
-    hint: "text-white/45",
-  },
-  paper: {
-    track: "bg-white shadow-[0_14px_30px_rgba(27,54,77,0.18)]",
-    fill: "bg-[#bfe8ff]",
-    knob: "bg-[#1a1a1a] text-[#bfe8ff]",
-    label: "text-[#1a1a1a]",
-    hint: "text-black/40",
-  },
-};
-
-function GridGlyph() {
-  return (
-    <svg viewBox="0 0 16 16" className="size-[15px]" aria-hidden="true">
-      {[3, 8, 13].map((y) =>
-        [3, 8, 13].map((x) => (
-          <circle key={`${x}-${y}`} cx={x} cy={y} r={1.35} fill="currentColor" />
-        ))
-      )}
-    </svg>
-  );
-}
-
 /**
- * Slide the grid box to the end of the track to open a WhatsApp chat with the
+ * Slide the shipping container to the destination marker at the end of the track to open a WhatsApp chat with the
  * operations desk. A plain tap or Enter/Space also completes it, so the control
  * still works for keyboard and assistive-tech users.
  */
 export default function SlideToWhatsApp({
   children,
-  variant = "ink",
   className = "",
 }: {
   children: React.ReactNode;
-  variant?: Variant;
   className?: string;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -66,7 +30,6 @@ export default function SlideToWhatsApp({
   const [progress, setProgress] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [done, setDone] = useState(false);
-  const s = styles[variant];
 
   // The knob's travel distance follows the track's rendered width. Measured in
   // an effect (refs must not be read during render) and kept in sync on resize.
@@ -130,29 +93,36 @@ export default function SlideToWhatsApp({
   return (
     <div
       ref={trackRef}
-      className={`relative inline-flex w-[19rem] max-w-full items-center overflow-hidden rounded-lg p-1.5 ${s.track} ${className}`}
+      className={`relative flex h-14 w-[22rem] max-w-full items-center overflow-hidden rounded-full bg-[#141414] p-1.5 shadow-[0_14px_30px_rgba(16,16,16,0.22)] ring-1 ring-white/15 ${className}`}
     >
-      {/* Fill trailing the knob. */}
+      {/* Route trailing the container. */}
       <span
-        className={`absolute inset-y-0 left-0 ${s.fill} ${
+        className={`absolute inset-y-0 left-0 rounded-full bg-[#bfe8ff]/25 ${
           dragging ? "" : "transition-[width] duration-300 ease-out"
         }`}
         style={{ width: `${offset + KNOB + PAD * 2}px` }}
         aria-hidden="true"
       />
 
+      {/* Destination marker. */}
       <span
-        className={`pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center justify-center gap-2 pl-14 pr-4 text-[13px] font-semibold tracking-[-0.01em] transition-opacity duration-200 ${s.label}`}
-        style={{ right: 0, opacity: done ? 0 : 1 - progress * 1.4 }}
+        className="pointer-events-none absolute right-1.5 top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-dashed border-[#bfe8ff]/60 text-[#bfe8ff]"
         aria-hidden="true"
       >
-        {children}
-        <ArrowRight className={`size-4 ${s.hint}`} />
+        <MapPin className="size-5" />
+      </span>
+
+      <span
+        className="pointer-events-none absolute inset-y-0 left-[3.5rem] right-[3.5rem] z-10 flex items-center justify-center truncate text-center text-[14px] font-semibold leading-none tracking-[-0.01em] text-white transition-opacity duration-200"
+        style={{ opacity: done ? 0 : Math.max(0, 1 - progress * 1.6) }}
+        aria-hidden="true"
+      >
+        <span className="truncate">{children}</span>
       </span>
 
       {done && (
         <span
-          className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-[13px] font-semibold text-[#1a1a1a]"
+          className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-[14px] font-semibold text-white"
           aria-hidden="true"
         >
           Opening WhatsApp…
@@ -172,12 +142,12 @@ export default function SlideToWhatsApp({
           }
         }}
         aria-label={`${typeof children === "string" ? children : "Chat with the operations desk"} — slide, tap, or press Enter to open WhatsApp`}
-        className={`relative z-20 grid size-10 shrink-0 cursor-grab touch-none place-items-center rounded-md active:cursor-grabbing ${s.knob} ${
+        className={`relative z-20 grid size-11 shrink-0 cursor-grab touch-none place-items-center rounded-full bg-[#bfe8ff] text-[#141414] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:cursor-grabbing ${
           dragging ? "" : "transition-transform duration-300 ease-out"
         }`}
         style={{ transform: `translateX(${offset}px)` }}
       >
-        {done ? <Check className="size-[18px]" /> : <GridGlyph />}
+        {done ? <Check className="size-5" /> : <Container className="size-5" strokeWidth={2.2} />}
       </button>
     </div>
   );

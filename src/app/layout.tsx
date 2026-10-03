@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Caveat, Fragment_Mono, Funnel_Display, Inter } from "next/font/google";
 import "./globals.css";
+import WhatsAppFab from "@/components/ui/WhatsAppFab";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -53,7 +54,10 @@ export default function RootLayout({
       className={`${inter.variable} ${funnelDisplay.variable} ${fragmentMono.variable} ${caveat.variable} antialiased`}
       data-scroll-behavior="smooth"
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <WhatsAppFab />
+      </body>
     </html>
   );
 }
