@@ -1,25 +1,17 @@
-export function BrandMark({ dark = false }: { dark?: boolean }) {
+import Image from "next/image";
+
+/** The Trifreight "T" mark (blue on transparent — reads on both light and dark grounds). */
+export function BrandMark({ className = "h-8 w-auto" }: { className?: string }) {
   return (
-    <span
-      className={`relative grid size-9 shrink-0 place-items-center rounded-full ${
-        dark ? "bg-white" : "bg-ink"
-      }`}
+    <Image
+      src="/images/brand/trifreight-mark.webp"
+      alt=""
       aria-hidden="true"
-    >
-      <span
-        className={`absolute h-[3px] w-5 -rotate-[35deg] rounded-full ${
-          dark ? "bg-ink" : "bg-white"
-        }`}
-      />
-      <span
-        className={`absolute h-[3px] w-5 rotate-[35deg] rounded-full ${
-          dark ? "bg-ink" : "bg-white"
-        }`}
-      />
-      <span
-        className={`absolute size-2.5 rounded-full ${dark ? "bg-white" : "bg-ink"}`}
-      />
-    </span>
+      width={480}
+      height={290}
+      loading="eager"
+      className={`shrink-0 select-none ${className}`}
+    />
   );
 }
 

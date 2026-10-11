@@ -58,7 +58,7 @@ export default function SiteFooter() {
         <div className="mt-16 grid gap-12 lg:grid-cols-[1.25fr_0.75fr_0.85fr_1fr] sm:mt-20">
           <div className="flex flex-col gap-5">
             <Link href="/" className="flex items-center gap-2.5" aria-label="Trifreight home">
-              <BrandMark dark />
+              <BrandMark className="h-9 w-auto" />
               <span className="inline-flex flex-col leading-none">
                 <span className="font-display text-xl font-semibold tracking-[-0.05em]">
                   Trifreight
