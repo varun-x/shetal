@@ -93,11 +93,11 @@ export default function SlideToWhatsApp({
   return (
     <div
       ref={trackRef}
-      className={`relative flex h-14 w-[22rem] max-w-full items-center overflow-hidden rounded-full bg-[#141414] p-1.5 shadow-[0_14px_30px_rgba(16,16,16,0.22)] ring-1 ring-white/15 ${className}`}
+      className={`relative flex h-14 w-[22rem] max-w-full items-center overflow-hidden rounded-full bg-night p-1.5 shadow-[0_14px_30px_rgba(16,16,16,0.22)] ring-1 ring-white/15 ${className}`}
     >
       {/* Route trailing the container. */}
       <span
-        className={`absolute inset-y-0 left-0 rounded-full bg-[#bfe8ff]/25 ${
+        className={`absolute inset-y-0 left-0 rounded-full bg-powder/25 ${
           dragging ? "" : "transition-[width] duration-300 ease-out"
         }`}
         style={{ width: `${offset + KNOB + PAD * 2}px` }}
@@ -106,7 +106,7 @@ export default function SlideToWhatsApp({
 
       {/* Destination marker. */}
       <span
-        className="pointer-events-none absolute right-1.5 top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-dashed border-[#bfe8ff]/60 text-[#bfe8ff]"
+        className="pointer-events-none absolute right-1.5 top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-dashed border-powder/60 text-powder"
         aria-hidden="true"
       >
         <MapPin className="size-5" />
@@ -142,7 +142,7 @@ export default function SlideToWhatsApp({
           }
         }}
         aria-label={`${typeof children === "string" ? children : "Chat with the operations desk"} — slide, tap, or press Enter to open WhatsApp`}
-        className={`relative z-20 grid size-11 shrink-0 cursor-grab touch-none place-items-center rounded-full bg-[#bfe8ff] text-[#141414] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:cursor-grabbing ${
+        className={`relative z-20 grid size-11 shrink-0 cursor-grab touch-none place-items-center rounded-full bg-powder text-night focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:cursor-grabbing ${
           dragging ? "" : "transition-transform duration-300 ease-out"
         }`}
         style={{ transform: `translateX(${offset}px)` }}

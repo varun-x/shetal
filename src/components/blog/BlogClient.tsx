@@ -88,7 +88,7 @@ export default function BlogClient() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search articles, policies, HS guides..."
-              className="w-full rounded-lg border border-black/10 bg-white py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-black/38 focus:border-[#222222]"
+              className="w-full rounded-lg border border-black/10 bg-white py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-black/38 focus:border-ink"
             />
           </div>
           <div className="flex flex-wrap items-center gap-2">
@@ -106,7 +106,7 @@ export default function BlogClient() {
                   {isActive && (
                     <motion.span
                       layoutId="blog-pill"
-                      className="absolute inset-0 rounded-full bg-[#222222]"
+                      className="absolute inset-0 rounded-full bg-ink"
                       transition={{ type: "spring", stiffness: 360, damping: 30 }}
                     />
                   )}
@@ -120,10 +120,10 @@ export default function BlogClient() {
 
       <div className="mx-auto mt-8 flex max-w-[1140px] flex-col gap-8 px-4 sm:px-6">
         {featured && (
-          <article className="group grid overflow-hidden rounded-xl border border-black/8 bg-[#222222] text-white lg:grid-cols-[1.1fr_0.9fr]">
+          <article className="group grid overflow-hidden rounded-xl border border-black/8 bg-ink text-white lg:grid-cols-[1.1fr_0.9fr]">
             <div className="flex flex-col justify-center p-7 sm:p-10">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="font-mono-ui rounded-full bg-white/10 px-3 py-1.5 text-[9px] tracking-[0.1em] text-[#bfe8ff]">
+                <span className="font-mono-ui rounded-full bg-white/10 px-3 py-1.5 text-[9px] tracking-[0.1em] text-powder">
                   FEATURED / {featured.category}
                 </span>
                 <span className="flex items-center gap-1.5 text-xs text-white/50">
@@ -143,7 +143,7 @@ export default function BlogClient() {
                 </span>
               </div>
             </div>
-            <div className="relative flex min-h-[220px] items-end bg-[#6095c2] p-7 sm:p-10 lg:min-h-full">
+            <div className="relative flex min-h-[220px] items-end bg-sky p-7 sm:p-10 lg:min-h-full">
               <div className="absolute inset-0 opacity-20" />
               <p className="font-display relative text-[clamp(2.6rem,6vw,6rem)] font-semibold leading-[0.85] tracking-[-0.08em] opacity-90">
                 Tread the <br /> tariff carefully.
@@ -161,7 +161,7 @@ export default function BlogClient() {
                 className="group flex flex-col rounded-xl border border-black/8 bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(27,54,77,0.1)] sm:p-8"
               >
                 <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="font-mono-ui rounded-full bg-[#edf6fb] px-3 py-1.5 text-[9px] tracking-[0.1em] text-[#6095c2]">
+                  <span className="font-mono-ui rounded-full bg-[#edf6fb] px-3 py-1.5 text-[9px] tracking-[0.1em] text-sky">
                     {article.category}
                   </span>
                   <span className="flex items-center gap-1.5 text-xs text-black/45">

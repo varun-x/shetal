@@ -19,14 +19,14 @@ export default function PageHero({
   return (
     <section
       className={`relative overflow-hidden px-5 pb-16 pt-32 sm:px-8 lg:px-12 xl:px-16 sm:pb-24 sm:pt-44 ${className} ${
-        dark ? "text-white" : "text-[#212121]"
+        dark ? "text-white" : "text-ink"
       }`}
     >
-      <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-[#bfe8ff]/20 to-transparent" />
-      <div className="absolute left-1/2 top-20 h-72 w-[54rem] -translate-x-1/2 rounded-full bg-[#bfe8ff]/20 blur-3xl" />
+      <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-powder/20 to-transparent" />
+      <div className="absolute left-1/2 top-20 h-72 w-[54rem] -translate-x-1/2 rounded-full bg-powder/20 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1600px]">
-        <SectionTag className={dark ? "text-[#bfe8ff]" : "text-[#6095c2]"}>
+        <SectionTag className={dark ? "text-powder" : "text-sky"}>
           {eyebrow}
         </SectionTag>
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.42fr_0.58fr] lg:items-end lg:gap-20">

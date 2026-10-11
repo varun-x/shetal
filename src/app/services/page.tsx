@@ -9,6 +9,7 @@ import Reveal from "@/components/ui/Reveal";
 import Sticker from "@/components/ui/Sticker";
 import { serviceCategories, logisticsModes } from "@/components/services/data";
 import Button from "@/components/ui/Button";
+import { HeavyCargoBanner } from "@/components/specialty/HeavyCargoSpotlight";
 
 export const metadata: Metadata = {
   title: "Trade, Customs & Freight Services",
@@ -39,7 +40,7 @@ const process = [
 
 export default function ServicesPage() {
   return (
-    <main className="bg-[#fbfdff] text-[#212121]">
+    <main className="bg-paper text-ink">
       <SiteHeader />
 
       <PageHero
@@ -47,13 +48,17 @@ export default function ServicesPage() {
         title={
           <>
             Everything freight touches,{" "}
-            <span className="inline-block rounded-lg bg-[#bfe8ff] px-[0.12em] pb-[0.06em] pt-[0.02em]">
+            <span className="inline-block rounded-lg bg-powder px-[0.12em] pb-[0.06em] pt-[0.02em]">
               in one plan.
             </span>
           </>
         }
         lead="We run air, ocean, road, and customs as a single movement — not four separate quotes stacked on top of each other."
       />
+
+      <div className="px-4 pb-10 sm:px-8 lg:px-12">
+        <HeavyCargoBanner />
+      </div>
 
       <nav
         aria-label="Service categories"
@@ -64,7 +69,7 @@ export default function ServicesPage() {
             <li key={c.id} className="shrink-0">
               <a
                 href={`#${c.id}`}
-                className="block rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold text-[#212121] transition-colors hover:border-[#bfe8ff] hover:bg-[#bfe8ff]"
+                className="block rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold text-ink transition-colors hover:border-powder hover:bg-powder"
               >
                 {c.title}
               </a>
@@ -96,17 +101,31 @@ export default function ServicesPage() {
                     {cat.description}
                   </p>
 
-                  <div className="mt-6 flex items-start gap-3 rounded-lg bg-[#bfe8ff]/45 px-4 py-3.5">
-                    <BadgeCheck className="mt-0.5 size-5 shrink-0 text-[#212121]" />
-                    <p className="text-[13px] leading-relaxed text-[#212121]">
-                      <span className="font-semibold">Best value, in writing. </span>
-                      {cat.pricing}
-                    </p>
-                  </div>
-
-                  <div className="mt-6">
-                    <Button href="/contact" variant="ink">
-                      Get a quote for this service <ArrowUpRight className="size-4" />
+                  <div className="relative mt-7 overflow-hidden rounded-xl border-2 border-ink bg-powder p-5 shadow-[6px_6px_0_var(--ink)] sm:p-6">
+                    <div className="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full border-[18px] border-white/40" />
+                    <div className="relative flex items-start gap-4">
+                      <span className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-powder">
+                        <BadgeCheck className="size-6" />
+                      </span>
+                      <div>
+                        <p className="font-mono-ui text-[10px] tracking-[0.14em] text-ink/60">
+                          Our price promise
+                        </p>
+                        <p className="font-display mt-1 text-xl font-semibold leading-tight tracking-[-0.03em] text-ink">
+                          Best value, in writing.
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-ink/75">{cat.pricing}</p>
+                      </div>
+                    </div>
+                    <Button
+                      href="/contact"
+                      variant="ink"
+                      className="group relative mt-5 w-full py-4! text-xs! sm:w-auto"
+                    >
+                      Get a quote for this service
+                      <span className="grid size-6 place-items-center rounded-full bg-powder text-ink transition-transform duration-300 group-hover:rotate-45">
+                        <ArrowUpRight className="size-3.5" />
+                      </span>
                     </Button>
                   </div>
                 </div>
@@ -116,9 +135,9 @@ export default function ServicesPage() {
                     {cat.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-3 rounded-lg border border-black/8 bg-white px-4 py-3.5 text-[13px] leading-snug text-black/75 transition-colors hover:border-[#6095c2]/50"
+                        className="flex items-start gap-3 rounded-lg border border-black/8 bg-white px-4 py-3.5 text-[13px] leading-snug text-black/75 transition-colors hover:border-sky/50"
                       >
-                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-[#6095c2]" />
+                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-sky" />
                         {item}
                       </li>
                     ))}
@@ -129,21 +148,22 @@ export default function ServicesPage() {
                       {logisticsModes.map((m) => (
                         <div
                           key={m.title}
-                          className="group relative aspect-[4/3] overflow-hidden rounded-lg"
+                          className="group flex flex-col overflow-hidden rounded-lg border border-black/8 bg-white transition-shadow duration-300 hover:shadow-[0_18px_34px_rgba(27,54,77,0.12)]"
                         >
-                          <Image
-                            src={m.image}
-                            alt={m.alt}
-                            fill
-                            sizes="(max-width: 640px) 92vw, 30vw"
-                            className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-                          <div className="absolute inset-x-4 bottom-4 text-white">
-                            <p className="font-display text-lg font-semibold tracking-[-0.03em]">
+                          <div className="relative aspect-[4/3] overflow-hidden">
+                            <Image
+                              src={m.image}
+                              alt={m.alt}
+                              fill
+                              sizes="(max-width: 640px) 92vw, 30vw"
+                              className={`object-cover transition-transform duration-700 group-hover:scale-[1.04] ${m.position ?? ""}`}
+                            />
+                          </div>
+                          <div className="flex-1 px-4 py-3.5">
+                            <p className="font-display text-lg font-semibold tracking-[-0.03em] text-ink">
                               {m.title}
                             </p>
-                            <p className="mt-1 text-xs leading-snug text-white/75">{m.text}</p>
+                            <p className="mt-1 text-xs leading-snug text-black/60">{m.text}</p>
                           </div>
                         </div>
                       ))}
@@ -156,12 +176,12 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#222222] px-4 py-20 text-white sm:px-8 sm:py-28 lg:px-12">
+      <section className="relative overflow-hidden bg-ink px-4 py-20 text-white sm:px-8 sm:py-28 lg:px-12">
         <div className="grid-fade absolute inset-0 opacity-60" />
         <div className="relative">
           <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
             <div>
-              <SectionTag className="text-[#bfe8ff]">How a shipment moves</SectionTag>
+              <SectionTag className="text-powder">How a shipment moves</SectionTag>
               <h2 className="font-display mt-5 max-w-xl text-[clamp(2.2rem,4vw,3.6rem)] font-semibold leading-[1.02] tracking-[-0.04em]">
                 Three decisions stand between cargo and chaos.
               </h2>
@@ -182,7 +202,7 @@ export default function ServicesPage() {
                     key={step.number}
                     className="grid gap-4 py-7 sm:grid-cols-[52px_1fr] sm:items-center sm:gap-8"
                   >
-                    <span className="font-mono-ui text-[10px] tracking-[0.12em] text-[#bfe8ff]">
+                    <span className="font-mono-ui text-[10px] tracking-[0.12em] text-powder">
                       {step.number}
                     </span>
                     <div>
@@ -201,12 +221,12 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#bfe8ff] px-4 py-20 sm:px-8 sm:py-24 lg:px-12">
+      <section className="relative overflow-hidden bg-powder px-4 py-20 sm:px-8 sm:py-24 lg:px-12">
         <div className="absolute -left-40 top-0 size-[30rem] rounded-full border-[44px] border-white/20" />
         <div className="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div>
             <SectionTag className="text-black/50">One operator, end to end</SectionTag>
-            <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[#212121]">
+            <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-ink">
               Fewer handoffs than your freight has to make.
             </h2>
           </div>

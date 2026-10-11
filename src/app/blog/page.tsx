@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <main className="mx-auto max-w-[1280px] bg-[#fbfdff] text-[#212121] shadow-[0_0_80px_rgba(8,34,58,0.08)]">
+    <main className="mx-auto max-w-[1280px] bg-paper text-ink shadow-[0_0_80px_rgba(8,34,58,0.08)]">
       <SiteHeader />
 
       <PageHero
@@ -20,7 +20,7 @@ export default function BlogPage() {
         title={
           <>
             The paperwork,{" "}
-            <span className="inline-block rounded-lg bg-[#bfe8ff] px-[0.14em] pb-[0.06em] pt-[0.02em]">
+            <span className="inline-block rounded-lg bg-powder px-[0.14em] pb-[0.06em] pt-[0.02em]">
               explained plainly.
             </span>
           </>

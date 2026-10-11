@@ -113,11 +113,11 @@ export default function SiteHeader() {
                 {isActive(item.path) ? (
                   <motion.span
                     layoutId="nav-underline"
-                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full bg-[#222222]"
+                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full bg-ink"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 ) : (
-                  <span className="absolute -bottom-1.5 left-1/2 h-0.5 w-0 rounded-full bg-[#222222]/30 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:left-0 group-hover:w-full" />
+                  <span className="absolute -bottom-1.5 left-1/2 h-0.5 w-0 rounded-full bg-ink/30 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:left-0 group-hover:w-full" />
                 )}
               </Link>
             </motion.div>
@@ -131,7 +131,7 @@ export default function SiteHeader() {
         >
           <Link
             href="/contact"
-            className="hidden items-center gap-2 rounded-lg bg-[#222222] px-4 py-3 text-[11px] font-semibold uppercase tracking-[-0.01em] text-white transition-transform hover:-translate-y-0.5 lg:flex"
+            className="hidden items-center gap-2 rounded-lg bg-ink px-4 py-3 text-[11px] font-semibold uppercase tracking-[-0.01em] text-white transition-transform hover:-translate-y-0.5 lg:flex"
           >
             Get Quote <ArrowUpRight className="size-3.5" />
           </Link>
@@ -143,7 +143,7 @@ export default function SiteHeader() {
           transition={{ duration: 0.3, delay: 0.4 }}
           type="button"
           onClick={() => setMenuOpen((open) => !open)}
-          className="grid size-10 place-items-center rounded-lg text-[#222222] transition-colors hover:bg-black/5 lg:hidden"
+          className="grid size-10 place-items-center rounded-lg text-ink transition-colors hover:bg-black/5 lg:hidden"
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
         >
@@ -211,7 +211,7 @@ export default function SiteHeader() {
                   <Link
                     href="/contact"
                     onClick={() => setMenuOpen(false)}
-                    className="mt-1 flex items-center justify-center gap-2 rounded-lg bg-[#222222] px-4 py-3.5 text-xs font-semibold text-white"
+                    className="mt-1 flex items-center justify-center gap-2 rounded-lg bg-ink px-4 py-3.5 text-xs font-semibold text-white"
                   >
                     Get Quote <ArrowUpRight className="size-4" />
                   </Link>

@@ -16,7 +16,7 @@ const modes = [
 const OPS_EMAIL = "ops@trifreight.in";
 
 const fieldClass =
-  "w-full rounded-lg border border-black/10 bg-white px-4 py-3 text-sm outline-none transition-colors placeholder:text-black/35 focus:border-[#222222]";
+  "w-full rounded-lg border border-black/10 bg-white px-4 py-3 text-sm outline-none transition-colors placeholder:text-black/35 focus:border-ink";
 
 const labelClass = "font-mono-ui block text-[9px] tracking-[0.12em] text-black/50";
 

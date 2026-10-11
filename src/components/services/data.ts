@@ -180,20 +180,23 @@ export const serviceCategories: ServiceCategory[] = [
 export const logisticsModes = [
   {
     title: "Air freight",
-    image: "/images/trifreight/air-freight.jpg",
-    alt: "Aircraft on a runway for air freight",
+    image: "/images/trifreight/air-cargo-loading.jpg",
+    alt: "Ground crew loading a netted cargo pallet into an aircraft hold",
+    position: "object-[20%_60%]",
     text: "Space booking, priority uplift and cold-chain for time-critical cargo.",
   },
   {
     title: "Ocean freight",
-    image: "/images/trifreight/ocean-freight.jpg",
-    alt: "Cargo ship moving through open water",
+    image: "/images/trifreight/ocean-container-ship.jpg",
+    alt: "Container ship stacked with boxes being worked by quay cranes, seen from above",
+    position: "object-[30%_center]",
     text: "FCL and LCL, weekly consolidation, reefer, ODC and project containers.",
   },
   {
     title: "Road transport",
-    image: "/images/trifreight/road-freight.jpg",
-    alt: "Freight truck on an open road",
+    image: "/images/trifreight/road-heavy-haul.jpg",
+    alt: "Backhoe loader strapped to a low-bed trailer on an Indian highway",
+    position: "object-[55%_35%]",
     text: "First and last mile, SAARC cross-border haulage, bonded trucking, live tracking.",
   },
 ];

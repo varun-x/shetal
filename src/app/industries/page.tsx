@@ -19,8 +19,8 @@ const sectors = [
     number: "01",
     title: "Technology & Electronics",
     subtitle: "High-value components & finished goods",
-    image: "/images/trifreight/air-freight.jpg",
-    alt: "Freight aircraft on the tarmac",
+    image: "/images/trifreight/electronics.jpg",
+    alt: "Assembled circuit boards lined up in trays on an electronics production line",
     Icon: Cpu,
     challenge:
       "Tight classification audits, high declared values, and production lines that cannot survive a two-week customs hold.",
@@ -36,8 +36,8 @@ const sectors = [
     number: "02",
     title: "Pharmaceuticals & Healthcare",
     subtitle: "Cold-chain logistics & life science assets",
-    image: "/images/trifreight/container-terminal.jpg",
-    alt: "Shipping containers at a terminal",
+    image: "/images/trifreight/pharma.jpg",
+    alt: "Gloved hands filling capsules on a pharmaceutical tray",
     Icon: Activity,
     challenge:
       "Temperature deviations, health-authority approvals, and expiry-date windows that make a day of delay feel like a loss.",
@@ -53,8 +53,8 @@ const sectors = [
     number: "03",
     title: "Automotive & Engineering",
     subtitle: "Just-in-time part shipments",
-    image: "/images/trifreight/road-freight.jpg",
-    alt: "Freight truck moving along a road",
+    image: "/images/trifreight/engineering-factory.jpg",
+    alt: "Rows of machining stations on an Indian engineering shop floor",
     Icon: Factory,
     challenge:
       "JIT assembly lines that stop the moment a container misses its slot, plus thousands of micro HS codes to keep straight.",
@@ -70,8 +70,8 @@ const sectors = [
     number: "04",
     title: "E-commerce & Retail",
     subtitle: "High-volume B2C & B2B dispatch",
-    image: "/images/trifreight/ocean-freight.jpg",
-    alt: "Container vessel crossing open water",
+    image: "/images/trifreight/ecommerce-warehouse.jpg",
+    alt: "Warehouse associate checking orders between racks of picking bins",
     Icon: ShoppingBag,
     challenge:
       "Peak-season rate swings, split entries across multiple ports, and returns that consume the margin of every good sale.",
@@ -87,8 +87,8 @@ const sectors = [
     number: "05",
     title: "Industrial Machinery & Metals",
     subtitle: "Over-dimensional cargo & project logistics",
-    image: "/images/trifreight/ocean-freight.jpg",
-    alt: "Heavy cargo vessel on the water",
+    image: "/images/trifreight/steel-yard.jpg",
+    alt: "Bundles of long steel sections stacked in an industrial yard",
     Icon: Cog,
     challenge:
       "Oversized turbines and machinery need special containers, escorts, and heavy-lift appraisals nobody quotes up front.",
@@ -104,7 +104,7 @@ const sectors = [
 
 export default function IndustriesPage() {
   return (
-    <main className="mx-auto max-w-[1280px] bg-[#fbfdff] text-[#212121] shadow-[0_0_80px_rgba(8,34,58,0.08)]">
+    <main className="mx-auto max-w-[1280px] bg-paper text-ink shadow-[0_0_80px_rgba(8,34,58,0.08)]">
       <SiteHeader />
 
       <PageHero
@@ -112,7 +112,7 @@ export default function IndustriesPage() {
         title={
           <>
             Built for how{" "}
-            <span className="inline-block rounded-lg bg-[#bfe8ff] px-[0.12em] pb-[0.06em] pt-[0.02em]">
+            <span className="inline-block rounded-lg bg-powder px-[0.12em] pb-[0.06em] pt-[0.02em]">
               your sector moves.
             </span>
           </>
@@ -138,26 +138,27 @@ export default function IndustriesPage() {
                       alt={sector.alt}
                       fill
                       sizes="(max-width: 1024px) 92vw, 620px"
+                      loading={index === 0 ? "eager" : undefined}
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#132b3e]/70 via-transparent to-transparent" />
                     <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-white">
                       <div>
-                        <p className="font-mono-ui text-[9px] tracking-[0.12em] text-[#bfe8ff]">
+                        <p className="font-mono-ui text-[9px] tracking-[0.12em] text-powder">
                           SECTOR / {sector.number}
                         </p>
                         <p className="font-display mt-2 max-w-xs text-2xl font-semibold leading-[0.95] tracking-[-0.055em] sm:text-3xl">
                           {sector.title}
                         </p>
                       </div>
-                      <span className="grid size-12 shrink-0 place-items-center rounded-lg border border-white/20 bg-white/12 text-[#bfe8ff] backdrop-blur">
+                      <span className="grid size-12 shrink-0 place-items-center rounded-lg border border-white/20 bg-white/12 text-powder backdrop-blur">
                         <Icon className="size-5" />
                       </span>
                     </div>
                   </div>
 
                   <div className={reversed ? "lg:order-1" : ""}>
-                    <p className="font-mono-ui text-[10px] tracking-[0.12em] text-[#6095c2]">
+                    <p className="font-mono-ui text-[10px] tracking-[0.12em] text-sky">
                       {sector.subtitle}
                     </p>
                     <h2 className="font-display mt-3 text-[clamp(2.1rem,3.8vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
@@ -185,7 +186,7 @@ export default function IndustriesPage() {
                           key={benefit}
                           className="flex items-center gap-3 text-sm font-medium"
                         >
-                          <ArrowUpRight className="size-4 shrink-0 text-[#6095c2]" />
+                          <ArrowUpRight className="size-4 shrink-0 text-sky" />
                           {benefit}
                         </li>
                       ))}
@@ -198,12 +199,12 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#bfe8ff] px-5 py-24 sm:px-8 lg:px-12 xl:px-16 sm:py-28">
+      <section className="relative overflow-hidden bg-powder px-5 py-24 sm:px-8 lg:px-12 xl:px-16 sm:py-28">
         <div className="absolute -right-40 top-0 size-[30rem] rounded-full border-[44px] border-white/20" />
         <div className="relative mx-auto flex max-w-[1600px] flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div>
             <SectionTag className="text-black/50">Not on the list?</SectionTag>
-            <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[#212121]">
+            <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-ink">
               Strange cargo is our favourite kind.
             </h2>
           </div>

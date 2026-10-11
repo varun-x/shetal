@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <main className="mx-auto max-w-[1280px] bg-[#fbfdff] text-[#212121] shadow-[0_0_80px_rgba(8,34,58,0.08)]">
+    <main className="mx-auto max-w-[1280px] bg-paper text-ink shadow-[0_0_80px_rgba(8,34,58,0.08)]">
       <SiteHeader />
 
       <PageHero
@@ -23,7 +23,7 @@ export default function CaseStudiesPage() {
         title={
           <>
             Receipts,{" "}
-            <span className="inline-block rounded-lg bg-[#bfe8ff] px-[0.12em] pb-[0.06em] pt-[0.02em]">
+            <span className="inline-block rounded-lg bg-powder px-[0.12em] pb-[0.06em] pt-[0.02em]">
               not promises.
             </span>
           </>
@@ -33,12 +33,12 @@ export default function CaseStudiesPage() {
 
       <CaseStudiesClient />
 
-      <section className="relative overflow-hidden bg-[#bfe8ff] px-4 py-24 sm:px-6 sm:py-28">
+      <section className="relative overflow-hidden bg-powder px-4 py-24 sm:px-6 sm:py-28">
         <div className="absolute -right-40 top-0 size-[30rem] rounded-full border-[44px] border-white/20" />
         <div className="relative mx-auto flex max-w-[1140px] flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div>
             <SectionTag className="text-black/50">Yours could be the seventh</SectionTag>
-            <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[#212121]">
+            <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-ink">
               Every plan starts the same way.
             </h2>
           </div>

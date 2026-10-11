@@ -2,22 +2,22 @@ export function BrandMark({ dark = false }: { dark?: boolean }) {
   return (
     <span
       className={`relative grid size-9 shrink-0 place-items-center rounded-full ${
-        dark ? "bg-white" : "bg-[#222222]"
+        dark ? "bg-white" : "bg-ink"
       }`}
       aria-hidden="true"
     >
       <span
         className={`absolute h-[3px] w-5 -rotate-[35deg] rounded-full ${
-          dark ? "bg-[#222222]" : "bg-white"
+          dark ? "bg-ink" : "bg-white"
         }`}
       />
       <span
         className={`absolute h-[3px] w-5 rotate-[35deg] rounded-full ${
-          dark ? "bg-[#222222]" : "bg-white"
+          dark ? "bg-ink" : "bg-white"
         }`}
       />
       <span
-        className={`absolute size-2.5 rounded-full ${dark ? "bg-white" : "bg-[#222222]"}`}
+        className={`absolute size-2.5 rounded-full ${dark ? "bg-white" : "bg-ink"}`}
       />
     </span>
   );
@@ -28,7 +28,7 @@ export function BrandWordmark({ dark = false }: { dark?: boolean }) {
     <span className="inline-flex flex-col leading-none">
       <span
         className={`font-display block text-[1.1rem] font-bold tracking-[-0.06em] ${
-          dark ? "text-white" : "text-[#212121]"
+          dark ? "text-white" : "text-ink"
         }`}
       >
         Trifreight

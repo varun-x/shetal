@@ -29,7 +29,7 @@ const desks = [
 
 export default function ContactPage() {
   return (
-    <main className="mx-auto max-w-[1280px] bg-[#fbfdff] text-[#212121] shadow-[0_0_80px_rgba(8,34,58,0.08)]">
+    <main className="mx-auto max-w-[1280px] bg-paper text-ink shadow-[0_0_80px_rgba(8,34,58,0.08)]">
       <SiteHeader />
 
       <PageHero
@@ -37,7 +37,7 @@ export default function ContactPage() {
         title={
           <>
             Start with the lane,{" "}
-            <span className="inline-block rounded-lg bg-[#bfe8ff] px-[0.14em] pb-[0.06em] pt-[0.02em]">
+            <span className="inline-block rounded-lg bg-powder px-[0.14em] pb-[0.06em] pt-[0.02em]">
               not the form.
             </span>
           </>
@@ -50,15 +50,15 @@ export default function ContactPage() {
           <ContactForm />
 
           <div className="flex flex-col gap-4">
-            <div className="rounded-xl border border-white/10 bg-[#141414] p-6 text-white sm:p-8">
-              <SectionTag className="text-[#bfe8ff]">Operations desk</SectionTag>
+            <div className="rounded-xl border border-white/10 bg-night p-6 text-white sm:p-8">
+              <SectionTag className="text-powder">Operations desk</SectionTag>
               <div className="mt-7 flex flex-col gap-6 text-sm">
                 <div>
-                  <p className="font-mono text-[11px] tracking-[0.1em] text-[#bfe8ff] mb-3">
+                  <p className="font-mono text-[11px] tracking-[0.1em] text-powder mb-3">
                     FARIDABAD
                   </p>
                   <p className="flex items-start gap-3 text-white/70 mb-3">
-                    <MapPin className="mt-0.5 size-4 shrink-0 text-[#bfe8ff]" />
+                    <MapPin className="mt-0.5 size-4 shrink-0 text-powder" />
                     <span>
                       B-459, 1st Floor, Nehru Ground N.I.T.
                       <br />
@@ -69,23 +69,23 @@ export default function ContactPage() {
                     href="tel:+919810573633"
                     className="flex items-center gap-3 text-white/70 transition-colors hover:text-white mb-3"
                   >
-                    <Phone className="size-4 shrink-0 text-[#bfe8ff]" />
+                    <Phone className="size-4 shrink-0 text-powder" />
                     <span className="font-mono text-[13px]">+91 98105 73633</span>
                   </a>
                   <a
                     href="mailto:ops@trifreight.in"
                     className="flex items-center gap-3 text-white/70 transition-colors hover:text-white"
                   >
-                    <Mail className="size-4 shrink-0 text-[#bfe8ff]" />
+                    <Mail className="size-4 shrink-0 text-powder" />
                     <span className="font-mono text-[13px]">ops@trifreight.in</span>
                   </a>
                 </div>
                 <div className="border-t border-white/10 pt-4">
-                  <p className="font-mono text-[11px] tracking-[0.1em] text-[#bfe8ff] mb-3">
+                  <p className="font-mono text-[11px] tracking-[0.1em] text-powder mb-3">
                     LUDHIANA BRANCH
                   </p>
                   <p className="flex items-start gap-3 text-white/70 mb-3">
-                    <MapPin className="mt-0.5 size-4 shrink-0 text-[#bfe8ff]" />
+                    <MapPin className="mt-0.5 size-4 shrink-0 text-powder" />
                     <span>
                       Cabin 6, First Floor, Deepak Complex,
                       <br />
@@ -93,30 +93,30 @@ export default function ContactPage() {
                     </span>
                   </p>
                   <a
-                    href="tel:+919667108950"
+                    href="tel:+917056060123"
                     className="flex items-center gap-3 text-white/70 transition-colors hover:text-white mb-3"
                   >
-                    <Phone className="size-4 shrink-0 text-[#bfe8ff]" />
-                    <span className="font-mono text-[13px]">+91 96671 08950</span>
+                    <Phone className="size-4 shrink-0 text-powder" />
+                    <span className="font-mono text-[13px]">+91 70560 60123</span>
                   </a>
                   <a
                     href="tel:+917889108950"
                     className="flex items-center gap-3 text-white/70 transition-colors hover:text-white"
                   >
-                    <Phone className="size-4 shrink-0 text-[#bfe8ff]" />
+                    <Phone className="size-4 shrink-0 text-powder" />
                     <span className="font-mono text-[13px]">+91 78891 08950</span>
                   </a>
                 </div>
                 <div className="border-t border-white/10 pt-4">
                   <p className="flex items-center gap-3 text-white/70">
-                    <Clock className="size-4 shrink-0 text-[#bfe8ff]" />
+                    <Clock className="size-4 shrink-0 text-powder" />
                     <span>Mon – Sat, 09:30 – 19:00 IST</span>
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-xl border border-black/8 bg-[#ebeff3] p-6 sm:p-8">
+            <div className="rounded-xl border border-black/8 bg-mist p-6 sm:p-8">
               <SectionTag className="text-black/50">Who picks it up</SectionTag>
               <div className="mt-6 divide-y divide-black/8">
                 {desks.map((desk) => (

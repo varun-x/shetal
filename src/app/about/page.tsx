@@ -45,7 +45,7 @@ const heritage = [
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto max-w-[1280px] bg-[#fbfdff] text-[#212121] shadow-[0_0_80px_rgba(8,34,58,0.08)]">
+    <main className="mx-auto max-w-[1280px] bg-paper text-ink shadow-[0_0_80px_rgba(8,34,58,0.08)]">
       <SiteHeader />
 
       <PageHero
@@ -53,7 +53,7 @@ export default function AboutPage() {
         title={
           <>
             Cargo first.{" "}
-            <span className="inline-block rounded-lg bg-[#bfe8ff] px-[0.12em] pb-[0.06em] pt-[0.02em]">
+            <span className="inline-block rounded-lg bg-powder px-[0.12em] pb-[0.06em] pt-[0.02em]">
               Paperwork follows.
             </span>
           </>
@@ -66,7 +66,7 @@ export default function AboutPage() {
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-20">
             <Reveal>
               <div>
-                <SectionTag className="text-[#6095c2]">What we are</SectionTag>
+                <SectionTag className="text-sky">What we are</SectionTag>
                 <h2 className="font-display mt-5 max-w-xl text-[clamp(2.1rem,3.8vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
                   One plan from pickup to delivery — no matter how many borders are in between.
                 </h2>
@@ -83,7 +83,7 @@ export default function AboutPage() {
                 <ul className="mt-4 flex flex-col gap-3">
                   {heritage.map((item) => (
                     <li key={item} className="flex items-center gap-3 text-sm font-medium">
-                      <span className="grid size-7 shrink-0 place-items-center rounded-full bg-[#bfe8ff] text-[#212121]">
+                      <span className="grid size-7 shrink-0 place-items-center rounded-full bg-powder text-ink">
                         <Check className="size-3.5" strokeWidth={3} />
                       </span>
                       {item}
@@ -96,10 +96,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#222222] px-5 py-24 text-white sm:px-8 lg:px-12 xl:px-16 sm:py-32">
+      <section className="relative overflow-hidden bg-ink px-5 py-24 text-white sm:px-8 lg:px-12 xl:px-16 sm:py-32">
         <div className="grid-fade absolute inset-0 opacity-50" />
         <div className="relative mx-auto max-w-[1600px]">
-          <SectionTag className="text-[#bfe8ff]">By the numbers</SectionTag>
+          <SectionTag className="text-powder">By the numbers</SectionTag>
           <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <Stat value={5000} suffix="+" label="Shipments coordinated" />
             <Stat value={100} suffix="+" label="Global partners" />
@@ -114,15 +114,15 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
             <div className="relative min-h-[360px] overflow-hidden rounded-xl sm:min-h-[520px]">
               <Image
-                src="/images/trifreight/container-terminal.jpg"
-                alt="Containers lined up at a freight terminal"
+                src="/images/trifreight/container-yard-aerial.jpg"
+                alt="Containers stacked in rows at a port terminal, seen from above"
                 fill
                 sizes="(max-width: 1024px) 92vw, 470px"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#132b3e]/70 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 rounded-lg border border-white/20 bg-white/12 p-4 text-white backdrop-blur-md">
-                <p className="font-mono-ui text-[9px] tracking-[0.12em] text-[#bfe8ff]">THE WALLOF ORIGIN</p>
+                <p className="font-mono-ui text-[9px] tracking-[0.12em] text-powder">THE WALLOF ORIGIN</p>
                 <p className="font-display mt-3 text-2xl font-semibold leading-[0.93] tracking-[-0.055em]">
                   Every shipment is somebody&apos;s product, deadline, and livelihood.
                 </p>
@@ -130,7 +130,7 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-col justify-center">
-              <SectionTag className="text-[#6095c2]">Where we come from</SectionTag>
+              <SectionTag className="text-sky">Where we come from</SectionTag>
               <h2 className="font-display mt-5 max-w-2xl text-[clamp(2.1rem,3.8vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
                 Built on controls work, reframed for a forwarder.
               </h2>
@@ -147,7 +147,7 @@ export default function AboutPage() {
                   ["03", "Clarity", "One accountable plan"],
                 ].map(([number, title, detail]) => (
                   <div key={number} className="rounded-lg border border-black/8 bg-white p-4">
-                    <p className="font-mono-ui text-[9px] tracking-[0.12em] text-[#6095c2]">{number}</p>
+                    <p className="font-mono-ui text-[9px] tracking-[0.12em] text-sky">{number}</p>
                     <p className="font-display mt-5 text-xl font-semibold tracking-[-0.05em]">{title}</p>
                     <p className="mt-1 text-xs leading-relaxed text-black/52">{detail}</p>
                   </div>
@@ -161,7 +161,7 @@ export default function AboutPage() {
       <section className="px-5 pb-24 sm:px-8 lg:px-12 xl:px-16 sm:pb-32">
         <div className="mx-auto max-w-[1600px]">
           <div className="text-center">
-            <SectionTag className="justify-center text-[#6095c2]">Our core commitments</SectionTag>
+            <SectionTag className="justify-center text-sky">Our core commitments</SectionTag>
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {values.map((value, index) => {
@@ -169,7 +169,7 @@ export default function AboutPage() {
               return (
                 <Reveal key={value.title} delay={index * 0.08}>
                   <article className="flex h-full flex-col gap-5 rounded-xl border border-black/8 bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(27,54,77,0.1)]">
-                    <span className="grid size-11 place-items-center rounded-lg bg-[#edf6fb] text-[#6095c2]">
+                    <span className="grid size-11 place-items-center rounded-lg bg-[#edf6fb] text-sky">
                       <Icon className="size-5" />
                     </span>
                     <h3 className="font-display text-2xl font-semibold tracking-[-0.055em]">
@@ -186,12 +186,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#bfe8ff] px-5 py-24 sm:px-8 lg:px-12 xl:px-16 sm:py-28">
+      <section className="relative overflow-hidden bg-powder px-5 py-24 sm:px-8 lg:px-12 xl:px-16 sm:py-28">
         <div className="absolute -right-40 top-0 size-[30rem] rounded-full border-[44px] border-white/20" />
         <div className="relative mx-auto flex max-w-[1600px] flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div>
             <SectionTag className="text-black/50">The next shipment</SectionTag>
-            <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[#212121]">
+            <h2 className="font-display mt-5 max-w-3xl text-[clamp(2.3rem,4.6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-ink">
               Bring us a route. We will bring the plan.
             </h2>
           </div>
@@ -199,7 +199,7 @@ export default function AboutPage() {
             <Button href="/contact" variant="ink">
               Get a freight plan
             </Button>
-            <ArrowLink href="/contact" className="text-[#212121]">
+            <ArrowLink href="/contact" className="text-ink">
               Talk to operations
             </ArrowLink>
           </div>

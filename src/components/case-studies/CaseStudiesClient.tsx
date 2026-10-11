@@ -131,7 +131,7 @@ export default function CaseStudiesClient() {
                 {isActive && (
                   <motion.span
                     layoutId="case-pill"
-                    className="absolute inset-0 rounded-full bg-[#222222]"
+                    className="absolute inset-0 rounded-full bg-ink"
                     transition={{ type: "spring", stiffness: 360, damping: 30 }}
                   />
                 )}
@@ -154,10 +154,10 @@ export default function CaseStudiesClient() {
                 className="group flex flex-col rounded-xl border border-black/8 bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(27,54,77,0.1)] sm:p-8"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <span className="font-mono-ui rounded-full bg-[#edf6fb] px-3 py-1.5 text-[9px] tracking-[0.1em] text-[#6095c2]">
+                  <span className="font-mono-ui rounded-full bg-[#edf6fb] px-3 py-1.5 text-[9px] tracking-[0.1em] text-sky">
                     {study.category}
                   </span>
-                  <span className="rounded-lg bg-[#bfe8ff] px-3 py-2 text-right">
+                  <span className="rounded-lg bg-powder px-3 py-2 text-right">
                     <span className="font-display block text-xl font-semibold leading-none tracking-[-0.05em]">
                       {study.metric}
                     </span>
@@ -172,7 +172,7 @@ export default function CaseStudiesClient() {
                 </h2>
 
                 <p className="flex items-center gap-2 pt-4 text-xs text-black/50">
-                  <Route className="size-3.5 shrink-0 text-[#6095c2]" />
+                  <Route className="size-3.5 shrink-0 text-sky" />
                   <span className="font-mono-ui text-[9px] tracking-[0.08em]">
                     {study.route}
                   </span>
@@ -188,7 +188,7 @@ export default function CaseStudiesClient() {
                     <p className="mt-2 leading-relaxed text-black/62">{study.strategy}</p>
                   </div>
                   <div>
-                    <p className="font-mono-ui text-[9px] tracking-[0.12em] text-[#6095c2]">RESULT</p>
+                    <p className="font-mono-ui text-[9px] tracking-[0.12em] text-sky">RESULT</p>
                     <p className="mt-2 leading-relaxed text-black/78">{study.results}</p>
                   </div>
                 </div>

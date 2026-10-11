@@ -21,7 +21,7 @@ const modeLinks = [
 
 export default function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden bg-[#141414] text-white">
+    <footer className="relative overflow-hidden bg-night text-white">
       {/* Static clouds crown the dark footer the way they carry the hero sky —
           the shared band on the one component every page renders. */}
       <CloudBlend className="top-0 h-[8rem] sm:h-[12rem]" />
@@ -31,7 +31,7 @@ export default function SiteFooter() {
           <div className="grid-fade absolute inset-0 opacity-40" />
           <div className="relative z-10 flex items-start justify-between gap-6">
             <div>
-              <p className="font-mono-ui text-[10px] tracking-[0.14em] text-[#bfe8ff]">
+              <p className="font-mono-ui text-[10px] tracking-[0.14em] text-powder">
                 India to the world
               </p>
               <h2 className="font-display mt-4 max-w-lg text-[clamp(1.75rem,3.1vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.04em]">
@@ -43,7 +43,7 @@ export default function SiteFooter() {
               aria-label="Start a freight plan"
               className="group grid size-12 shrink-0 place-items-center rounded-full border border-white/25 bg-white/5 transition-colors hover:border-white hover:bg-white sm:size-14"
             >
-              <ArrowRight className="size-5 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-[#141414]" />
+              <ArrowRight className="size-5 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-night" />
             </Link>
           </div>
 
@@ -78,7 +78,7 @@ export default function SiteFooter() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="font-mono-ui text-[10px] tracking-[0.14em] text-[#bfe8ff]">
+            <p className="font-mono-ui text-[10px] tracking-[0.14em] text-powder">
               Company
             </p>
             <ul className="flex flex-col gap-2.5">
@@ -96,7 +96,7 @@ export default function SiteFooter() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="font-mono-ui text-[10px] tracking-[0.14em] text-[#bfe8ff]">
+            <p className="font-mono-ui text-[10px] tracking-[0.14em] text-powder">
               Freight modes
             </p>
             <ul className="flex flex-col gap-2.5">
@@ -114,16 +114,16 @@ export default function SiteFooter() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="font-mono-ui text-[10px] tracking-[0.14em] text-[#bfe8ff]">
+            <p className="font-mono-ui text-[10px] tracking-[0.14em] text-powder">
               Operations desk
             </p>
             <div className="flex flex-col gap-5 text-sm text-white/62">
               <div>
-                <p className="font-mono text-[10px] tracking-[0.1em] text-[#bfe8ff] mb-2">
+                <p className="font-mono text-[10px] tracking-[0.1em] text-powder mb-2">
                   FARIDABAD
                 </p>
                 <p className="flex items-start gap-2.5">
-                  <MapPin className="mt-0.5 size-4 shrink-0 text-[#bfe8ff]" />
+                  <MapPin className="mt-0.5 size-4 shrink-0 text-powder" />
                   <span>
                     B-459, 1st Floor, Nehru Ground N.I.T.
                     <br />
@@ -134,23 +134,23 @@ export default function SiteFooter() {
                   href="tel:+919810573633"
                   className="mt-2.5 flex items-center gap-2.5 transition-colors hover:text-white"
                 >
-                  <Phone className="size-4 shrink-0 text-[#bfe8ff]" />
+                  <Phone className="size-4 shrink-0 text-powder" />
                   <span className="font-mono text-[12px]">+91 98105 73633</span>
                 </a>
                 <a
                   href="mailto:ops@trifreight.in"
                   className="mt-2.5 flex items-center gap-2.5 transition-colors hover:text-white"
                 >
-                  <Mail className="size-4 shrink-0 text-[#bfe8ff]" />
+                  <Mail className="size-4 shrink-0 text-powder" />
                   <span className="font-mono text-[12px]">ops@trifreight.in</span>
                 </a>
               </div>
               <div className="border-t border-white/10 pt-3">
-                <p className="font-mono text-[10px] tracking-[0.1em] text-[#bfe8ff] mb-2">
+                <p className="font-mono text-[10px] tracking-[0.1em] text-powder mb-2">
                   LUDHIANA BRANCH
                 </p>
                 <p className="flex items-start gap-2.5">
-                  <MapPin className="mt-0.5 size-4 shrink-0 text-[#bfe8ff]" />
+                  <MapPin className="mt-0.5 size-4 shrink-0 text-powder" />
                   <span>
                     Cabin 6, First Floor, Deepak Complex,
                     <br />
@@ -158,17 +158,17 @@ export default function SiteFooter() {
                   </span>
                 </p>
                 <a
-                  href="tel:+919667108950"
+                  href="tel:+917056060123"
                   className="mt-2.5 flex items-center gap-2.5 transition-colors hover:text-white"
                 >
-                  <Phone className="size-4 shrink-0 text-[#bfe8ff]" />
-                  <span className="font-mono text-[12px]">+91 96671 08950</span>
+                  <Phone className="size-4 shrink-0 text-powder" />
+                  <span className="font-mono text-[12px]">+91 70560 60123</span>
                 </a>
                 <a
                   href="tel:+917889108950"
                   className="mt-2.5 flex items-center gap-2.5 transition-colors hover:text-white"
                 >
-                  <Phone className="size-4 shrink-0 text-[#bfe8ff]" />
+                  <Phone className="size-4 shrink-0 text-powder" />
                   <span className="font-mono text-[12px]">+91 78891 08950</span>
                 </a>
               </div>
