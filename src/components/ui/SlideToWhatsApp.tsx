@@ -3,7 +3,7 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { Check, Container, MapPin } from "lucide-react";
 
-export const WHATSAPP_NUMBER = "919457737292";
+export const WHATSAPP_NUMBER = "919667108950";
 export const PREFILL =
   "Hi Trifreight — I'd like a freight plan. Lane: ___ , cargo: ___ , ready by: ___";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(PREFILL)}`;
