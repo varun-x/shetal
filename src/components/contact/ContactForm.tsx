@@ -13,7 +13,11 @@ const modes = [
   "Not sure yet",
 ];
 
-const OPS_EMAIL = "ops@trifreight.in";
+// Road and general enquiries go to the transport desk; air, ocean and customs
+// enquiries go to the EXIM desk.
+const INFO_EMAIL = "info@trifreight.in";
+const EXIM_EMAIL = "exim@trifreight.in";
+const TRANSPORT_MODES = ["Road transport", "Not sure yet"];
 
 const fieldClass =
   "w-full rounded-lg border border-black/10 bg-white px-4 py-3 text-sm outline-none transition-colors placeholder:text-black/35 focus:border-ink";
@@ -34,6 +38,8 @@ export default function ContactForm() {
   const set = (key: keyof typeof form) => (value: string) =>
     setForm((current) => ({ ...current, [key]: value }));
 
+  const to = TRANSPORT_MODES.includes(form.mode) ? INFO_EMAIL : EXIM_EMAIL;
+
   // No backend yet — the form hands the enquiry to the operations desk by
   // opening a pre-filled email, so nothing a visitor types is silently dropped.
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -51,7 +57,7 @@ export default function ContactForm() {
       form.message,
     ].join("\n");
 
-    window.location.href = `mailto:${OPS_EMAIL}?subject=${encodeURIComponent(
+    window.location.href = `mailto:${to}?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
   };
@@ -171,7 +177,7 @@ export default function ContactForm() {
         <p className="font-mono-ui text-[9px] leading-relaxed tracking-[0.1em] text-black/45">
           Opens your mail app,
           <br />
-          addressed to {OPS_EMAIL}
+          addressed to {to}
         </p>
       </div>
     </form>

@@ -67,17 +67,10 @@ export default function ContactPage() {
                   </p>
                   <a
                     href="tel:+919810573633"
-                    className="flex items-center gap-3 text-white/70 transition-colors hover:text-white mb-3"
+                    className="flex items-center gap-3 text-white/70 transition-colors hover:text-white"
                   >
                     <Phone className="size-4 shrink-0 text-powder" />
                     <span className="font-mono text-[13px]">+91 98105 73633</span>
-                  </a>
-                  <a
-                    href="mailto:ops@trifreight.in"
-                    className="flex items-center gap-3 text-white/70 transition-colors hover:text-white"
-                  >
-                    <Mail className="size-4 shrink-0 text-powder" />
-                    <span className="font-mono text-[13px]">ops@trifreight.in</span>
                   </a>
                 </div>
                 <div className="border-t border-white/10 pt-4">
@@ -105,6 +98,27 @@ export default function ContactPage() {
                   >
                     <Phone className="size-4 shrink-0 text-powder" />
                     <span className="font-mono text-[13px]">+91 78891 08950</span>
+                  </a>
+                </div>
+                <div className="border-t border-white/10 pt-4">
+                  <p className="font-mono text-[11px] tracking-[0.1em] text-powder mb-3">
+                    EMAIL
+                  </p>
+                  <a
+                    href="mailto:info@trifreight.in"
+                    className="flex items-center gap-3 text-white/70 transition-colors hover:text-white mb-3"
+                  >
+                    <Mail className="size-4 shrink-0 text-powder" />
+                    <span className="font-mono text-[13px]">info@trifreight.in</span>
+                    <span className="text-xs text-white/40">Transport</span>
+                  </a>
+                  <a
+                    href="mailto:exim@trifreight.in"
+                    className="flex items-center gap-3 text-white/70 transition-colors hover:text-white"
+                  >
+                    <Mail className="size-4 shrink-0 text-powder" />
+                    <span className="font-mono text-[13px]">exim@trifreight.in</span>
+                    <span className="text-xs text-white/40">EXIM</span>
                   </a>
                 </div>
                 <div className="border-t border-white/10 pt-4">
