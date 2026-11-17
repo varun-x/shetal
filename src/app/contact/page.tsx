@@ -82,15 +82,24 @@ export default function ContactPage() {
                     <span>
                       Cabin 6, First Floor, Deepak Complex,
                       <br />
-                      New Grain Market, Ludhiana, Punjab
+                      New Grain Market, Ludhiana-141003, Punjab
                     </span>
                   </p>
                   <a
-                    href="tel:+917056060123"
+                    href="tel:+917056060199"
                     className="flex items-center gap-3 text-white/70 transition-colors hover:text-white mb-3"
                   >
                     <Phone className="size-4 shrink-0 text-powder" />
-                    <span className="font-mono text-[13px]">+91 70560 60123</span>
+                    <span className="font-mono text-[13px]">+91 70560 60199</span>
+                    <span className="text-xs text-white/40">Transport</span>
+                  </a>
+                  <a
+                    href="tel:+917056060299"
+                    className="flex items-center gap-3 text-white/70 transition-colors hover:text-white mb-3"
+                  >
+                    <Phone className="size-4 shrink-0 text-powder" />
+                    <span className="font-mono text-[13px]">+91 70560 60299</span>
+                    <span className="text-xs text-white/40">Transport</span>
                   </a>
                   <a
                     href="tel:+917889108950"
@@ -98,6 +107,7 @@ export default function ContactPage() {
                   >
                     <Phone className="size-4 shrink-0 text-powder" />
                     <span className="font-mono text-[13px]">+91 78891 08950</span>
+                    <span className="text-xs text-white/40">EXIM</span>
                   </a>
                 </div>
                 <div className="border-t border-white/10 pt-4">
